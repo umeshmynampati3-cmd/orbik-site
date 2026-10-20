@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Taqueria Mi Sol — sample site by Orbik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{--sun:#ffc21a;--pink:#e5007e;--green:#0b5d3b;--ink:#161310;--paper:#ffffff;--m:clamp(18px,3vw,48px);--ease:cubic-bezier(.22,1,.36,1)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.5 "Bricolage Grotesque",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-weight:800;letter-spacing:-.035em;line-height:.9;margin:0}
+p{margin:0}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+.sample{background:var(--ink);color:#fff;font-size:14px;padding:8px var(--m)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 28px;border-radius:999px;background:var(--pink);color:#fff;font:700 18px/1 "Bricolage Grotesque",sans-serif;text-decoration:none;border:0;cursor:pointer;transition:transform .2s var(--ease),background-color .2s ease}
+.btn:hover{transform:rotate(-2deg) scale(1.03)}
+.btn:active{transform:scale(.96)}
+.btn.ink{background:var(--ink)}
+/* hero */
+.hero{background:var(--sun);position:relative;overflow:hidden;padding:24px var(--m) 0}
+.top{display:flex;align-items:center;gap:26px}
+.top .mark{font-weight:800;font-size:26px;text-decoration:none;margin-right:auto}
+.top a.l{text-decoration:none;font-weight:600}
+.top a.l:hover{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:4px}
+.hgrid{display:grid;grid-template-columns:7fr 5fr;gap:3vw;align-items:center;min-height:calc(100svh - 120px)}
+.hero h1{font-size:clamp(52px,6.4vw,118px)}
+.hero h1 .p{color:#b0005c}
+.hero .lede{margin-top:26px;font-size:clamp(19px,1.5vw,23px);max-width:34ch}
+.hero .ctas{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px}
+.sunwrap{position:relative;aspect-ratio:1;max-width:620px;justify-self:end;width:100%}
+.sunwrap svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 60s linear infinite}
+.sunwrap .plate{position:absolute;inset:17%;border-radius:50%;overflow:hidden}
+.sunwrap .plate img{width:100%;height:100%;object-fit:cover}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hours-band{background:var(--pink);color:#fff;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:22px var(--m);font-size:20px;font-weight:600}
+.hours-band b{font-weight:800}
+/* menu */
+.menu{background:var(--green);color:#ffffff;padding:120px var(--m)}
+.menu-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:60px}
+.menu h2{font-size:clamp(64px,8vw,140px);color:var(--sun)}
+.menu-head p{max-width:34ch;font-size:19px}
+.board{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 5vw}
+.board h3{font-size:36px;color:var(--sun);margin-bottom:14px}
+.item{display:flex;justify-content:space-between;gap:16px;padding:8px 0;font-size:19px}
+.item b{font-weight:600}
+.item span{font-variant-numeric:tabular-nums;font-weight:600}
+.item small{display:block;font-size:16px;opacity:.9;font-weight:400}
+/* order */
+.order{display:grid;grid-template-columns:5fr 6fr;gap:5vw;padding:120px var(--m);align-items:start}
+.order h2{font-size:clamp(56px,6vw,110px)}
+.order .intro p{margin-top:22px;font-size:20px;max-width:32ch}
+.order .intro img{margin-top:40px;border-radius:50%;aspect-ratio:1;object-fit:cover;width:70%}
+.picker{background:#fff;border-radius:28px;padding:clamp(22px,3vw,40px)}
+.row{display:grid;grid-template-columns:1fr auto auto auto auto;align-items:center;gap:12px;padding:10px 0}
+.row b{font-weight:600;font-size:19px}
+.row .pr{color:#5a5248;font-variant-numeric:tabular-nums}
+.row button{width:44px;height:44px;border-radius:50%;border:0;background:var(--sun);font:800 22px "Bricolage Grotesque",sans-serif;cursor:pointer;transition:transform .15s var(--ease),background-color .15s ease}
+.row button:hover{background:#ffd457}.row button:active{transform:scale(.88)}
+.row output{min-width:2ch;text-align:center;font-weight:800;font-size:20px;font-variant-numeric:tabular-nums}
+.total{display:flex;justify-content:space-between;align-items:baseline;margin-top:20px;padding:14px 20px;background:var(--sun);border-radius:18px}
+.total b{font-size:48px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.picker .btn{width:100%;margin-top:18px}
+.picker .note{margin-top:10px;font-size:15px;color:#5a5248}
+/* photos */
+.photos{display:grid;grid-template-columns:3fr 2fr 3fr;gap:12px;padding:0 var(--m) 120px}
+.photos img{width:100%;height:440px;object-fit:cover;border-radius:24px}
+.photos img:nth-child(2){border-radius:999px 999px 24px 24px}
+/* visit */
+.visit{background:var(--sun);padding:110px var(--m);display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:start}
+.visit h2{font-size:clamp(56px,6vw,110px)}
+.visit dl{margin:26px 0 0;display:grid;grid-template-columns:auto 1fr;gap:8px 24px;font-size:20px}
+.visit dt{font-weight:800}.visit dd{margin:0}
+.visit iframe{width:100%;height:420px;border:0;border-radius:24px}
+footer{background:var(--ink);color:#d8d1c4;padding:40px var(--m);font-size:16px}
+footer p{max-width:90ch}
+footer a{color:#fff}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.no-js .rv{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.sunwrap svg{animation:none}}
+@media (max-width:900px){
+  .top a.l{display:none}
+  .hgrid{grid-template-columns:1fr;min-height:0;padding:40px 0}
+  .sunwrap{max-width:420px;justify-self:center}
+  .board{grid-template-columns:1fr;gap:64px}
+  .order,.visit{grid-template-columns:1fr;padding-top:80px;padding-bottom:80px}
+  .photos{grid-template-columns:1fr}
+  .photos img{height:280px}
+  .menu{padding:80px var(--m)}
+}
+</style>
+</head>
+<body class="no-js">
+<script>document.body.classList.remove('no-js')</script>
+<p class="sample">Sample website for a fictional business, designed by Orbik · <a href="https://orbik.ai">orbik.ai</a></p>
+<header class="hero">
+  <nav class="top"><a class="mark" href="#">Mi Sol</a><a class="l" href="#menu">Menu</a><a class="l" href="#order">Order ahead</a><a class="l" href="#visit">Visit</a><a class="btn ink" href="tel:+16145550177">Call</a></nav>
+  <div class="hgrid">
+    <div>
+      <h1>Tacos al pastor, <span class="p">off the trompo</span></h1>
+      <p class="lede">Corn tortillas pressed every morning, salsas made in house, and aguas frescas by the jar. Eat in, or order ahead and skip the line.</p>
+      <div class="ctas"><a class="btn" href="#order">Build your order</a><a class="btn ink" href="#menu">See the menu</a></div>
+    </div>
+    <div class="sunwrap" aria-hidden="true">
+      <svg viewBox="0 0 200 200"><g fill="#e5007e">
+        <path d="M100 0l7 22h-14z"/><path d="M100 200l-7-22h14z"/><path d="M0 100l22-7v14z"/><path d="M200 100l-22 7v-14z"/>
+        <path d="M29.3 29.3l20.6 10.4-10.2 10.2z"/><path d="M170.7 170.7l-20.6-10.4 10.2-10.2z"/><path d="M170.7 29.3l-10.4 20.6-10.2-10.2z"/><path d="M29.3 170.7l10.4-20.6 10.2 10.2z"/>
+        <path d="M61.7 7.6l15.3 17-13.1 5.4z"/><path d="M138.3 192.4l-15.3-17 13.1-5.4z"/><path d="M192.4 61.7l-17 15.3-5.4-13.1z"/><path d="M7.6 138.3l17-15.3 5.4 13.1z"/>
+        <path d="M138.3 7.6l-2.2 22.4-13.1-5.4z"/><path d="M61.7 192.4l2.2-22.4 13.1 5.4z"/><path d="M192.4 138.3l-22.4-2.2 5.4-13.1z"/><path d="M7.6 61.7l22.4 2.2-5.4 13.1z"/>
+      </g><circle cx="100" cy="100" r="70" fill="#e5007e"/></svg>
+      <div class="plate"><img src="assets/el-flaco-al-pastor-tacos.jpg" width="1800" height="1350" alt=""></div>
+    </div>
+  </div>
+</header>
+<div class="hours-band rv"><span><b>Open every day</b> 11am – 10pm</span><span>1820 Parsons Ave, Columbus</span><a href="tel:+16145550177">(614) 555-0177</a></div>
+<main>
+<section class="menu" id="menu">
+  <div class="menu-head"><h2 class="rv">La carta</h2><p class="rv">Tacos come on two corn tortillas with onion, cilantro and your pick of salsa roja or verde.</p></div>
+  <div class="board">
+    <div class="rv"><h3>Tacos</h3>
+      <p class="item"><b>Al pastor<small>Pork off the trompo, pineapple</small></b><span>$3.75</span></p>
+      <p class="item"><b>Carne asada<small>Grilled steak</small></b><span>$4.25</span></p>
+      <p class="item"><b>Carnitas<small>Slow-braised pork</small></b><span>$3.75</span></p>
+      <p class="item"><b>Birria<small>With consomé for dipping</small></b><span>$4.50</span></p>
+      <p class="item"><b>Hongos<small>Mushrooms, epazote, queso</small></b><span>$3.50</span></p>
+    </div>
+    <div class="rv"><h3>Platos</h3>
+      <p class="item"><b>Burrito<small>Rice, beans, any meat</small></b><span>$12</span></p>
+      <p class="item"><b>Quesabirria<small>Three, with consomé</small></b><span>$15</span></p>
+      <p class="item"><b>Torta<small>Toasted bolillo, avocado</small></b><span>$11</span></p>
+      <p class="item"><b>Quesadilla<small>Oaxaca cheese</small></b><span>$9</span></p>
+      <p class="item"><b>Plato del día<small>Ask what's cooking</small></b><span>$14</span></p>
+    </div>
+    <div class="rv"><h3>Para tomar</h3>
+      <p class="item"><b>Horchata<small>Cinnamon rice milk</small></b><span>$4</span></p>
+      <p class="item"><b>Jamaica<small>Hibiscus</small></b><span>$4</span></p>
+      <p class="item"><b>Tamarindo</b><span>$4</span></p>
+      <p class="item"><b>Jarritos<small>Any flavour</small></b><span>$3</span></p>
+      <p class="item"><b>Mexican Coke</b><span>$3.50</span></p>
+    </div>
+  </div>
+</section>
+<section class="order" id="order">
+  <div class="intro">
+    <h2 class="rv">Order ahead, skip the line</h2>
+    <p class="rv">Tap what you want. We'll write the text for you, and it'll be hot when you walk in.</p>
+    <img class="rv" src="assets/tacos-al-pastor.jpg" width="1800" height="1350" alt="Tacos al pastor with lime on a paper plate" loading="lazy">
+  </div>
+  <div class="picker rv" id="picker">
+    <div class="row" data-n="Al pastor taco" data-p="3.75"><b>Al pastor taco</b><span class="pr">$3.75</span><button type="button" data-d="-1" aria-label="One less al pastor taco">–</button><output>0</output><button type="button" data-d="1" aria-label="One more al pastor taco">+</button></div>
+    <div class="row" data-n="Carne asada taco" data-p="4.25"><b>Carne asada taco</b><span class="pr">$4.25</span><button type="button" data-d="-1" aria-label="One less carne asada taco">–</button><output>0</output><button type="button" data-d="1" aria-label="One more carne asada taco">+</button></div>
+    <div class="row" data-n="Birria taco" data-p="4.50"><b>Birria taco</b><span class="pr">$4.50</span><button type="button" data-d="-1" aria-label="One less birria taco">–</button><output>0</output><button type="button" data-d="1" aria-label="One more birria taco">+</button></div>
+    <div class="row" data-n="Burrito" data-p="12"><b>Burrito</b><span class="pr">$12</span><button type="button" data-d="-1" aria-label="One less burrito">–</button><output>0</output><button type="button" data-d="1" aria-label="One more burrito">+</button></div>
+    <div class="row" data-n="Horchata" data-p="4"><b>Horchata</b><span class="pr">$4</span><button type="button" data-d="-1" aria-label="One less horchata">–</button><output>0</output><button type="button" data-d="1" aria-label="One more horchata">+</button></div>
+    <div class="total"><span>Total</span><b id="tot" aria-live="polite">$0.00</b></div>
+    <a class="btn" id="send" href="sms:+16145550177">Text my order</a>
+    <p class="note">Pay when you pick up. Ready in about 15 minutes.</p>
+  </div>
+</section>
+<section class="photos" aria-label="Food photos">
+  <img src="assets/001-tacos-de-carnitas-carne-asada-y.jpg" width="1800" height="1350" alt="Carnitas, carne asada and al pastor tacos with lime and radish" loading="lazy">
+  <img src="assets/el-flaco-al-pastor-tacos.jpg" width="1800" height="1350" alt="A tray of al pastor tacos" loading="lazy">
+  <img src="assets/tacos-al-pastor.jpg" width="1800" height="1350" alt="Tacos with salsa and lime" loading="lazy">
+</section>
+<section class="visit" id="visit">
+  <div>
+    <h2 class="rv">Come hungry</h2>
+    <dl class="rv"><dt>Where</dt><dd>1820 Parsons Ave, Columbus</dd><dt>Hours</dt><dd>Every day, 11am – 10pm</dd><dt>Call</dt><dd><a href="tel:+16145550177">(614) 555-0177</a></dd><dt>Parking</dt><dd>Free lot behind the building</dd></dl>
+  </div>
+  <iframe class="rv" title="Map of Columbus" loading="lazy" src="https://maps.google.com/maps?q=Parsons%20Ave%2C%20Columbus%2C%20OH&z=14&output=embed"></iframe>
+</section>
+</main>
+<footer><p>Taqueria Mi Sol is a fictional business. Sample site designed by <a href="https://orbik.ai">Orbik</a>. Photographs via Wikimedia Commons: <a href="https://commons.wikimedia.org/wiki/File:(El_Flaco)_Al_Pastor_Tacos.jpg">“(El Flaco) Al Pastor Tacos”</a> by City Foodsters, CC BY 2.0; <a href="https://commons.wikimedia.org/wiki/File:Tacos_al_pastor.jpg">“Tacos al pastor”</a> by T.Tseng, CC BY 2.0; <a href="https://commons.wikimedia.org/wiki/File:001_Tacos_de_carnitas,_carne_asada_y_al_pastor.jpg">“001 Tacos de carnitas, carne asada y al pastor”</a> by Larry Miller, CC BY-SA 2.0.</p></footer>
+<script>
+(function(){
+  const p=document.getElementById('picker'),tot=document.getElementById('tot'),send=document.getElementById('send');
+  p.addEventListener('click',e=>{const b=e.target.closest('button[data-d]');if(!b)return;const o=b.parentNode.querySelector('output');o.textContent=Math.max(0,(+o.textContent)+(+b.dataset.d));upd()});
+  function upd(){let t=0;const items=[];p.querySelectorAll('.row').forEach(r=>{const q=+r.querySelector('output').textContent;if(q){t+=q*r.dataset.p;items.push(q+' x '+r.dataset.n)}});
+    tot.textContent='$'+t.toFixed(2);send.href='sms:+16145550177?&body='+encodeURIComponent('Hola Mi Sol! Order for pickup: '+(items.join(', ')||'')+'. Name: ');}
+  upd();
+  const els=document.querySelectorAll('.rv');if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -6% 0px'});
+  els.forEach((e,i)=>{e.style.transitionDelay=(i%3)*80+'ms';io.observe(e)});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fern &amp; Ninth — Hair studio, East Austin</title>
+<meta name="description" content="Fern & Ninth is a four-chair hair studio on the corner of Fern Avenue and 9th Street in East Austin. Cuts, colour and curly hair, by appointment.">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{
+  --bg:#edccbe; --surface:#e6bfae; --ink:#351a2b; --muted:#5e3a4b;
+  --accent:#351a2b; --accent-ink:#edccbe;
+  --field-1:#351a2b; --field-1-ink:#edccbe;
+  --step-small:clamp(.8125rem,.79rem + .1vw,.875rem);
+  --step-body:clamp(1.0625rem,1rem + .25vw,1.1875rem);
+  --step-lead:clamp(1.25rem,1.1rem + .7vw,1.625rem);
+  --step-head:clamp(2rem,1.3rem + 3.2vw,4rem);
+  --m:12px; --pad:clamp(20px,3vw,48px);
+  --ease-out:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"General Sans",system-ui,sans-serif;font-size:var(--step-body);line-height:1.45;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-weight:700;letter-spacing:-.02em;line-height:.92;margin:0}
+p{margin:0}
+:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+::selection{background:var(--ink);color:var(--bg)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;border-radius:999px;background:var(--ink);color:var(--bg);text-decoration:none;font:500 16px/1 "General Sans",sans-serif;padding:18px 28px;border:0;cursor:pointer;transition:transform .14s var(--ease-out),background-color .18s ease,color .18s ease}
+.btn:active{transform:scale(.97)}
+.btn.light{background:var(--bg);color:var(--ink)}
+.btn:hover{background:#4d2a3f}.btn.light:hover{background:#f6ddd2}
+svg.curl path{fill:none;stroke:currentColor;stroke-linecap:round}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:var(--m);padding:var(--m)}
+.card{background:var(--field-1);color:var(--field-1-ink);min-height:calc(100svh - 24px);position:relative;overflow:hidden;padding:var(--pad);display:flex;flex-direction:column}
+.nav{display:flex;align-items:center;gap:28px;font-size:16px;position:relative;z-index:2}
+.nav .mark{font-weight:700;font-size:22px;text-decoration:none;margin-right:auto;letter-spacing:-.01em}
+.nav a:not(.mark){text-decoration:none;opacity:.85;transition:opacity .18s ease}
+.nav a:not(.mark):hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+.card .big-curl{position:absolute;right:-14%;bottom:-30%;width:78%;color:var(--bg);opacity:1;z-index:0}
+.card .big-curl path{stroke:#5a2f47}
+.card .copy{margin-top:auto;position:relative;z-index:2;max-width:640px}
+.card h1{font-size:clamp(44px,5vw,84px);margin-bottom:24px;max-width:12ch}
+.card p{max-width:36ch;margin-bottom:28px;font-size:20px;line-height:1.4}
+.stage{position:sticky;top:var(--m);height:calc(100svh - 24px);overflow:hidden;background:var(--surface)}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease;animation:drift 24s ease-in-out infinite alternate}
+.stage img.on{opacity:1}
+.stage .credit{position:absolute;left:16px;bottom:16px;background:var(--bg);color:var(--ink);font-size:var(--step-small);padding:6px 12px;border-radius:999px}
+@keyframes drift{from{transform:scale(1)}to{transform:scale(1.07)}}
+
+/* services */
+.services{padding:160px var(--pad) 40px;display:grid;grid-template-columns:5fr 7fr;gap:0 6vw}
+.services .aside{align-self:start}
+.services .aside .disc{width:100%;aspect-ratio:1;border-radius:50%;overflow:hidden;margin-top:48px}
+.services .aside .disc img{width:100%;height:100%;object-fit:cover}
+.services .list .cat:first-child{margin-top:0}
+.services h2{font-size:clamp(2rem,1.2rem + 2.4vw,3.4rem);margin-bottom:20px;max-width:14ch}
+.services .aside p{max-width:44ch}
+.cat{display:flex;justify-content:space-between;align-items:baseline;margin:96px 0 40px}
+.cat h3{font-size:clamp(32px,3.4vw,50px)}
+.cat span{font-size:16px}
+.items{display:grid;grid-template-columns:1fr 1fr;gap:32px 40px;list-style:none;margin:0;padding:0}
+.items li{display:grid;grid-template-columns:52px 1fr;gap:20px;align-items:start}
+.items svg{width:44px;color:var(--ink);transition:transform .4s var(--ease-out)}
+.items li:hover svg{transform:rotate(-30deg)}
+.items .row{display:flex;justify-content:space-between;gap:16px;font-weight:500;font-size:20px;margin-bottom:6px}
+.items .row b{font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
+.items p{font-size:16px;max-width:42ch}
+
+/* builder */
+.builder{display:grid;grid-template-columns:5fr 7fr;min-height:90svh;margin-top:160px}
+.builder .pick{background:var(--field-1);color:var(--field-1-ink);padding:40px var(--pad) 56px}
+.builder h2{font-size:clamp(40px,5vw,80px);margin-bottom:16px;max-width:8ch}
+.builder .pick > p{font-size:20px;max-width:28ch;margin-bottom:32px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;border:0;padding:0;margin:0 0 20px}
+.chips legend{font-weight:500;margin-bottom:12px;font-size:16px}
+.chips label{position:relative;cursor:pointer}
+.chips input{position:absolute;opacity:0;inset:0}
+.chips span{display:inline-block;padding:12px 18px;border-radius:999px;background:#4d2a3f;font-size:16px;transition:background-color .18s ease,color .18s ease,transform .14s var(--ease-out)}
+.chips label:hover span{background:#62374f}
+.chips input:checked + span{background:var(--bg);color:var(--ink)}
+.chips input:focus-visible + span{outline:3px solid var(--bg);outline-offset:2px}
+.chips label:active span{transform:scale(.96)}
+.builder .sum{background:var(--surface);padding:40px var(--pad);display:flex;flex-direction:column;position:relative;overflow:hidden}
+.sum h3{font-size:clamp(32px,3.4vw,50px);margin-bottom:16px}
+.sum ul{list-style:none;margin:0;padding:0;font-size:20px;max-width:40ch;position:relative;z-index:1}
+.sum ul li{display:flex;justify-content:space-between;padding:4px 0;font-variant-numeric:tabular-nums}
+.sum .empty{font-size:20px}
+.sum .foot{margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;position:relative;z-index:1}
+.sum .price{font-size:clamp(72px,10vw,160px);font-weight:700;letter-spacing:-.04em;line-height:.85;font-variant-numeric:tabular-nums}
+.sum .price small{font-size:20px;letter-spacing:0;font-weight:500;margin-left:10px}
+.sum .ring{position:absolute;right:-8%;top:-12%;width:44%;aspect-ratio:1;border-radius:50%;overflow:hidden}
+.sum .ring img{width:100%;height:100%;object-fit:cover}
+
+/* about */
+.about{margin:160px 20px 0;background:var(--field-1);color:var(--field-1-ink);min-height:110svh;position:relative;overflow:hidden;padding:56px;display:grid;grid-template-columns:63% 1fr}
+.about h2{font-size:var(--step-head);max-width:9ch}
+.about .disc{position:absolute;left:56px;bottom:-7.6vw;width:38vw;aspect-ratio:1;border-radius:50%;overflow:hidden}
+.about .disc img{width:100%;height:100%;object-fit:cover;filter:sepia(.2)}
+.about .txt{display:flex;flex-direction:column;gap:64px;max-width:340px}
+.about h3{font-size:20px;letter-spacing:-.01em;margin-bottom:12px;line-height:1.15}
+.about .txt p{font-size:16px;line-height:1.55}
+.about .txt .btn{align-self:flex-start}
+.about .cap{position:absolute;right:56px;bottom:40px;font-size:var(--step-small);max-width:34ch;text-align:right}
+
+/* faq */
+.faq{padding:160px var(--pad) 40px;display:grid;grid-template-columns:repeat(12,1fr)}
+.faq h2{grid-column:3/11;font-size:clamp(40px,4vw,64px);margin-bottom:56px}
+.drawer{grid-column:3/11;display:flex;flex-direction:column}
+.fc{--tx:calc(var(--k) * min(150px, 11vw));position:relative;margin-top:-24px;padding:40px 32px 32px;clip-path:polygon(var(--tx) 0,calc(var(--tx) + 200px) 0,calc(var(--tx) + 200px) 40px,100% 40px,100% 100%,0 100%,0 40px,var(--tx) 40px)}
+.fc:first-child{margin-top:0}
+.fc:nth-child(3n+1){background:var(--field-1);color:var(--field-1-ink)}
+.fc:nth-child(3n+2){background:var(--surface)}
+.fc:nth-child(3n){background:#c99a92}
+.fc .tab{position:absolute;top:0;left:var(--tx);width:200px;height:40px;display:flex;align-items:center;padding:0 18px;font-size:16px;font-weight:500}
+.fc button{all:unset;cursor:pointer;display:block;width:100%;padding-top:12px;font-size:20px;font-weight:500}
+.fc button:focus-visible{outline:3px solid currentColor;outline-offset:4px}
+.fc .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease-out)}
+.fc .ans > div{overflow:hidden}
+.fc .ans p{padding-top:14px;max-width:50ch;font-size:16px}
+.fc.open .ans{grid-template-rows:1fr}
+
+/* coupon */
+.book{padding:120px var(--pad)}
+.coupon{max-width:1240px;margin:0 auto;background:var(--field-1);color:var(--field-1-ink);display:grid;grid-template-columns:46% 54%;min-height:480px;position:relative;
+  overflow:hidden}
+.coupon::before,.coupon::after{content:"";position:absolute;left:46%;width:28px;height:28px;margin-left:-14px;border-radius:50%;background:var(--bg);z-index:1}
+.coupon::before{top:-14px}.coupon::after{bottom:-14px}
+.coupon .l{padding:48px;display:flex;flex-direction:column;justify-content:space-between;gap:32px;border-right:5px dotted var(--bg)}
+.coupon h2{font-size:clamp(28px,3vw,44px);line-height:1}
+.coupon .l p{font-size:16px;line-height:1.6}
+.coupon form{padding:48px;display:flex;flex-direction:column;gap:10px;justify-content:center}
+.coupon input,.coupon select{appearance:none;height:52px;border:0;background:#4d2a3f;color:var(--field-1-ink);font:16px "General Sans",sans-serif;padding:0 18px;border-radius:0}
+.coupon input::placeholder{color:#d9b6a9}
+.coupon input:focus-visible,.coupon select:focus-visible{outline:3px solid var(--bg);outline-offset:0}
+.coupon button{height:56px;border-radius:999px;background:var(--bg);color:var(--ink);font:500 16px "General Sans",sans-serif;border:0;cursor:pointer;margin-top:6px;transition:transform .14s var(--ease-out),background-color .18s ease}
+.coupon button:hover{background:#f6ddd2}.coupon button:active{transform:scale(.98)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* footer */
+.foot{background:var(--surface);padding:56px var(--pad) 28px;margin-top:40px}
+.blocks{display:flex;align-items:flex-end;gap:4px;height:34svh;min-height:200px}
+.blocks div{flex:1;background:var(--field-1);color:var(--bg);display:flex;align-items:flex-end;justify-content:center;font-weight:700;font-size:min(16vw,28svh);line-height:.78;overflow:hidden;letter-spacing:-.04em;transition:transform .3s var(--ease-out)}
+.blocks div:hover{transform:translateY(-8px)}
+.blocks div:nth-child(1){height:100%}.blocks div:nth-child(2){height:82%}.blocks div:nth-child(3){height:92%}.blocks div:nth-child(4){height:70%}.blocks div:nth-child(5){height:62%}.blocks div:nth-child(6){height:100%;background:#5a2f47}.blocks div:nth-child(7){height:88%;background:#5a2f47}
+.fcols{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;margin-top:56px;font-size:16px}
+.fcols ul{list-style:none;margin:0;padding:0;line-height:1.8;grid-column:span 2}
+.fcols ul li:first-child{font-weight:500}
+.fcols a{text-decoration:none}.fcols a:hover{text-decoration:underline}
+.fcols .addr{grid-column:9/13;line-height:1.6}
+.last{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:56px;font-size:13px;flex-wrap:wrap}
+.last p{max-width:70ch;line-height:1.6}
+.last .btn{padding:12px 20px;font-size:16px}
+
+/* entrances */
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out);transition-delay:calc(var(--i,0) * 70ms)}
+.js .rv.in{opacity:1;transform:none}
+.js .card h1,.js .card .copy p,.js .card .copy .btn{animation:rise .9s var(--ease-out) both}
+.js .card .copy p{animation-delay:.08s}.js .card .copy .btn{animation-delay:.16s}
+.js .card .big-curl{animation:spin-in 1.4s var(--ease-out) both}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}}
+@keyframes spin-in{from{opacity:0;transform:rotate(-40deg) scale(.9)}}
+@media (prefers-reduced-motion:reduce){
+  .js .rv{opacity:1;transform:none;transition:none}
+  .js .card h1,.js .card .copy p,.js .card .copy .btn,.js .card .big-curl,.stage img{animation:none}
+  .stage img{transition:none}
+}
+
+/* phone */
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr}
+  .stage{position:relative;top:0;height:34svh;order:-1}
+  .card{min-height:auto;margin-top:-24px;padding:24px 20px 32px;text-align:left}
+  .card .big-curl{width:90%;right:-30%;bottom:auto;top:-10%}
+  .card .copy{margin-top:48px}
+  .card h1{font-size:11vw}
+  .nav a:not(.mark){display:none}
+  .services{padding-top:96px}
+  .services{display:block}
+  .services .aside{position:static}
+  .services .aside .disc{width:70%;margin:32px 0 0}
+  .services .list .cat:first-child{margin-top:64px}
+  .items{gap:28px;grid-template-columns:1fr}
+  .items li{grid-template-columns:40px 1fr;gap:14px}
+  .items svg{width:36px}
+  .cat h3{font-size:8.5vw}
+  .cat{margin:64px 0 28px}
+  .builder{grid-template-columns:1fr;margin-top:96px}
+  .builder .sum{min-height:70svh}
+  .sum .price{font-size:24vw}
+  .sum .foot .btn{width:100%}
+  .about{margin:96px 10px 0;display:flex;flex-direction:column;padding:32px 22px 0;min-height:auto}
+  .about .txt{margin-top:40px;gap:36px;max-width:none}
+  .about .cap{position:static;text-align:left;margin-top:32px}
+  .about .disc{position:relative;left:auto;bottom:auto;width:86vw;align-self:center;margin:40px 0 -21vw}
+  .faq{display:block;padding-top:96px}
+  .faq h2{font-size:9vw}
+  .fc{--tx:calc(var(--k) * 48px)!important;clip-path:polygon(var(--tx) 0,calc(var(--tx) + 140px) 0,calc(var(--tx) + 140px) 40px,100% 40px,100% 100%,0 100%,0 40px,var(--tx) 40px);padding:40px 20px 24px}
+  .fc .tab{width:140px}
+  .fc .ans p{font-size:16px}
+  .book{padding:80px 12px}
+  .coupon{grid-template-columns:1fr}
+  .coupon::before,.coupon::after{left:auto;top:auto;bottom:auto;margin:0}
+  .coupon .l{position:relative}
+  .coupon::before{display:none}.coupon::after{display:none}
+  .coupon .l{border-right:0;border-bottom:5px dotted var(--bg);padding:32px 24px}
+  .coupon form{padding:32px 24px}
+  .coupon input,.coupon select{height:54px}
+  .blocks{height:22svh;min-height:140px}
+  .blocks div{font-size:15vw}
+  .fcols{grid-template-columns:1fr 1fr;gap:28px 16px}
+  .fcols ul{grid-column:auto}
+  .fcols .addr{grid-column:1/3}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="curl" viewBox="-30 120 360 550"><path d="M300 640 L300 300 A150 150 0 0 0 0 300 A110 110 0 0 0 220 300 A80 80 0 0 0 60 300 A56 56 0 0 0 172 300 A38 38 0 0 0 96 300 A24 24 0 0 0 144 300" stroke-width="44"/></symbol>
+</svg>
+
+<header class="hero" id="top">
+  <div class="card">
+    <nav class="nav" aria-label="Main">
+      <a class="mark" href="#top">Fern &amp; Ninth</a>
+      <a href="#services">Services</a><a href="#build">Prices</a><a href="#studio">Studio</a><a href="#book">Book</a>
+    </nav>
+    <svg class="big-curl curl" aria-hidden="true"><use href="#curl"/></svg>
+    <div class="copy">
+      <h1>Cuts, colour and curls</h1>
+      <p>A four-chair hair studio on the corner of Fern and Ninth in East Austin. Curly hair cut dry, one curl at a time.</p>
+      <a class="btn light" href="#build">Plan your appointment</a>
+    </div>
+  </div>
+  <div class="stage">
+    <img class="on" src="assets/matteuccia-struthiopteris-fiddleheads.jpg" width="1920" height="1280" alt="Two green fern fiddleheads, tightly curled">
+    <img src="assets/lady-fern-fiddleheads.jpg" width="1920" height="1280" alt="">
+    <img src="assets/fern-fiddleheads.jpg" width="1920" height="1280" alt="">
+    <span class="credit">Our namesake, the fern, before it unfurls</span>
+  </div>
+</header>
+
+<main>
+<section class="services" id="services" aria-labelledby="svc-h">
+  <div class="aside">
+  <h2 id="svc-h" class="rv">Services and prices</h2>
+  <p class="rv" style="--i:1">Prices include a consultation, wash and finish. If your hair is very long or very thick, we will tell you before we start, never after.</p>
+  <div class="disc rv" style="--i:2"><img src="assets/fern-fiddleheads.jpg" width="1920" height="1280" loading="lazy" alt="A fern frond curling open among small purple flowers"></div>
+  </div>
+  <div class="list">
+
+  <div class="cat rv"><h3>Cuts</h3><span>4 services</span></div>
+  <ul class="items">
+    <li class="rv"><svg class="curl" aria-hidden="true"><use href="#curl"/></svg><div><div class="row">Short cut<b>$55</b></div><p>Clipper or scissor work, neck and ear clean-up, style. 45 minutes.</p></div></li>
+    <li class="rv" style="--i:1"><svg class="curl" aria-hidden="true"><use href="#curl"/></svg><div><div class="row">Long cut<b>$75</b></div><p>Shape, layers or a blunt line, finished with a blow-dry. 60 minutes.</p></div></li>
+    <li class="rv"><svg class="curl" aria-hidden="true"><use href="#curl"/></svg><div><div class="row">Fringe trim<b>$15</b></div><p>Between cuts, for regular clients. 15 minutes, walk-ins welcome.</p></div></li>
+    <li class="rv" style="--i:1"><svg class="curl" aria-hidden="true"><use href="#curl"/></svg><div><div class="row">Kids, under 12<b>$35</b></div><p>Patient, quick, and with a mirror to watch. 30 minutes.</p></div></li>
+  </ul>
+
+  <div class="cat rv"><h3>Curly hair</h3><span>3 services</span></div>
+  <ul class="items">
+    <li class="rv"><svg class="curl" aria-hidden="true"><use href="#curl"/></svg><div><div class="row">Dry curl cut<b>$95</b></div><p>Cut dry, curl by curl, so you see the shape as it will really sit. 75 minutes.</p></div></li>
+    <li class="rv" style="--i:1"><svg class="curl" aria-hidden="true"><use href="#curl"/></svg><div><div class="row">Curl refresh<b>$60</b></div><p>Shape-up between full cuts, with a styling lesson. 45 minutes.</p></div></li>
+    <li class="rv"><svg class="curl" aria-hidden="true"><use href="#curl"/></svg><div><div class="row">Deep hydration<b>$40</b></div><p>Steam treatment for dry or coloured curls. Add to any cut. 30 minutes.</p></div></li>
+  </ul>
+
+  <div class="cat rv"><h3>Colour</h3><span>4 services</span></div>
+  <ul class="items">
+    <li class="rv"><svg class="curl" aria-hidden="true"><use href="#curl"/></svg><div><div class="row">Root touch-up<b>$85</b></div><p>Single colour at the roots, up to six weeks of growth. 90 minutes.</p></div></li>
+    <li class="rv" style="--i:1"><svg class="curl" aria-hidden="true"><use href="#curl"/></svg><div><div class="row">All-over colour<b>$120</b></div><p>One shade, roots to ends, with gloss. 2 hours.</p></div></li>
+    <li class="rv"><svg class="curl" aria-hidden="true"><use href="#curl"/></svg><div><div class="row">Hand-painted highlights<b>$190</b></div><p>Balayage painted freehand, toner included. 3 hours.</p></div></li>
+    <li class="rv" style="--i:1"><svg class="curl" aria-hidden="true"><use href="#curl"/></svg><div><div class="row">Gloss<b>$45</b></div><p>Shine and tone between colour visits. 30 minutes.</p></div></li>
+  </ul>
+  </div>
+</section>
+
+<section class="builder" id="build" aria-labelledby="build-h">
+  <div class="pick">
+    <h2 id="build-h">Plan your visit</h2>
+    <p>Choose what you would like done and see the price and time before you book.</p>
+    <form id="plan">
+      <fieldset class="chips"><legend>Cut</legend>
+        <label><input type="radio" name="cut" value="Short cut|55|45"><span>Short cut</span></label>
+        <label><input type="radio" name="cut" value="Long cut|75|60" checked><span>Long cut</span></label>
+        <label><input type="radio" name="cut" value="Dry curl cut|95|75"><span>Dry curl cut</span></label>
+        <label><input type="radio" name="cut" value=""><span>No cut</span></label>
+      </fieldset>
+      <fieldset class="chips"><legend>Colour</legend>
+        <label><input type="radio" name="col" value="Root touch-up|85|90"><span>Roots</span></label>
+        <label><input type="radio" name="col" value="All-over colour|120|120"><span>All-over</span></label>
+        <label><input type="radio" name="col" value="Hand-painted highlights|190|180"><span>Highlights</span></label>
+        <label><input type="radio" name="col" value="" checked><span>No colour</span></label>
+      </fieldset>
+      <fieldset class="chips"><legend>Extras</legend>
+        <label><input type="checkbox" name="x" value="Gloss|45|30"><span>Gloss</span></label>
+        <label><input type="checkbox" name="x" value="Deep hydration|40|30"><span>Hydration</span></label>
+      </fieldset>
+    </form>
+  </div>
+  <div class="sum" aria-live="polite">
+    <div class="ring"><img src="assets/lady-fern-fiddleheads.jpg" width="1920" height="1280" loading="lazy" alt="A fern fiddlehead against a blurred lake"></div>
+    <h3>Your visit</h3>
+    <ul id="sum-list"><li><span>Long cut</span><span>$75</span></li></ul>
+    <div class="foot">
+      <p class="price"><span id="sum-price">$75</span><small id="sum-time">about 1h</small></p>
+      <a class="btn" id="sum-btn" href="mailto:hello@fernandninth.example?subject=Appointment%20request">Request this appointment</a>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="studio" aria-labelledby="studio-h">
+  <h2 id="studio-h" class="rv">Four chairs and no rush</h2>
+  <div class="txt">
+    <div class="rv" style="--i:1"><h3>The studio</h3><p>A bright corner room with four chairs and two wash basins. We book every appointment with ten spare minutes on the end, so nobody is hurried out of the chair.</p></div>
+    <div class="rv" style="--i:2"><h3>The stylists</h3><p>Maya does colour and hand-painted highlights. Jordan does curly and textured hair. Priya does cuts and wedding styling. Tell us who you want, or we will match you.</p></div>
+    <a class="btn light rv" style="--i:3" href="#book">Book with a stylist</a>
+  </div>
+  <div class="disc"><img src="assets/congress-avenue-austin-texas-6329862384.jpg" width="1920" height="1440" loading="lazy" alt="Congress Avenue in Austin, 1888, with carriages and shopfronts"></div>
+  <p class="cap">Congress Avenue, Austin, in 1888. The city has always had its corners.</p>
+</section>
+
+<section class="faq" aria-labelledby="faq-h">
+  <h2 id="faq-h" class="rv">Good to know</h2>
+  <div class="drawer">
+    <div class="fc open" style="--k:0"><span class="tab">Booking</span><button aria-expanded="true">How far ahead should I book?</button><div class="ans"><div><p>One to two weeks for cuts. For colour, especially highlights, two to three weeks. Saturdays fill first.</p></div></div></div>
+    <div class="fc" style="--k:1"><span class="tab">Cancelling</span><button aria-expanded="false">What if I need to cancel?</button><div class="ans"><div><p>Please tell us 24 hours ahead. Later than that, or not showing up, costs half the service price.</p></div></div></div>
+    <div class="fc" style="--k:2"><span class="tab">Curls</span><button aria-expanded="false">How should I arrive for a curl cut?</button><div class="ans"><div><p>With your hair dry, unbrushed, and styled the way you normally wear it, so we can see your curl pattern.</p></div></div></div>
+    <div class="fc" style="--k:3"><span class="tab">Colour</span><button aria-expanded="false">Do I need a consultation first?</button><div class="ans"><div><p>For big changes, yes. It is free, takes 15 minutes, and includes a patch test 48 hours before your colour.</p></div></div></div>
+    <div class="fc" style="--k:4"><span class="tab">Paying</span><button aria-expanded="false">How can I pay?</button><div class="ans"><div><p>Card, Apple Pay or cash. Tips can go on the card or straight to your stylist.</p></div></div></div>
+  </div>
+</section>
+
+<section class="book" id="book" aria-labelledby="book-h">
+  <div class="coupon rv">
+    <div class="l">
+      <h2 id="book-h">Hold a chair for you</h2>
+      <p>1104 E 9th Street, at Fern Avenue<br>Austin, TX 78702<br>Tue – Fri 10 am – 7 pm · Sat 9 am – 5 pm<br><a href="tel:+15125550178">(512) 555-0178</a></p>
+    </div>
+    <form id="book-form" action="mailto:hello@fernandninth.example" method="post" enctype="text/plain">
+      <label class="sr" for="f-name">Your name</label><input id="f-name" name="name" placeholder="Your name" autocomplete="name" required>
+      <label class="sr" for="f-phone">Phone</label><input id="f-phone" name="phone" placeholder="Phone number" autocomplete="tel" type="tel">
+      <label class="sr" for="f-svc">Service</label>
+      <select id="f-svc" name="service"><option>Cut</option><option>Curly cut</option><option>Colour</option><option>Highlights</option><option>Not sure yet</option></select>
+      <label class="sr" for="f-day">Preferred day</label><input id="f-day" name="day" placeholder="Preferred day and time">
+      <button type="submit">Send request</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="blocks" aria-label="Fern and Ninth" role="img">
+    <div>F</div><div>E</div><div>R</div><div>N</div><div>&amp;</div><div>9</div><div>th</div>
+  </div>
+  <div class="fcols">
+    <ul><li>Visit</li><li><a href="#services">Services</a></li><li><a href="#build">Prices</a></li></ul>
+    <ul><li>Studio</li><li><a href="#studio">Stylists</a></li><li><a href="#book">Book</a></li></ul>
+    <ul><li>Follow</li><li><a href="#">Instagram</a></li><li><a href="#">TikTok</a></li></ul>
+    <ul><li>Contact</li><li><a href="tel:+15125550178">(512) 555-0178</a></li><li><a href="mailto:hello@fernandninth.example">Email us</a></li></ul>
+    <div class="addr">1104 E 9th Street, at Fern Avenue<br>Austin, TX 78702<br>Tuesday to Saturday, by appointment</div>
+  </div>
+  <div class="last">
+    <p>Sample website for a fictional salon. Photographs: “Matteuccia struthiopteris fiddleheads”, <a href="https://creativecommons.org/licenses/by-sa/2.5/ca/deed.en">CC BY-SA 2.5</a>; “Fern fiddleheads”, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>; “Lady Fern Fiddleheads”, CC0; “Congress Avenue, Austin, Texas”, 1888, no known copyright restrictions; all <a href="https://commons.wikimedia.org/">via Wikimedia Commons</a>.</p>
+    <a class="btn" href="#top">Back to top</a>
+  </div>
+</footer>
+
+<script>
+// Live: plan your visit
+(function(){
+  const f=document.getElementById('plan'); if(!f) return;
+  const list=document.getElementById('sum-list'),price=document.getElementById('sum-price'),time=document.getElementById('sum-time'),btn=document.getElementById('sum-btn');
+  const hm=m=>{const h=Math.floor(m/60),r=m%60;return 'about '+(h?h+'h':'')+(r?(h?' ':'')+r+'m':'')};
+  function update(){
+    const picks=[...f.querySelectorAll('input:checked')].map(i=>i.value).filter(Boolean).map(v=>v.split('|'));
+    let total=0,mins=0; list.innerHTML='';
+    picks.forEach(([n,p,m])=>{total+=+p;mins+=+m;const li=document.createElement('li');li.innerHTML='<span>'+n+'</span><span>$'+p+'</span>';list.appendChild(li)});
+    if(!picks.length){list.innerHTML='<li class="empty">Pick at least one service.</li>'}
+    price.textContent='$'+total; time.textContent=mins?hm(mins):'';
+    const body='Hello Fern & Ninth,%0A%0AI would like to book:%0A'+picks.map(p=>'- '+encodeURIComponent(p[0])).join('%0A')+'%0A%0AEstimated: $'+total+', '+encodeURIComponent(hm(mins))+'%0A%0APreferred day and time:%0AName:%0APhone:';
+    btn.href='mailto:hello@fernandninth.example?subject=Appointment%20request&body='+body;
+  }
+  f.addEventListener('change',update); update();
+})();
+// FAQ drawer
+(function(){
+  const cards=[...document.querySelectorAll('.fc')];
+  cards.forEach(c=>c.querySelector('button').addEventListener('click',()=>{
+    cards.forEach(o=>{const on=o===c;o.classList.toggle('open',on);o.querySelector('button').setAttribute('aria-expanded',on)});
+  }));
+})();
+// Signature: slow crossfade
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const imgs=[...document.querySelectorAll('.stage img')]; let i=0,t;
+  const step=()=>{imgs[i].classList.remove('on');i=(i+1)%imgs.length;imgs[i].classList.add('on')};
+  const start=()=>{clearInterval(t);t=setInterval(step,5600)};
+  document.addEventListener('visibilitychange',()=>document.hidden?clearInterval(t):start()); start();
+})();
+// Entrances
+(function(){
+  const els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+  els.forEach(e=>io.observe(e));
+})();
+</script>
+</body>
+</html>

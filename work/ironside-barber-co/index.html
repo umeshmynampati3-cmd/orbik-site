@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Ironside Barber Co. — sample site by Orbik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--black:#111110;--black-2:#1c1b19;--bone:#ecebe6;--brass:#c39a5b;--soft:#b9b6ad;--m:clamp(18px,3.4vw,56px);--ease:cubic-bezier(.22,1,.36,1)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--black);color:var(--bone);font:400 18px/1.6 "Work Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacing:-.01em;line-height:.95;margin:0}
+p{margin:0}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+.sample{background:var(--brass);color:var(--black);font-size:14px;padding:8px var(--m)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 28px;background:var(--bone);color:var(--black);font:600 16px/1 "Work Sans",sans-serif;letter-spacing:.02em;text-decoration:none;border:0;cursor:pointer;transition:background-color .2s ease,transform .15s var(--ease)}
+.btn:hover{background:var(--brass)}.btn:active{transform:scale(.97)}
+.btn.ghost{background:transparent;color:var(--bone);box-shadow:inset 0 0 0 2px var(--bone)}
+.btn.ghost:hover{background:var(--bone);color:var(--black)}
+/* top */
+.top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:22px var(--m)}
+.top nav{display:flex;gap:26px}
+.top nav a{text-decoration:none;color:var(--soft);font-weight:500}
+.top nav a:hover{color:var(--bone)}
+.top .mark{font-family:"DM Serif Display",serif;font-size:30px;text-decoration:none;text-align:center;line-height:1}
+.top .mark small{display:block;font:500 13px "Work Sans",sans-serif;letter-spacing:.04em;color:var(--brass)}
+.top .btn{justify-self:end;min-height:46px}
+/* hero */
+.hero{display:grid;grid-template-columns:5fr 6fr;gap:4vw;padding:30px var(--m) 110px;align-items:end}
+.hero .ph{aspect-ratio:4/5;overflow:hidden}
+.hero .ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(.35) contrast(1.05)}
+.hero h1{font-size:clamp(72px,9vw,170px)}
+.hero h1 em{color:var(--brass)}
+.hero .lede{margin-top:28px;font-size:21px;max-width:36ch;color:var(--soft)}
+.hero .ctas{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px}
+.hero .since{margin-top:44px;display:flex;gap:40px;flex-wrap:wrap}
+.hero .since b{display:block;font-family:"DM Serif Display",serif;font-weight:400;font-size:30px;line-height:1;color:var(--bone)}
+.hero .since span{color:var(--soft);font-size:15px}
+/* prices */
+.prices{background:var(--bone);color:var(--black);padding:120px var(--m)}
+.prices-in{display:grid;grid-template-columns:4fr 7fr;gap:5vw}
+.prices h2{font-size:clamp(64px,7vw,130px)}
+.prices .note{margin-top:20px;font-size:18px;max-width:28ch;color:#4a4740}
+.list{columns:2;column-gap:60px}
+.svc{break-inside:avoid;display:grid;grid-template-columns:1fr auto;gap:4px 20px;padding:16px 0}
+.svc h3{font-size:32px}
+.svc .pr{font-family:"DM Serif Display",serif;font-size:32px;font-variant-numeric:tabular-nums}
+.svc p{grid-column:1/-1;color:#4a4740;font-size:16px}
+/* barbers */
+.barbers{padding:120px var(--m)}
+.barbers h2{font-size:clamp(56px,6vw,110px);max-width:12ch}
+.chairs{display:grid;grid-template-columns:repeat(3,1fr);gap:4vw;margin-top:70px}
+.chair h3{font-size:44px}
+.chair .role{color:var(--brass);font-weight:500;margin:6px 0 14px}
+.chair p{color:var(--soft)}
+/* book */
+.book{background:var(--black-2);padding:120px var(--m);display:grid;grid-template-columns:5fr 6fr;gap:5vw;align-items:start}
+.book h2{font-size:clamp(56px,6vw,110px)}
+.book .intro p{margin-top:20px;font-size:20px;color:var(--soft);max-width:30ch}
+.book .intro img{margin-top:40px;aspect-ratio:3/2;object-fit:cover;width:100%;filter:grayscale(.35)}
+.pick fieldset{border:0;padding:0;margin:0 0 28px}
+.pick legend{font-family:"DM Serif Display",serif;font-size:28px;margin-bottom:14px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts label{position:relative;cursor:pointer}
+.opts input{position:absolute;opacity:0;inset:0}
+.opts span{display:inline-block;padding:13px 20px;background:#2a2926;color:var(--bone);transition:background-color .15s ease,color .15s ease}
+.opts label:hover span{background:#36342f}
+.opts input:checked+span{background:var(--bone);color:var(--black)}
+.opts input:focus-visible+span{outline:3px solid var(--brass);outline-offset:2px}
+.summary{background:var(--black);padding:24px;margin-top:6px}
+.summary p{font-family:"DM Serif Display",serif;font-size:32px;line-height:1.15}
+.summary small{display:block;margin-top:8px;color:var(--soft);font:400 16px "Work Sans",sans-serif}
+.pick .btn{width:100%;margin-top:16px}
+/* gallery */
+.gallery{display:grid;grid-template-columns:2fr 3fr 2fr;gap:12px;padding:12px}
+.gallery img{width:100%;height:460px;object-fit:cover;filter:grayscale(.35)}
+/* visit */
+.visit{padding:120px var(--m);display:grid;grid-template-columns:1fr 1fr;gap:5vw}
+.visit h2{font-size:clamp(56px,6vw,110px)}
+.hours{display:grid;grid-template-columns:auto 1fr;gap:10px 30px;font-size:20px;margin-top:10px}
+.hours dt{color:var(--soft)}.hours dd{margin:0;font-variant-numeric:tabular-nums}
+.visit .addr{margin-top:28px;font-size:20px}
+.visit .addr a{font-family:"DM Serif Display",serif;font-size:40px;text-decoration:none;display:block;margin-top:8px}
+footer{background:#0b0b0a;color:#a8a59c;padding:40px var(--m);font-size:16px}
+footer p{max-width:90ch}
+footer a{color:var(--bone)}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.no-js .rv{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+@media (max-width:900px){
+  .top{grid-template-columns:1fr auto}
+  .top nav{display:none}
+  .top .mark{text-align:left}
+  .hero,.prices-in,.book,.visit{grid-template-columns:1fr}
+  .hero{padding-bottom:70px}
+  .hero .ph{aspect-ratio:4/3}
+  .list{columns:1}
+  .chairs{grid-template-columns:1fr;gap:40px}
+  .gallery{grid-template-columns:1fr}
+  .gallery img{height:280px}
+  .prices,.barbers,.book,.visit{padding-top:80px;padding-bottom:80px}
+}
+</style>
+</head>
+<body class="no-js">
+<script>document.body.classList.remove('no-js')</script>
+<p class="sample">Sample website for a fictional business, designed by Orbik · <a href="https://orbik.ai">orbik.ai</a></p>
+<header class="top">
+  <nav><a href="#prices">Prices</a><a href="#barbers">Barbers</a><a href="#visit">Visit</a></nav>
+  <a class="mark" href="#">Ironside<small>Barber Co. · Columbus</small></a>
+  <a class="btn" href="#book">Book a chair</a>
+</header>
+<main>
+<section class="hero">
+  <div class="ph"><img src="assets/barber-cutting-hair-with-comb-back-view-2.jpg" width="1201" height="1800" alt="A barber shaping a fade with clippers and a comb"></div>
+  <div>
+    <h1>Sharp cuts, <em>no rush.</em></h1>
+    <p class="lede">Classic cuts, skin fades and hot-towel shaves from four chairs on North High Street. Walk in, or book ahead and skip the wait.</p>
+    <div class="ctas"><a class="btn" href="#book">Book a chair</a><a class="btn ghost" href="tel:+16145550159">(614) 555-0159</a></div>
+    <div class="since"><div><b>4</b><span>chairs, every day</span></div><div><b>30 min</b><span>average cut, never rushed</span></div><div><b>$32</b><span>for a classic cut</span></div></div>
+  </div>
+</section>
+<section class="prices" id="prices">
+  <div class="prices-in">
+    <div><h2 class="rv">The price list</h2><p class="note rv">Every cut finishes with a hot towel and a straight-razor line-up. Card or cash.</p></div>
+    <div class="list">
+      <div class="svc rv"><h3>Classic cut</h3><span class="pr">$32</span><p>Scissor or clipper, washed and styled.</p></div>
+      <div class="svc rv"><h3>Skin fade</h3><span class="pr">$38</span><p>Low, mid or high, blended by hand.</p></div>
+      <div class="svc rv"><h3>Beard trim</h3><span class="pr">$22</span><p>Shape, line-up and beard oil.</p></div>
+      <div class="svc rv"><h3>Cut and beard</h3><span class="pr">$52</span><p>The full service, about 50 minutes.</p></div>
+      <div class="svc rv"><h3>Hot-towel shave</h3><span class="pr">$40</span><p>Straight razor, two hot towels, cold finish.</p></div>
+      <div class="svc rv"><h3>Kids cut</h3><span class="pr">$24</span><p>Twelve and under, with patience.</p></div>
+      <div class="svc rv"><h3>Line-up only</h3><span class="pr">$15</span><p>Edges between cuts, ten minutes.</p></div>
+      <div class="svc rv"><h3>Gray blending</h3><span class="pr">$30</span><p>Subtle, natural, about 20 minutes.</p></div>
+    </div>
+  </div>
+</section>
+<section class="barbers" id="barbers">
+  <h2 class="rv">Meet the barbers</h2>
+  <div class="chairs">
+    <div class="chair rv"><h3>Marcus</h3><p class="role">Owner · fades and tapers</p><p>Twelve years behind the chair. Ask him for the cleanest skin fade in Clintonville.</p></div>
+    <div class="chair rv"><h3>Dee</h3><p class="role">Scissor work and textured hair</p><p>Longer styles, curls and scissor cuts done properly, never rushed.</p></div>
+    <div class="chair rv"><h3>Sam</h3><p class="role">Beards and hot-towel shaves</p><p>The straight-razor specialist. Book the shave once and you'll be back.</p></div>
+  </div>
+</section>
+<section class="book" id="book">
+  <div class="intro">
+    <h2 class="rv">Book a chair</h2>
+    <p class="rv">Pick a barber, a service and a day. We'll write the text, and you'll hear back within the hour.</p>
+    <img class="rv" src="assets/young-men-with-trendy-haircut-at-barber.jpg" width="1800" height="1202" alt="A barber cutting a client's hair in front of a mirror" loading="lazy">
+  </div>
+  <form class="pick rv" id="pick" onsubmit="return false">
+    <fieldset><legend>Barber</legend><div class="opts">
+      <label><input type="radio" name="b" value="Marcus" checked><span>Marcus</span></label>
+      <label><input type="radio" name="b" value="Dee"><span>Dee</span></label>
+      <label><input type="radio" name="b" value="Sam"><span>Sam</span></label>
+      <label><input type="radio" name="b" value="whoever is free"><span>First available</span></label>
+    </div></fieldset>
+    <fieldset><legend>Service</legend><div class="opts">
+      <label><input type="radio" name="s" value="Classic cut|32" checked><span>Classic cut · $32</span></label>
+      <label><input type="radio" name="s" value="Skin fade|38"><span>Skin fade · $38</span></label>
+      <label><input type="radio" name="s" value="Cut and beard|52"><span>Cut and beard · $52</span></label>
+      <label><input type="radio" name="s" value="Hot-towel shave|40"><span>Shave · $40</span></label>
+    </div></fieldset>
+    <fieldset><legend>When</legend><div class="opts">
+      <label><input type="radio" name="d" value="today" checked><span>Today</span></label>
+      <label><input type="radio" name="d" value="tomorrow"><span>Tomorrow</span></label>
+      <label><input type="radio" name="d" value="this weekend"><span>This weekend</span></label>
+    </div></fieldset>
+    <div class="summary" aria-live="polite"><p id="sum">Classic cut with Marcus, today.</p><small id="sub">$32 · about 30 minutes</small></div>
+    <a class="btn" id="send" href="sms:+16145550159">Text to book</a>
+  </form>
+</section>
+<section class="gallery" aria-label="Shop photos">
+  <img src="assets/barber-cutting-hair-with-comb-back-view.jpg" width="1800" height="1202" alt="Close-up of comb and clippers" loading="lazy">
+  <img src="assets/young-men-with-trendy-haircut-at-barber.jpg" width="1800" height="1202" alt="Barber at work by the mirror" loading="lazy">
+  <img src="assets/barber-cutting-hair-with-comb-back-view-2.jpg" width="1201" height="1800" alt="A fresh fade" loading="lazy" style="object-position:50% 30%">
+</section>
+<section class="visit" id="visit">
+  <div><h2 class="rv">Visit the shop</h2><p class="addr rv">2960 N High St, Columbus<a href="tel:+16145550159">(614) 555-0159</a></p></div>
+  <dl class="hours rv"><dt>Mon</dt><dd>Closed</dd><dt>Tue – Fri</dt><dd>9am – 7pm</dd><dt>Saturday</dt><dd>8am – 5pm</dd><dt>Sunday</dt><dd>10am – 3pm</dd><dt>Walk-ins</dt><dd>Welcome, any time we're open</dd></dl>
+</section>
+</main>
+<footer><p>Ironside Barber Co. is a fictional business; names are illustrative. Sample site designed by <a href="https://orbik.ai">Orbik</a>. Photographs via Wikimedia Commons by Nenad Stojkovic, CC BY 2.0: <a href="https://commons.wikimedia.org/wiki/File:Barber_cutting_hair_with_comb._Back_view_of_young_man_in_barber_shop.jpg">“Barber cutting hair with comb”</a>, <a href="https://commons.wikimedia.org/wiki/File:Young_men_with_trendy_haircut_at_barber_shop.jpg">“Young men with trendy haircut at barber shop”</a>, <a href="https://commons.wikimedia.org/wiki/File:Barber_cutting_hair_with_comb._Back_view_of_man_in_barber_shop.jpg">“Barber cutting hair with comb. Back view of man”</a>.</p></footer>
+<script>
+(function(){
+  const f=document.getElementById('pick'),sum=document.getElementById('sum'),sub=document.getElementById('sub'),send=document.getElementById('send');
+  const mins={'Classic cut':30,'Skin fade':40,'Cut and beard':50,'Hot-towel shave':35};
+  function upd(){const b=f.querySelector('[name=b]:checked').value,[s,p]=f.querySelector('[name=s]:checked').value.split('|'),d=f.querySelector('[name=d]:checked').value;
+    sum.textContent=s+' with '+(b==='whoever is free'?'the first available barber':b)+', '+d+'.';
+    sub.textContent='$'+p+' · about '+mins[s]+' minutes';
+    send.href='sms:+16145550159?&body='+encodeURIComponent('Hi Ironside, can I book a '+s.toLowerCase()+' with '+b+' '+d+'? Best time for me: ');}
+  f.addEventListener('change',upd);upd();
+  const els=document.querySelectorAll('.rv');if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -6% 0px'});
+  els.forEach((e,i)=>{e.style.transitionDelay=(i%3)*80+'ms';io.observe(e)});
+})();
+</script>
+</body>
+</html>

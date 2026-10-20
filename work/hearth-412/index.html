@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hearth 412 — Wood-fired kitchen, Portland</title>
+<meta name="description" content="Hearth 412 is a 34-seat wood-fired kitchen at 412 Alder Street, Portland. One oak oven, lit every afternoon at three. Dinner Tuesday to Sunday.">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=erode@400,500,600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{
+  --bg:#0c0a09; --surface:#171412; --ink:#efefef; --muted:#a3a3a3;
+  --accent:#b11226; --accent-ink:#fff;
+  --field-1:#efefef; --field-1-ink:#0c0a09;
+  --step-small:clamp(.8125rem,.79rem + .1vw,.875rem);
+  --step-body:clamp(1.0625rem,1rem + .25vw,1.1875rem);
+  --step-lead:clamp(1.25rem,1.1rem + .7vw,1.625rem);
+  --step-head:clamp(2rem,1.3rem + 3.2vw,4rem);
+  --m:30px;
+  --ease-out:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Erode",Georgia,serif;font-size:var(--step-body);line-height:1.55;-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-weight:500;letter-spacing:-.025em;line-height:.98;margin:0}
+p{margin:0}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+::selection{background:var(--accent);color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-size:var(--step-small);font-weight:500;padding:.8em 1.3em;border:0;cursor:pointer;transition:transform .14s var(--ease-out),background-color .18s ease}
+.btn:hover{background:#c91a30}
+.btn:active{transform:scale(.97)}
+
+/* nav */
+.nav{position:absolute;inset:0 0 auto 0;display:flex;justify-content:space-between;align-items:center;padding:var(--m);z-index:5;font-size:16px}
+.nav .left{display:flex;gap:28px;align-items:baseline}
+.nav .mark{font-size:22px;font-weight:600;text-decoration:none;letter-spacing:-.01em}
+.nav .links a{text-decoration:none;color:var(--muted);margin-right:22px;transition:color .18s ease}
+.nav .links a:hover{color:var(--ink)}
+
+/* hero */
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden}
+.hero .big{position:absolute;left:40%;top:8%;height:84svh;aspect-ratio:4/5;overflow:hidden}
+.hero .big img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease;filter:brightness(.88) contrast(1.05)}
+.hero .big img.on{opacity:1}
+.hero .small{position:absolute;left:8.3%;top:52%;width:12vw;aspect-ratio:1;overflow:hidden}
+.hero .small img{width:100%;height:100%;object-fit:cover;filter:brightness(.7)}
+.hero h1{position:absolute;left:var(--m);bottom:var(--m);font-size:clamp(28px,2.5vw,40px);font-weight:400;max-width:15ch;line-height:1.05}
+.hero .aside{position:absolute;right:var(--m);bottom:var(--m);width:22ch;font-size:16px;color:var(--muted)}
+.hero .aside strong{display:block;color:var(--ink);font-weight:500;margin-top:14px}
+.status-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--muted);margin-right:8px;vertical-align:1px}
+.status-dot.lit{background:#ef4a5a}
+
+/* menu table */
+.menu{padding:180px var(--m) 160px}
+.menu h2{font-size:var(--step-head);margin-bottom:24px;max-width:16ch}
+.menu .intro{max-width:52ch;margin-bottom:24px}
+.menu table{width:100%;border-collapse:collapse;font-size:clamp(22px,2.1vw,30px);font-variant-numeric:tabular-nums}
+.menu th[scope=rowgroup]{position:sticky;top:0;background:var(--bg);color:#ef4a5a;text-align:left;font-weight:400;padding:72px 0 20px;z-index:1}
+.menu td{padding:0;line-height:1.5;vertical-align:baseline}
+.menu td:nth-child(1){width:38%}
+.menu td:nth-child(2){width:46%;color:var(--muted)}
+.menu td:nth-child(3){text-align:right}
+.menu tr.note td{color:var(--muted);font-size:var(--step-small);padding-top:6px}
+.menu tbody tr:not(.note):hover td:first-child{color:#ef4a5a}
+.menu td{transition:color .18s ease}
+
+/* about */
+.about{margin:0 20px;background:var(--surface);min-height:110svh;position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;padding:56px}
+.about h2{font-size:var(--step-head);max-width:9ch}
+.about .arch{position:absolute;left:56px;bottom:-7vw;width:38vw;aspect-ratio:5/6;border-radius:19vw 19vw 0 0;overflow:hidden}
+.about .arch img{width:100%;height:100%;object-fit:cover;filter:brightness(.85) contrast(1.05)}
+.about .txt{grid-column:2;margin-left:26%;display:flex;flex-direction:column;gap:64px;max-width:340px;padding-top:0}
+.about h3{font-size:22px;letter-spacing:-.01em;margin-bottom:12px;line-height:1.2}
+.about .txt p{font-size:16px;line-height:1.6}
+.about .btn{align-self:flex-start}
+
+/* gallery */
+.gallery{height:100svh;min-height:560px;display:flex;flex-direction:column;justify-content:center;position:relative}
+.gallery .row{display:flex;gap:5vw;overflow-x:auto;padding:0 var(--m);scrollbar-width:none;scroll-snap-type:x proximity}
+.gallery .row::-webkit-scrollbar{display:none}
+.gallery figure{flex:0 0 11vw;height:24svh;min-height:200px;margin:0;overflow:hidden;scroll-snap-align:start}
+.gallery figure img,.gallery figure video{width:100%;height:100%;object-fit:cover;filter:brightness(.85) contrast(1.05);transition:transform .25s var(--ease-out)}
+.gallery figure:hover img,.gallery figure:hover video{transform:scale(1.1)}
+.gallery .title{position:relative;z-index:2;margin:0 var(--m) -12px;font-size:22px;font-weight:500}
+.gallery .title span{color:var(--muted);font-weight:400}
+
+/* visit */
+.visit{position:relative;min-height:100svh}
+.visit .photo{position:absolute;inset:0;overflow:hidden}
+.visit .photo img{width:100%;height:100%;object-fit:cover;filter:sepia(.35) brightness(.72) contrast(1.05)}
+.visit .card{position:absolute;top:60px;right:60px;width:380px;background:var(--field-1);color:var(--field-1-ink);padding:32px 32px 0}
+.visit .card h2{font-size:28px;font-weight:400;margin-bottom:18px}
+.visit .card p{font-size:16px;line-height:1.5;margin-bottom:18px}
+.visit dl{display:grid;grid-template-columns:1fr auto;gap:4px 16px;margin:0 0 18px;font-size:16px;font-variant-numeric:tabular-nums}
+.visit dt{margin:0}.visit dd{margin:0;text-align:right}
+.visit .card .btn{display:flex;width:calc(100% + 64px);margin:8px -32px 0;height:52px;font-size:16px}
+.visit .caption{position:absolute;left:0;bottom:0;background:var(--bg);padding:16px var(--m);font-size:var(--step-small);color:var(--ink);max-width:44ch}
+
+/* cta */
+.cta{min-height:90svh;display:grid;grid-template-columns:repeat(12,1fr);overflow:hidden;position:relative;margin-top:160px}
+.cta .obj{grid-column:1/9;position:relative;overflow:hidden;min-height:90svh}
+.cta .obj img{position:absolute;left:-12%;bottom:-18%;width:130%;height:130%;object-fit:cover;max-width:none;filter:brightness(.88) contrast(1.05)}
+.cta .txt{grid-column:10/13;align-self:center;padding-right:var(--m);display:flex;flex-direction:column;gap:18px}
+.cta h2{font-size:clamp(32px,2.8vw,40px)}
+.cta .fact{font-size:22px}
+.cta .btn{align-self:flex-start}
+
+/* footer */
+.foot{background:var(--field-1);color:var(--field-1-ink);min-height:100svh;display:grid;grid-template-rows:auto 1fr auto;padding:40px var(--m) 20px;margin-top:160px}
+.foot .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;font-size:16px}
+.foot .cols ul{list-style:none;margin:0;padding:0;line-height:1.7}
+.foot .cols li{color:#4a4541}
+.foot .cols li:first-child{color:var(--field-1-ink);font-weight:600}
+.foot .cols a{text-decoration:none}.foot .cols a:hover{text-decoration:underline}
+.foot .word{width:100%;margin:0 0 20px}
+.foot .word text{font-family:"Erode",Georgia,serif;font-weight:500;letter-spacing:-.03em}
+.foot .legal{font-size:13px;color:#4a4541;line-height:1.6;max-width:75ch}
+.foot .legal a{color:var(--field-1-ink)}
+
+/* entrances */
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);transition-delay:calc(var(--i,0) * 75ms)}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .js .rv{opacity:1;transform:none;transition:none}
+  .hero .big img{transition:none}
+}
+
+/* phone */
+@media (max-width:760px){
+  :root{--m:18px}
+  .nav .links{display:none}
+  .hero{min-height:600px}
+  .hero .big{left:auto;right:var(--m);top:11%;width:78vw;height:auto}
+  .hero .small{left:var(--m);top:calc(11% + 97.5vw - 30vw + 24px);width:30vw;z-index:2}
+  .hero h1{font-size:6.4vw;bottom:110px;max-width:none}
+  .hero .aside{left:var(--m);right:var(--m);width:auto;font-size:16px;bottom:var(--m)}
+  .hero .aside strong{margin-top:6px}
+  .menu{padding:120px var(--m) 100px}
+  .menu table,.menu tbody,.menu tr,.menu td,.menu th{display:block;width:100%!important}
+  .menu tr:not(.head){display:grid;grid-template-columns:1fr auto;margin-bottom:18px}
+  .menu td:nth-child(1){font-size:22px;grid-column:1/3}
+  .menu td:nth-child(2){font-size:16px;grid-column:1}
+  .menu td:nth-child(3){font-size:16px;grid-column:2;align-self:end}
+  .menu th[scope=rowgroup]{font-size:22px;padding:48px 0 14px}
+  .about{margin:0 10px;display:flex;flex-direction:column;padding:32px 22px 0;min-height:auto}
+  .about h2{font-size:8.5vw}
+  .about .txt{margin:40px 0 0;gap:36px;max-width:none}
+  .about .txt{order:2}
+  .about .arch{order:3;position:relative;left:auto;bottom:auto;width:86vw;align-self:center;margin:48px 0 -21vw}
+  .gallery{height:80svh}
+  .gallery figure{flex-basis:34vw;height:51vw;min-height:0}
+  .gallery .title{margin-bottom:20px}
+  .visit{min-height:auto}
+  .visit .photo{position:relative;inset:auto;height:70svh}
+  .visit .card{position:relative;top:auto;right:auto;width:auto;margin:-80px 16px 0}
+  .visit .card .btn{height:56px}
+  .visit .caption{position:static;padding:16px var(--m) 0}
+  .cta{display:flex;flex-direction:column;margin-top:120px}
+  .cta .txt{order:-1;padding:0 var(--m)}
+  .cta h2{font-size:28px}
+  .cta .btn{align-self:stretch}
+  .cta .obj{min-height:55svh}
+  .cta .obj img{left:-5%;bottom:-15%;width:130%;height:130%}
+  .foot .cols{grid-template-columns:1fr 1fr;gap:32px 16px;font-size:16px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <nav class="nav" aria-label="Main">
+    <div class="left">
+      <a class="mark" href="#top">Hearth 412</a>
+      <div class="links"><a href="#menu">Menu</a><a href="#oven">The oven</a><a href="#visit">Visit</a></div>
+    </div>
+    <a class="btn" href="mailto:table@hearth412.example?subject=Table%20request&body=Name%3A%0ADate%3A%0ATime%3A%0AParty%20size%3A">Book a table</a>
+  </nav>
+
+  <div class="big" aria-hidden="false">
+    <img class="on" src="assets/wood-fired-oven.jpg" width="1600" height="1066" alt="Logs burning in the mouth of a brick wood-fired oven">
+    <img src="assets/glut2007-10-16-poster.jpg" width="720" height="576" alt="">
+    <img src="https://picsum.photos/id/490/1200/1500" width="1200" height="1500" alt="">
+  </div>
+  <div class="small"><img src="https://picsum.photos/id/999/600/600" width="600" height="600" alt="Bowls and bread on a dark wooden table"></div>
+
+  <h1>Wood-fired dinners on Alder Street</h1>
+  <div class="aside">
+    <p>One oak oven, 34 seats, and a menu cooked only by fire. Dinner Tuesday to Sunday.</p>
+    <strong id="oven-status"><span class="status-dot"></span>Oven lit daily 3 pm · kitchen 5 to 10</strong>
+  </div>
+</header>
+
+<main>
+<section class="menu" id="menu" aria-labelledby="menu-h">
+  <h2 id="menu-h" class="rv">Tonight, by where it cooks</h2>
+  <p class="intro rv" style="--i:1">The oven has three heats. We write the menu around them: fierce at the mouth, steady on the floor, gentle as the fire falls after nine.</p>
+  <table>
+    <tbody>
+      <tr class="head"><th scope="rowgroup" colspan="3">At the mouth, 800°F</th></tr>
+      <tr class="rv"><td>Hearth bread</td><td>Cultured butter, flaked salt</td><td>$7</td></tr>
+      <tr class="rv"><td>Blistered snap peas</td><td>Chili oil, mint, lemon</td><td>$12</td></tr>
+      <tr class="rv"><td>Clams in the pan</td><td>Fennel, chorizo, white wine</td><td>$19</td></tr>
+      <tr class="rv"><td>Ember flatbread</td><td>Leeks, taleggio, black pepper</td><td>$17</td></tr>
+    </tbody>
+    <tbody>
+      <tr class="head"><th scope="rowgroup" colspan="3">On the floor, 600°F</th></tr>
+      <tr class="rv"><td>Half chicken</td><td>Apple wood, salsa verde</td><td>$29</td></tr>
+      <tr class="rv"><td>Whole trout</td><td>Brown butter, capers, dill</td><td>$31</td></tr>
+      <tr class="rv"><td>Pork shoulder steak</td><td>Charred cabbage, mustard</td><td>$33</td></tr>
+      <tr class="rv"><td>Coal-roasted squash</td><td>Hazelnut, sage, ricotta</td><td>$22</td></tr>
+      <tr class="rv"><td>Hanger steak</td><td>Bone marrow, onion jam</td><td>$38</td></tr>
+    </tbody>
+    <tbody>
+      <tr class="head"><th scope="rowgroup" colspan="3">In the falling heat</th></tr>
+      <tr class="rv"><td>Ash-baked pear</td><td>Honey, sheep's milk yogurt</td><td>$11</td></tr>
+      <tr class="rv"><td>Burnt cheesecake</td><td>Marionberry, oat crumble</td><td>$12</td></tr>
+      <tr class="rv"><td>Smoked chocolate pot</td><td>Sea salt, cream</td><td>$11</td></tr>
+      <tr class="note"><td colspan="3">Tasting menu: six courses from all three heats, $68 per person, whole table only.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="about" id="oven" aria-labelledby="oven-h">
+  <h2 id="oven-h" class="rv">One oven. Lit at three.</h2>
+  <div class="arch rv" style="--i:2"><img src="https://picsum.photos/id/490/1000/1200" width="1000" height="1200" loading="lazy" alt="Kitchen tools and a cutting board on a dark wooden counter"></div>
+  <div class="txt">
+    <div class="rv" style="--i:1">
+      <h3>The wood</h3>
+      <p>We burn split oak and old apple wood from orchards in the Hood River valley. The fire goes in at three, and by five the floor of the oven holds 600 degrees. Nothing in the kitchen runs on gas.</p>
+    </div>
+    <div class="rv" style="--i:2">
+      <h3>The room</h3>
+      <p>Thirty-four seats: twenty-two at tables, twelve at the counter facing the fire. We keep the counter for walk-ins every night, so there is usually a seat if you come early.</p>
+    </div>
+    <a class="btn rv" style="--i:3" href="mailto:table@hearth412.example?subject=Table%20request">Book a table</a>
+  </div>
+</section>
+
+<section class="gallery" aria-label="Around the fire">
+  <p class="title rv">Around the fire <span>12 frames</span></p>
+  <div class="row" tabindex="0" aria-label="Photographs, scroll sideways">
+    <figure><video src="assets/glut2007-10-16.webm" poster="assets/glut2007-10-16-poster.jpg" muted loop playsinline autoplay aria-label="Oak embers glowing"></video></figure>
+    <figure><img src="https://picsum.photos/id/292/400/600" width="400" height="600" loading="lazy" alt="Vegetables and peppercorns on a cutting board"></figure>
+    <figure><img src="https://picsum.photos/id/208/400/600" width="400" height="600" loading="lazy" alt="Dark room with a window onto trees"></figure>
+    <figure><img src="assets/wood-fired-oven.jpg" width="1600" height="1066" loading="lazy" alt="Fire in a brick oven" style="object-position:40% 50%"></figure>
+    <figure><img src="https://picsum.photos/id/999/400/600" width="400" height="600" loading="lazy" alt="Bowls on a dark table"></figure>
+    <figure><img src="https://picsum.photos/id/192/400/600?grayscale" width="400" height="600" loading="lazy" alt="Diners silhouetted against bright windows"></figure>
+    <figure><img src="https://picsum.photos/id/490/400/600" width="400" height="600" loading="lazy" alt="Kitchen tools on dark wood"></figure>
+    <figure><img src="https://picsum.photos/id/225/400/600" width="400" height="600" loading="lazy" alt="Glass teapot of herbal tea"></figure>
+    <figure><img src="assets/glut2007-10-16-poster.jpg" width="720" height="576" loading="lazy" alt="Embers close up"></figure>
+    <figure><img src="https://picsum.photos/id/292/401/601" width="400" height="600" loading="lazy" alt="Red onion on a board" style="object-position:80% 50%"></figure>
+    <figure><img src="https://picsum.photos/id/208/401/601" width="400" height="600" loading="lazy" alt="Window light" style="object-position:20% 50%"></figure>
+    <figure><img src="https://picsum.photos/id/999/401/601" width="400" height="600" loading="lazy" alt="Pastry on a dark table" style="object-position:70% 50%"></figure>
+  </div>
+</section>
+
+<section class="visit" id="visit" aria-labelledby="visit-h">
+  <div class="photo"><img src="assets/portland-oregon-and-mt-hood-from-page.jpg" width="2000" height="1184" loading="lazy" alt="Old print of Portland, Oregon, with Mount Hood behind the city"></div>
+  <div class="card rv">
+    <h2 id="visit-h">Find us</h2>
+    <p>412 Alder Street<br>Portland, OR 97205</p>
+    <dl>
+      <dt>Tue – Thu</dt><dd>5:00 – 10:00 pm</dd>
+      <dt>Fri – Sat</dt><dd>5:00 – 11:00 pm</dd>
+      <dt>Sunday</dt><dd>5:00 – 9:00 pm</dd>
+      <dt>Monday</dt><dd>Closed</dd>
+    </dl>
+    <p><a href="tel:+15035550142">(503) 555-0142</a></p>
+    <a class="btn" href="mailto:table@hearth412.example?subject=Table%20request">Book a table</a>
+  </div>
+  <p class="caption">Portland and Mount Hood around 1900, from The Granite Monthly. Alder Street is down there somewhere.</p>
+</section>
+
+<section class="cta" aria-labelledby="cta-h">
+  <div class="obj"><img src="assets/wood-fired-oven.jpg" width="1600" height="1066" loading="lazy" alt="The fire inside a brick oven"></div>
+  <div class="txt">
+    <h2 id="cta-h" class="rv">Come before the fire falls</h2>
+    <p class="rv" style="--i:1">Tables go quickly after six. Groups of seven or more can take the whole counter on Sundays.</p>
+    <p class="fact rv" style="--i:2">Six courses, $68</p>
+    <a class="btn rv" style="--i:3" href="mailto:table@hearth412.example?subject=Table%20request">Book a table</a>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="cols">
+    <ul><li>Address</li><li>412 Alder Street</li><li>Portland, OR 97205</li></ul>
+    <ul><li>Pages</li><li><a href="#menu">Menu</a></li><li><a href="#oven">The oven</a></li><li><a href="#visit">Visit</a></li></ul>
+    <ul><li>Follow</li><li><a href="#">Instagram</a></li><li><a href="#">Newsletter</a></li></ul>
+    <ul><li>Contact</li><li><a href="tel:+15035550142">(503) 555-0142</a></li><li><a href="mailto:table@hearth412.example">table@hearth412.example</a></li></ul>
+  </div>
+  <div></div>
+  <div>
+    <svg class="word" viewBox="0 0 1000 170" role="img" aria-label="Hearth 412"><text x="0" y="140" font-size="196" textLength="1000" lengthAdjust="spacingAndGlyphs" fill="currentColor">Hearth 412</text></svg>
+    <p class="legal">Sample website for a fictional restaurant. Photographs and footage: <a href="https://commons.wikimedia.org/wiki/File:Wood_Fired_Oven.jpg">“Wood Fired Oven”</a> by oakwoodfirepizza.com, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>; <a href="https://commons.wikimedia.org/wiki/File:Glut2007-10-16.ogv">“Glut”</a> by Hedwig Storch, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>; <a href="https://commons.wikimedia.org/wiki/File:Portland,_Oregon,_and_Mt._Hood_from_page_48_of_%22The_Granite_monthly%22.jpg">“Portland, Oregon, and Mt. Hood”</a>, Internet Archive Book Images, no known copyright restrictions; all via Wikimedia Commons. Other photographs from Unsplash.</p>
+  </div>
+</footer>
+
+<script>
+// Live oven status, Portland time
+(function(){
+  const el=document.getElementById('oven-status'); if(!el) return;
+  const hours={0:[17,21],2:[17,22],3:[17,22],4:[17,22],5:[17,23],6:[17,23]}; // day: [open, close]
+  function now(){const p=new Intl.DateTimeFormat('en-US',{timeZone:'America/Los_Angeles',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date());const g=t=>p.find(x=>x.type===t).value;return{d:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(g('weekday')),m:(+g('hour')%24)*60+ +g('minute')}}
+  const fmt=m=>{const h=Math.floor(m/60),r=m%60;return (h?h+'h ':'')+r+'m'};
+  function render(){
+    const {d,m}=now(); const h=hours[d]; let lit=false,text;
+    if(h && m>=15*60 && m<h[1]*60-30){lit=true;
+      text = m<h[0]*60 ? 'Oven lit, warming up. Doors open in '+fmt(h[0]*60-m) : 'Oven lit. Last orders in '+fmt(h[1]*60-30-m);
+    } else {
+      let days=(h && m<15*60)?0:1; while(!hours[(d+days)%7]) days++;
+      const mins=days*1440+15*60-m, H=Math.floor(mins/60);
+      text = 'Oven cold. Lit again in '+(H>=24? Math.floor(H/24)+'d '+(H%24)+'h' : fmt(mins));
+    }
+    el.innerHTML='<span class="status-dot'+(lit?' lit':'')+'"></span>'+text;
+  }
+  render(); setInterval(render,30000);
+})();
+// Signature: slow crossfade
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const imgs=[...document.querySelectorAll('.hero .big img')]; let i=0, t;
+  const step=()=>{imgs[i].classList.remove('on');i=(i+1)%imgs.length;imgs[i].classList.add('on')};
+  const start=()=>{clearInterval(t);t=setInterval(step,5800)};
+  document.addEventListener('visibilitychange',()=>document.hidden?clearInterval(t):start());
+  start();
+})();
+// Entrances
+(function(){
+  const els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+  els.forEach(e=>io.observe(e));
+})();
+</script>
+</body>
+</html>

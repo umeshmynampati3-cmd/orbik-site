@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Ridgeline Roof Works — sample site by Orbik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0f1b2d;--navy-2:#18263c;--steel:#e8ecf1;--paper:#f6f7f9;--ink:#0f1b2d;--soft:#3b4658;--orange:#ff6a13;--orange-deep:#e05400;--m:clamp(18px,3vw,48px);--ease:cubic-bezier(.22,1,.36,1)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.55 "Barlow",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:"Barlow Condensed",sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:-.005em;line-height:.92;margin:0}
+p{margin:0}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.sample{background:var(--orange);color:#111;font-size:14px;font-weight:600;padding:8px var(--m)}
+.sample a{color:#111}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;background:var(--orange);color:#111;font:700 17px/1 "Barlow",sans-serif;text-decoration:none;border:0;cursor:pointer;transition:background-color .2s ease,transform .15s var(--ease)}
+.btn:hover{background:#ff8540}.btn:active{transform:scale(.97)}
+.btn.out{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px #fff}
+.btn.out:hover{background:#fff;color:var(--navy)}
+/* bar */
+.bar{display:flex;align-items:center;gap:28px;padding:16px var(--m);background:var(--navy);color:#fff}
+.mark{font-family:"Barlow Condensed",sans-serif;font-weight:800;font-size:28px;text-transform:uppercase;text-decoration:none;margin-right:auto;display:flex;align-items:center;gap:10px}
+.mark svg{width:34px;height:22px}
+.bar .l{text-decoration:none;font-weight:500;color:#cdd5e0}
+.bar .l:hover{color:#fff}
+.bar .tel{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:24px;text-decoration:none}
+/* hero */
+.hero{display:grid;grid-template-columns:6fr 6fr;min-height:calc(100svh - 110px)}
+.hero .ph{position:relative;overflow:hidden}
+.hero .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .panel{background:var(--navy);color:#fff;padding:clamp(28px,4vw,64px);display:flex;flex-direction:column;justify-content:flex-end;gap:26px}
+.hero h1{font-size:clamp(52px,5.6vw,100px)}
+.hero h1 span{color:var(--orange)}
+.hero .lede{font-size:20px;color:#d7dde6;max-width:36ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(3,1fr);background:var(--navy-2);color:#fff}
+.fact{padding:34px var(--m)}
+.fact b{display:block;font-family:"Barlow Condensed",sans-serif;font-size:34px;line-height:1;color:var(--orange)}
+.fact span{font-size:17px;color:#cdd5e0}
+/* services */
+.services{display:grid;grid-template-columns:6fr 5fr;gap:5vw;padding:130px var(--m)}
+.services h2{font-size:clamp(48px,5vw,88px);margin-bottom:40px}
+.svc{padding:22px 0 22px 26px;position:relative}
+.svc::before{content:"";position:absolute;left:0;top:28px;width:10px;height:10px;background:var(--orange)}
+.svc h3{font-size:34px;margin-bottom:8px}
+.svc p{max-width:46ch;color:var(--soft)}
+.services .side{position:sticky;top:30px;align-self:start}
+.services .side img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.services .side p{margin-top:12px;font-size:15px;color:var(--soft)}
+/* estimator */
+.est{background:var(--steel);padding:120px var(--m);display:grid;grid-template-columns:5fr 6fr;gap:5vw;align-items:start}
+.est h2{font-size:clamp(48px,5vw,88px)}
+.est .intro p{margin-top:20px;font-size:20px;max-width:34ch}
+.calc{background:#fff;padding:clamp(24px,3vw,44px)}
+.calc fieldset{border:0;padding:0;margin:0 0 26px}
+.calc legend{font-weight:600;margin-bottom:12px}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg label{position:relative;cursor:pointer;color:var(--ink)}
+.seg input{position:absolute;opacity:0;inset:0}
+.seg span{display:inline-block;padding:12px 18px;background:var(--steel);font-weight:600;transition:background-color .15s ease,color .15s ease}
+.seg input:checked+span{background:var(--navy);color:#fff}
+.seg input:focus-visible+span{outline:3px solid var(--orange);outline-offset:2px}
+.range{display:flex;align-items:center;gap:16px}
+.range input{flex:1;accent-color:var(--orange)}
+.range output{font-family:"Barlow Condensed",sans-serif;font-size:28px;font-weight:700;min-width:5ch;text-align:right}
+.result{background:var(--navy);color:#fff;padding:26px;margin-top:6px}
+.result .num{font-family:"Barlow Condensed",sans-serif;font-weight:800;font-size:clamp(44px,4.6vw,76px);line-height:1;color:var(--orange)}
+.result p{margin-top:10px;color:#cdd5e0;font-size:16px}
+.calc .btn{width:100%;margin-top:18px}
+/* process */
+.process{background:var(--orange);color:#111;padding:110px var(--m)}
+.process h2{font-size:clamp(48px,5vw,88px);margin-bottom:56px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.steps h3{font-size:38px;margin-bottom:10px}
+.steps p{font-size:17px}
+/* gallery */
+.gallery{display:grid;grid-template-columns:5fr 4fr 3fr;gap:10px;padding:10px}
+.gallery img{width:100%;height:420px;object-fit:cover}
+/* contact */
+.contact{background:var(--navy);color:#fff;padding:120px var(--m);display:grid;grid-template-columns:5fr 6fr;gap:5vw}
+.contact h2{font-size:clamp(48px,5vw,88px)}
+.contact .info{margin-top:26px;font-size:19px;color:#d7dde6;display:grid;gap:8px}
+.contact .info a{font-family:"Barlow Condensed",sans-serif;font-size:40px;font-weight:700;color:#fff;text-decoration:none}
+form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+form label{font-size:15px;font-weight:600;color:#cdd5e0;display:grid;gap:6px}
+form .full{grid-column:1/-1}
+form input,form select,form textarea{font:400 18px "Barlow",sans-serif;padding:14px;border:0;background:#fff;color:var(--ink);border-radius:0}
+form textarea{min-height:110px;resize:vertical}
+form .btn{grid-column:1/-1}
+footer{background:#0a1220;color:#9aa6b8;padding:40px var(--m);font-size:16px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{color:#fff}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.no-js .rv{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+@media (max-width:900px){
+  .bar .l{display:none}
+  .hero{grid-template-columns:1fr}
+  .hero .ph{min-height:46svh;order:2}
+  .facts{grid-template-columns:1fr}
+  .fact{padding:22px var(--m)}
+  .services,.est,.contact{grid-template-columns:1fr;padding-top:80px;padding-bottom:80px}
+  .services .side{position:static}
+  .steps{grid-template-columns:1fr 1fr}
+  .gallery{grid-template-columns:1fr}
+  .gallery img{height:260px}
+  form{grid-template-columns:1fr}
+}
+@media (max-width:520px){.bar .tel{display:none}.steps{grid-template-columns:1fr}.hero h1{font-size:13vw}}
+</style>
+</head>
+<body class="no-js">
+<script>document.body.classList.remove('no-js')</script>
+<p class="sample">Sample website for a fictional business, designed by Orbik · <a href="https://orbik.ai">orbik.ai</a></p>
+<header class="bar">
+  <a class="mark" href="#"><svg viewBox="0 0 34 22" aria-hidden="true"><path d="M2 20 17 4l15 16" fill="none" stroke="#ff6a13" stroke-width="4"/></svg>Ridgeline</a>
+  <a class="l" href="#services">Services</a><a class="l" href="#estimate">Cost estimate</a><a class="l" href="#contact">Contact</a>
+  <a class="tel" href="tel:+16145550134">(614) 555-0134</a>
+</header>
+<main>
+<section class="hero">
+  <div class="ph"><img src="assets/shingles-atop-roof.jpg" width="1800" height="1195" alt="New shingles stacked on a roof ridge"></div>
+  <div class="panel">
+    <h1>Roofs built for <span>Ohio weather</span></h1>
+    <p class="lede">Repairs, replacements and storm damage across Columbus. Free inspection, written quote, and a 10-year workmanship warranty.</p>
+    <div class="ctas"><a class="btn" href="#contact">Book a free inspection</a><a class="btn out" href="tel:+16145550134">Call (614) 555-0134</a></div>
+  </div>
+</section>
+<section class="facts" aria-label="At a glance">
+  <div class="fact rv"><b>10 yrs</b><span>Workmanship warranty on every roof</span></div>
+  <div class="fact rv"><b>24 h</b><span>Storm damage response, seven days a week</span></div>
+  <div class="fact rv"><b>$0</b><span>For the inspection and written quote</span></div>
+</section>
+<section class="services" id="services">
+  <div>
+    <h2 class="rv">What we fix and build</h2>
+    <div class="svc rv"><h3>Roof replacement</h3><p>Tear-off to final clean-up, usually in one or two days. Architectural shingles, metal or flat roofs.</p></div>
+    <div class="svc rv"><h3>Repairs and leaks</h3><p>Missing shingles, flashing, chimneys and vents. Most repairs are done on the first visit.</p></div>
+    <div class="svc rv"><h3>Storm and insurance</h3><p>Hail and wind inspections with photos, and help with your insurance claim from start to finish.</p></div>
+    <div class="svc rv"><h3>Metal roofs</h3><p>Standing-seam metal that lasts 40 years or more, for homes, barns and shops.</p></div>
+    <div class="svc rv"><h3>Gutters and siding</h3><p>Seamless gutters, guards and siding repairs to match the new roof.</p></div>
+  </div>
+  <div class="side rv"><img src="assets/standing-seam-metal-roof-low-pitch-roof.jpg" width="1800" height="1350" alt="Aerial view of a house with a grey standing-seam metal roof" loading="lazy"><p>A standing-seam metal roof, one of the most popular upgrades.</p></div>
+</section>
+<section class="est" id="estimate">
+  <div class="intro">
+    <h2 class="rv">What will my roof cost?</h2>
+    <p class="rv">Move the slider and pick a material to see a rough price range for a full replacement in Columbus. Your written quote is always free.</p>
+  </div>
+  <form class="calc rv" id="calc" onsubmit="return false">
+    <fieldset><legend>Size of your home</legend>
+      <div class="range"><input type="range" id="sz" min="800" max="4500" step="50" value="1800" aria-label="Home size in square feet"><output id="szo">1,800 sq ft</output></div>
+    </fieldset>
+    <fieldset><legend>Material</legend><div class="seg">
+      <label><input type="radio" name="mat" value="asphalt" checked><span>Asphalt</span></label>
+      <label><input type="radio" name="mat" value="arch"><span>Architectural</span></label>
+      <label><input type="radio" name="mat" value="metal"><span>Standing-seam metal</span></label>
+    </div></fieldset>
+    <fieldset><legend>Stories</legend><div class="seg">
+      <label><input type="radio" name="st" value="1" checked><span>One</span></label>
+      <label><input type="radio" name="st" value="2"><span>Two</span></label>
+      <label><input type="radio" name="st" value="3"><span>Three</span></label>
+    </div></fieldset>
+    <div class="result" aria-live="polite"><p class="num" id="price">$9,800 – $12,700</p><p>Rough guide for a full replacement, including tear-off and clean-up. Not a quote.</p></div>
+    <a class="btn" id="qbtn" href="#contact">Get my exact quote</a>
+  </form>
+</section>
+<section class="process">
+  <h2 class="rv">How a new roof happens</h2>
+  <div class="steps">
+    <div class="rv"><h3>Inspect</h3><p>We climb up, take photos and show you exactly what we found. Free, about 45 minutes.</p></div>
+    <div class="rv"><h3>Quote</h3><p>A written, itemised quote within 48 hours. No pressure, no expiry tricks.</p></div>
+    <div class="rv"><h3>Install</h3><p>Most roofs are done in one or two days, with magnets swept for nails afterwards.</p></div>
+    <div class="rv"><h3>Warranty</h3><p>Ten years on our workmanship, on top of the manufacturer's warranty.</p></div>
+  </div>
+</section>
+<section class="gallery" aria-label="Roof photos">
+  <img src="assets/shingles-and-roof-materials-go-up-on.jpg" width="1800" height="1350" alt="Roof decking and wrap on a new build" loading="lazy">
+  <img src="assets/standing-seam-metal-roof-low-pitch-roof.jpg" width="1800" height="1350" alt="Grey metal roof from above" loading="lazy" style="object-position:30% 50%">
+  <img src="assets/shingles-atop-roof.jpg" width="1800" height="1195" alt="Shingle bundles on a ridge" loading="lazy" style="object-position:20% 50%">
+</section>
+<section class="contact" id="contact">
+  <div>
+    <h2 class="rv">Book a free inspection</h2>
+    <div class="info rv"><a href="tel:+16145550134">(614) 555-0134</a><p>Mon–Sat, 7am–7pm. Storm emergencies any time.</p><p>Serving Columbus, Dublin, Westerville, Hilliard, Grove City and Gahanna.</p></div>
+  </div>
+  <form class="rv" action="mailto:office@ridgelineroof.example" method="post" enctype="text/plain">
+    <label>Name<input name="name" autocomplete="name" required></label>
+    <label>Phone<input name="phone" type="tel" autocomplete="tel" required></label>
+    <label class="full">Address<input name="address" autocomplete="street-address"></label>
+    <label class="full">What's going on?<select name="issue"><option>Leak or water stain</option><option>Storm or hail damage</option><option>Ready for a new roof</option><option>Gutters or siding</option><option>Something else</option></select></label>
+    <label class="full">Anything else?<textarea name="notes"></textarea></label>
+    <button class="btn" type="submit">Request my inspection</button>
+  </form>
+</section>
+</main>
+<footer><p>Ridgeline Roof Works is a fictional business. Sample site designed by <a href="https://orbik.ai">Orbik</a>.</p><p>Photographs via Wikimedia Commons: <a href="https://commons.wikimedia.org/wiki/File:Shingles_atop_roof.jpg">“Shingles atop roof”</a> by Joe Mabel, CC BY 4.0; <a href="https://commons.wikimedia.org/wiki/File:Standing_seam_metal_roof_low_pitch_roof-3.jpg">“Standing seam metal roof”</a> by Wikideas1, CC0; <a href="https://commons.wikimedia.org/wiki/File:Shingles_and_roof_materials_go_up_on_the_roof.jpg">“Shingles and roof materials go up on the roof”</a> by Bob, CC BY-SA 4.0.</p></footer>
+<script>
+(function(){
+  const sz=document.getElementById('sz'),szo=document.getElementById('szo'),price=document.getElementById('price'),f=document.getElementById('calc'),q=document.getElementById('qbtn');
+  const rate={asphalt:[4.2,5.4],arch:[5.2,6.6],metal:[10.5,14]};const story={1:1,2:1.08,3:1.18};
+  const fmt=n=>'$'+(Math.round(n/100)*100).toLocaleString('en-US');
+  function upd(){const s=+sz.value,m=f.querySelector('[name=mat]:checked').value,st=f.querySelector('[name=st]:checked').value;
+    szo.textContent=s.toLocaleString('en-US')+' sq ft';
+    const roof=s*1.3/+st*story[st]*(+st>1?1.15:1);const lo=roof*rate[m][0],hi=roof*rate[m][1];
+    price.textContent=fmt(lo)+' – '+fmt(hi);
+    q.href='#contact';}
+  f.addEventListener('input',upd);upd();
+  const els=document.querySelectorAll('.rv');if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -6% 0px'});
+  els.forEach((e,i)=>{e.style.transitionDelay=(i%4)*70+'ms';io.observe(e)});
+})();
+</script>
+</body>
+</html>
