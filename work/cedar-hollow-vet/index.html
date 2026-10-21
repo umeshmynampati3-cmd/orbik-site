@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Cedar Hollow Animal Clinic — sample site by Orbik</title>
+<meta name="description" content="Cedar Hollow Animal Clinic, an independent vet for dogs and cats in Middlebury, Vermont. Sample website by Orbik.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/black-lab-puppy.jpg">
+<style>
+:root{
+  --bg:#f8f8f8;--paper:#ffffff;--surface:#eeeeee;--ink:#0a0a0a;--soft:#454545;
+  --accent:#1f6b3a;--accent-dark:#164f2b;--accent-ink:#ffffff;
+  --mint:#c3edce;--pink:#f8c7c9;--mint-deep:#9fd9ae;--pink-deep:#efa9ad;
+  --t-hero:clamp(46px,5.4vw,88px);
+  --t-head:clamp(34px,1.3rem + 3.2vw,64px);
+  --t-lead:clamp(20px,1.1rem + .7vw,26px);
+  --t-body:clamp(17px,1rem + .2vw,18px);
+  --t-small:15px;
+  --m:clamp(16px,2.6vw,40px);
+  --r:16px;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--t-body)/1.5 "Figtree",system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:"League Spartan",system-ui,sans-serif;font-weight:700;letter-spacing:-.035em;line-height:.95;margin:0}
+h3{letter-spacing:-.02em}
+p{margin:0;max-width:62ch}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+::selection{background:var(--mint)}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.sample{background:var(--ink);color:#fff;font-size:var(--t-small);padding:9px var(--m);margin:0;max-width:none}
+.sample a{color:#fff}
+
+/* buttons: one shape, fully round */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 28px;border-radius:999px;border:0;background:var(--accent);color:var(--accent-ink);font:600 var(--t-body)/1.1 "Figtree",sans-serif;text-decoration:none;cursor:pointer;transition:background-color .2s ease,transform .15s var(--ease)}
+.btn:hover{background:var(--accent-dark)}
+.btn:active{transform:scale(.97)}
+.btn.em{background:var(--pink);color:var(--ink)}
+.btn.em:hover{background:var(--pink-deep)}
+.btn.em b{font-weight:600;white-space:nowrap}
+
+/* arch: the motif */
+.arch{border-radius:999px 999px 0 0;overflow:hidden}
+.ab{display:inline-block;width:.62em;height:.78em;border-radius:999px 999px 0 0;background:currentColor;flex:none}
+
+/* ---------- hero ---------- */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px;min-height:calc(100svh - 40px)}
+.card{background:var(--paper);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 clamp(20px,4vw,64px) 28px}
+.band{display:flex;gap:0;height:56px;width:calc(100% + 2*clamp(20px,4vw,64px));justify-content:center;overflow:hidden;flex:none}
+.band i{flex:none;width:28px;height:100%;background:var(--ink);border-radius:999px 999px 0 0;margin-right:28px;transform-origin:50% 100%}
+.band i:nth-child(3n+2){background:var(--accent)}
+.mark{display:flex;align-items:center;gap:12px;margin-top:clamp(28px,5vh,56px);text-decoration:none;font-family:"League Spartan",sans-serif;font-size:var(--t-lead);letter-spacing:-.02em;line-height:1}
+.mark svg{width:30px;height:38px;flex:none}
+.mark span small{display:block;font-family:"Figtree",sans-serif;font-size:var(--t-small);letter-spacing:0;font-weight:400;color:var(--soft);margin-top:4px;text-align:left}
+.mark span{text-align:left}
+.cardmain{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:22px;padding:36px 0}
+.status{font-size:var(--t-small);font-weight:600;display:inline-flex;align-items:center;gap:8px;min-height:24px}
+.status .ab{color:var(--accent);font-size:14px}
+.status.closed .ab{color:#b3343b}
+.hero h1{font-size:var(--t-hero);max-width:9.5em}
+.hero .lede{max-width:38ch;font-size:var(--t-body)}
+.ctas{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.cardlinks{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 22px;font-size:var(--t-small)}
+.cardlinks a{text-decoration:none;padding:6px 0;font-weight:600}
+.cardlinks a:hover{text-decoration:underline;text-underline-offset:4px}
+.stage{position:relative;min-height:520px}
+.stage .frame{position:absolute;inset:0;background:var(--mint)}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease}
+.stage img.on{opacity:1}
+.stage img:first-child{opacity:1}
+.js .stage img:first-child:not(.on){opacity:0}
+
+/* ---------- sections ---------- */
+section{scroll-margin-top:12px}
+.sec{padding:clamp(80px,11vw,170px) var(--m)}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(16px,2vw,32px)}
+h2{font-size:var(--t-head)}
+
+/* prices: like a menu */
+.prices{background:var(--paper)}
+.prices .lead{grid-column:1/5}
+.prices .lead p{margin-top:22px;max-width:28ch}
+.prices .lead .ph{margin-top:40px;width:78%;aspect-ratio:4/5;background:var(--pink)}
+.prices .lead .ph img{width:100%;height:100%;object-fit:cover;object-position:72% 40%}
+.menu{grid-column:5/13;display:grid;grid-template-columns:1fr 1fr;column-gap:64px}
+.grp{margin-top:48px}
+.grp:first-child{margin-top:0}
+.grp h3{font-family:"Figtree",sans-serif;font-weight:600;font-size:var(--t-lead);letter-spacing:0;line-height:1.2;display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.grp h3 .ab{font-size:20px}
+.g-mint .ab{color:var(--mint-deep)}.g-pink .ab{color:var(--pink-deep)}.g-acc .ab{color:var(--accent)}
+.item{margin-top:20px}
+.item .row{display:flex;justify-content:space-between;gap:16px;font-weight:600;font-variant-numeric:tabular-nums}
+.item .row span:last-child{white-space:nowrap}
+.item p{color:var(--soft);font-size:var(--t-body);max-width:36ch;margin-top:2px}
+.menu .note{grid-column:1/-1;margin-top:48px;background:var(--surface);border-radius:var(--r);padding:22px 26px;max-width:62ch}
+
+/* vaccine helper */
+.vax{background:var(--mint)}
+.vax .intro{grid-column:1/7}
+.vax .intro p{margin-top:20px;max-width:40ch}
+.vax .pic{grid-column:8/13;grid-row:1/3;position:relative;aspect-ratio:4/5;align-self:start;background:var(--mint-deep)}
+.vax .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s ease}
+.vax .pic img.off{opacity:0}
+.tool{grid-column:1/7;margin-top:40px}
+.tool fieldset{border:0;margin:0 0 26px;padding:0}
+.tool legend{font-weight:600;margin-bottom:12px;padding:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative;cursor:pointer}
+.chips input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chips span{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border-radius:999px;background:var(--paper);font-weight:600;font-size:var(--t-body);transition:background-color .15s ease,color .15s ease,transform .15s var(--ease)}
+.chips label:hover span{background:#e9f7ec}
+.chips input:checked+span{background:var(--ink);color:#fff}
+.chips input:focus-visible+span{outline:3px solid var(--accent);outline-offset:2px}
+.chips label:active span{transform:scale(.96)}
+.chips .big span{font-size:var(--t-body);min-height:56px;padding:0 28px}
+.result{grid-column:1/13;margin-top:8px;background:var(--paper);border-radius:var(--r);padding:clamp(22px,3vw,40px);display:grid;grid-template-columns:7fr 5fr;gap:clamp(24px,4vw,64px)}
+.result h3{font-size:var(--t-lead);letter-spacing:-.02em;margin-bottom:18px}
+.due{list-style:none;margin:0;padding:0}
+.due li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;font-variant-numeric:tabular-nums}
+.due li+li{margin-top:2px}
+.due li b{font-weight:600}
+.due li small{display:block;color:var(--soft);font-size:var(--t-small);font-weight:400}
+.due li.maybe{color:var(--soft)}
+.side{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.total{font-family:"League Spartan",sans-serif;font-size:var(--t-head);letter-spacing:-.03em;line-height:1}
+.side p{font-size:var(--t-body)}
+.side .total{font-size:var(--t-lead);font-family:"Figtree",sans-serif;letter-spacing:0;line-height:1.2}
+.side .total b{font-family:"League Spartan",sans-serif;font-weight:700;letter-spacing:-.02em}
+.side .next{background:var(--mint);border-radius:var(--r);padding:16px 18px;width:100%}
+.fine{font-size:var(--t-small);color:var(--soft)}
+
+/* how visits go: shape-marked points */
+.how{overflow:hidden}
+.how .ph{grid-column:1/6;margin-left:calc(-1*var(--m) - 9vw);height:min(78svh,760px);background:var(--surface)}
+.how .ph img{width:100%;height:100%;object-fit:cover;object-position:40% 60%}
+.how .txt{grid-column:7/13;align-self:center}
+
+.pts{display:grid;grid-template-columns:repeat(3,1fr);gap:44px 40px;margin-top:56px}
+.pts h3{font-family:"Figtree",sans-serif;font-weight:600;font-size:var(--t-body);letter-spacing:0;line-height:1.3;display:flex;align-items:baseline;gap:10px}
+.pts p{font-size:var(--t-body);color:var(--soft);margin-top:6px}
+.pts .ab{font-size:18px}
+.pts>div:nth-child(3n+1) .ab{color:var(--mint-deep)}
+.pts>div:nth-child(3n+2) .ab{color:var(--pink-deep)}
+.pts>div:nth-child(3n) .ab{color:var(--accent)}
+
+/* first visit: many into one */
+.first{background:var(--surface)}
+.first .head{grid-column:1/6}
+.first .head p{margin-top:20px;max-width:40ch}
+.first .bring{grid-column:8/13;align-self:end;background:var(--paper);border-radius:var(--r);padding:26px 28px}
+.first .bring h3{font-size:var(--t-lead);letter-spacing:-.02em;margin-bottom:12px}
+.first .bring ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.first .bring li{display:flex;gap:12px;align-items:baseline}
+.first .bring .ab{color:var(--accent);font-size:var(--t-small)}
+.diag{grid-column:1/13;margin-top:64px}
+.diag svg{width:100%;height:auto;display:block;overflow:visible}
+.diag .v{display:none}
+.diag .p1{fill:var(--pink)}.diag .p2{fill:var(--mint-deep)}.diag .p3{fill:var(--ink)}.diag .ac{fill:var(--accent)}
+.diag use{transform-box:fill-box;transform-origin:50% 100%}
+.steps{grid-column:1/13;display:grid;grid-template-columns:repeat(3,1fr);column-gap:clamp(16px,2vw,32px);margin-top:28px}
+.steps h3{font-size:var(--t-lead);letter-spacing:-.02em;margin-bottom:6px}
+.steps p{font-size:var(--t-body);max-width:34ch}
+
+/* hours and location */
+.hours{background:var(--pink)}
+.hours .l{grid-column:1/7}
+.hours .now{margin-top:18px;font-weight:600;font-size:var(--t-lead);display:flex;align-items:center;gap:12px}
+.hours .now .ab{color:var(--accent);font-size:22px}
+table{border-collapse:collapse;width:100%;max-width:520px;margin-top:30px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:12px 16px;font-weight:400}
+th{font-weight:600}
+td{text-align:right}
+tr.today{background:var(--paper)}
+tr.today th:first-child,tr.today th{border-radius:999px 0 0 999px}
+tr.today td{border-radius:0 999px 999px 0}
+.after{margin-top:26px;max-width:46ch}
+.after a{font-weight:600}
+.hours .r{grid-column:8/13}
+.hours .ph{aspect-ratio:4/5;background:var(--pink-deep)}
+.hours .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.hours .cap{font-size:var(--t-small);margin-top:10px;color:#3a2a2b}
+.addr{margin-top:28px;display:grid;gap:6px}
+.addr b{font-family:"League Spartan",sans-serif;font-size:var(--t-lead);letter-spacing:-.02em;line-height:1.1}
+
+/* faq */
+.faq .hd{grid-column:1/5}
+.faq h2{position:sticky;top:96px}
+.qs{grid-column:5/13;display:grid;gap:8px}
+details{background:var(--surface);border-radius:var(--r);transition:background-color .2s ease}
+details[open]{background:var(--accent);color:var(--accent-ink)}
+summary{list-style:none;cursor:pointer;min-height:72px;padding:20px 64px 20px 24px;font-size:var(--t-body);font-weight:600;line-height:1.3;position:relative;display:flex;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::before,summary::after{content:"";position:absolute;right:24px;top:50%;width:16px;height:3px;margin-top:-1.5px;background:currentColor;border-radius:2px;transition:transform .25s var(--ease)}
+summary::after{transform:rotate(90deg)}
+details[open] summary::after{transform:rotate(0)}
+summary:hover{opacity:.85}
+details .a{padding:0 24px 24px;max-width:52ch;font-size:var(--t-body)}
+details .a a{color:inherit;font-weight:600}
+
+/* book: coupon */
+.book{background:var(--bg)}
+.coupon{grid-column:2/12;position:relative;background:var(--accent);color:var(--accent-ink);border-radius:var(--r);display:grid;grid-template-columns:46fr 54fr;min-height:420px}
+.coupon .nt{position:absolute;left:46%;width:28px;height:28px;margin-left:-14px;border-radius:50%;background:var(--bg)}
+.coupon .nt.t{top:-14px}.coupon .nt.b{bottom:-14px}
+.coupon .perf{position:absolute;left:46%;top:22px;bottom:22px;width:6px;margin-left:-3px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='14'%3E%3Ccircle cx='3' cy='3' r='3' fill='%23f8f8f8'/%3E%3C/svg%3E") repeat-y}
+.coupon .cl{padding:48px;display:flex;flex-direction:column;justify-content:space-between;gap:28px}
+
+.coupon .cl p{max-width:30ch}
+.coupon .cl a{color:#fff;font-weight:600}
+.coupon form{padding:48px;display:grid;gap:10px;align-content:center}
+.coupon input,.coupon select,.coupon textarea{width:100%;min-height:52px;border:0;border-radius:12px;background:#2f8550;color:#fff;font:400 16px/1.4 "Figtree",sans-serif;padding:14px 16px;appearance:none}
+.coupon select{background-image:none}
+.coupon textarea{min-height:88px;resize:vertical}
+.coupon ::placeholder{color:#d6ecdc;opacity:1}
+.coupon input:focus-visible,.coupon select:focus-visible,.coupon textarea:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.coupon .send{min-height:56px;border:0;border-radius:999px;background:var(--ink);color:#fff;font:600 var(--t-body) "Figtree",sans-serif;cursor:pointer;transition:transform .15s var(--ease),background-color .2s ease;margin-top:6px}
+.coupon .send:hover{background:#262626}.coupon .send:active{transform:scale(.98)}
+.sel{position:relative}
+.sel::after{content:"";position:absolute;right:20px;top:50%;width:10px;height:10px;margin-top:-7px;border-right:3px solid #fff;border-bottom:3px solid #fff;transform:rotate(45deg);pointer-events:none}
+
+/* footer */
+footer{background:var(--ink);color:#e9e9e9;padding:clamp(64px,8vw,120px) var(--m) 36px}
+.blocks{display:flex;align-items:flex-end;gap:4px;height:34svh;min-height:220px;max-height:360px}
+.blocks span{flex:1;display:flex;align-items:flex-end;justify-content:center;border-radius:999px 999px 0 0;color:var(--ink);font-family:"League Spartan",sans-serif;font-size:clamp(28px,5.2vw,92px);line-height:1;padding-bottom:.18em;transform-origin:50% 100%}
+.blocks .sp{flex:.35;background:transparent}
+.blocks .c1{background:var(--mint)}.blocks .c2{background:var(--pink)}.blocks .c3{background:#fff}.blocks .c4{background:var(--accent);color:var(--ink)}
+.fcols{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(16px,2vw,32px);margin-top:56px;font-size:var(--t-small)}
+.fcols .c{grid-column:span 2}
+.fcols .ct{grid-column:9/13}
+.fcols h3{font-family:"Figtree",sans-serif;font-size:var(--t-small);letter-spacing:0;font-weight:600;color:#fff;margin-bottom:10px;line-height:1.3}
+.fcols ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.fcols a{color:#e9e9e9;text-decoration:none}
+.fcols a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.fcols .ct p+p{margin-top:8px}
+.fcols .ct .big{font-family:"League Spartan",sans-serif;font-size:var(--t-lead);color:#fff;letter-spacing:-.02em}
+.credits{margin-top:56px;font-size:var(--t-small);color:#bdbdbd;max-width:54ch}
+.credits a{color:#e9e9e9}
+.last{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:28px;font-size:var(--t-small);color:#bdbdbd}
+.last a.top{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:999px;background:var(--mint);color:var(--ink);font-weight:600;text-decoration:none;transition:transform .15s var(--ease)}
+.last a.top:active{transform:scale(.96)}
+.last p a{color:#fff}
+
+/* motion: entrances (content visible without script) */
+@media (prefers-reduced-motion:no-preference){
+  .js .rv{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .js .rv.in{opacity:1;transform:none}
+  .js .band i{transform:scaleY(0);transition:transform .7s var(--ease)}
+  .js .band.in i{transform:none}
+  .js .diag use{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .7s var(--ease)}
+  .js .diag.in use{opacity:1;transform:none}
+  .js .blocks span{transform:scaleY(.2);opacity:0;transition:transform .9s var(--ease),opacity .5s ease}
+  .js .blocks.in span{transform:none;opacity:1}
+  .stage.drift img.on{animation:drift 12s ease-out both}
+  @keyframes drift{from{transform:scale(1.06)}to{transform:scale(1)}}
+}
+@media (prefers-reduced-motion:reduce){.stage img{transition:none}}
+
+/* ---------- tablet and phone ---------- */
+@media (max-width:1000px){
+  .menu{grid-column:1/13;margin-top:48px}
+  .prices .lead{grid-column:1/13;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:end}
+  .prices .lead .ph{width:70%;margin-top:0;justify-self:end}
+  .pts{grid-template-columns:1fr 1fr}
+  .result{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr;padding:12px;min-height:0}
+  .stage{order:-1;height:34svh;min-height:240px}
+  .card{margin-top:-24px;position:relative;z-index:1}
+  .band{height:40px}
+  .band i{width:20px;margin-right:20px}
+  .mark{margin-top:24px}
+  .cardmain{padding:26px 0 30px;gap:18px}
+  .hero h1{font-size:clamp(40px,11vw,60px)}
+  .ctas{flex-direction:column;width:100%}
+  .ctas .btn{width:100%}
+  .grid{display:block}
+  .prices .lead{display:block}
+  .prices .lead .ph{width:60%;margin-top:28px}
+  .menu{grid-template-columns:1fr;margin-top:40px}
+  .grp,.grp:first-child{margin-top:40px}
+  
+  .vax .pic{width:64%;margin:28px 0 0 auto}
+  .tool{margin-top:24px}
+  .result{margin-top:10px}
+  .how .ph{width:82vw;margin-left:calc(-1*var(--m));height:60svh}
+  .how .txt{margin-top:40px}
+  
+  .pts{grid-template-columns:1fr;gap:28px;margin-top:32px;padding-left:26px}
+  .pts h3{position:relative}
+  .pts h3 .ab{position:absolute;left:-26px;top:.2em}
+  .first .bring{margin-top:32px}
+  .diagwrap{display:grid;grid-template-columns:1fr 38vw;gap:16px;margin-top:40px}
+  .diagwrap .diag,.diagwrap .steps{grid-column:auto;margin-top:0}
+  .diag .h{display:none}.diag .v{display:block}
+  .steps{display:grid;grid-template-columns:1fr;grid-template-rows:repeat(3,1fr);margin-top:0;row-gap:12px}
+  .steps>div{align-self:center}
+  .hours .r{margin-top:48px}
+  .hours .ph{width:86%}
+  th,td{padding:12px 12px}
+  .faq h2{position:static;margin-bottom:28px}
+  details{border-radius:12px}
+  summary{min-height:64px;padding:18px 56px 18px 20px}
+  summary::before,summary::after{right:20px}
+  details .a{padding:0 20px 20px;font-size:var(--t-body)}
+  .qs{gap:6px}
+  .book.sec{padding-left:12px;padding-right:12px}
+  .coupon{grid-template-columns:1fr;min-height:0}
+  .coupon .nt{left:auto;top:auto;margin:0}
+  .coupon .nt.t{left:-14px;top:var(--cut)}.coupon .nt.b{right:-14px;bottom:auto;top:var(--cut)}
+  .coupon .perf{left:22px;right:22px;top:calc(var(--cut) + 11px);bottom:auto;width:auto;height:6px;margin:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='6'%3E%3Ccircle cx='3' cy='3' r='3' fill='%23f8f8f8'/%3E%3C/svg%3E") repeat-x}
+  .coupon .cl{padding:32px 22px 36px;min-height:var(--cut);justify-content:flex-start;gap:20px}
+  .coupon form{padding:30px 22px 26px}
+  .coupon input,.coupon select{min-height:54px}
+  .blocks{flex-wrap:wrap;height:auto;max-height:none;min-height:0;row-gap:4px}
+  .blocks span{flex:1 0 calc(16.66% - 4px);height:var(--h22)!important;font-size:9vw;padding-bottom:.25em}
+  .blocks .sp{display:block;flex:0 0 100%;height:0!important}
+  .fcols{grid-template-columns:1fr 1fr;row-gap:32px}
+  .fcols .c,.fcols .ct{grid-column:auto}
+  .fcols .ct{grid-column:1/-1}
+}
+</style>
+</head>
+<body>
+<script>document.body.classList.add('js')</script>
+<p class="sample">Sample website for a fictional business, designed by Orbik · <a href="https://orbik.ai">orbik.ai</a></p>
+
+<main>
+<section class="hero" aria-label="Welcome">
+  <div class="card">
+    <div class="band" aria-hidden="true"></div>
+    <a class="mark" href="#top" id="top" aria-label="Cedar Hollow Animal Clinic, home">
+      <svg viewBox="0 0 30 38" aria-hidden="true"><path d="M0 38V15a15 15 0 0 1 30 0v23z" fill="#1f6b3a"/><path d="M9 38V22a6 6 0 0 1 12 0v16z" fill="#c3edce"/></svg>
+      <span>Cedar Hollow Animal Clinic</span>
+    </a>
+    <div class="cardmain">
+      <h1>Calm care for dogs and cats</h1>
+      <p class="lede">An independent clinic in Middlebury, Vermont. Wellness, vaccines, dental and surgery, with same-day sick visits held open every morning.</p>
+      <div class="ctas">
+        <a class="btn" href="#book">Book a visit</a>
+        <a class="btn em" href="tel:+18025550172">Emergency? Call <b>(802) 555-0172</b></a>
+      </div>
+      <p class="status" id="status"><span class="ab" aria-hidden="true"></span><span>Mon–Fri 7:30am–6pm · Sat 8am–1pm</span></p>
+    </div>
+    <nav class="cardlinks" aria-label="Sections">
+      <a href="#prices">Prices</a><a href="#vaccines">Vaccines</a><a href="#new">New clients</a><a href="#hours">Hours</a><a href="#faq">Questions</a>
+    </nav>
+  </div>
+  <div class="stage arch" id="stage">
+    <div class="frame"></div>
+    <img class="on" src="assets/black-lab-puppy.jpg" width="1200" height="1376" alt="A black Labrador puppy looking up" style="object-position:50% 18%" fetchpriority="high">
+    <img src="assets/tabby-cat.jpg" width="1200" height="1602" alt="A tabby cat sitting in winter sun" style="object-position:50% 30%" loading="lazy">
+    <img src="assets/kitten-blue-eyes.jpg" width="1200" height="1441" alt="A young tabby-and-white cat with blue eyes" style="object-position:50% 35%" loading="lazy">
+  </div>
+</section>
+
+<section class="sec prices" id="prices">
+  <div class="grid">
+    <div class="lead">
+      <div>
+        <h2 class="rv">Clear prices</h2>
+        <p class="rv">What most visits cost, before you pick up the phone. You get a written estimate before any treatment starts.</p>
+      </div>
+      <div class="ph arch rv"><img src="assets/spaniel-portrait.jpg" width="1800" height="1200" alt="A tricolour Cavalier King Charles spaniel looking at the camera" loading="lazy"></div>
+    </div>
+    <div class="menu">
+      <div>
+        <div class="grp g-mint rv">
+          <h3><span class="ab" aria-hidden="true"></span>Exams and visits</h3>
+          <div class="item"><div class="row"><span>Wellness exam</span><span>$68</span></div><p>Nose-to-tail check, weight and a written care plan.</p></div>
+          <div class="item"><div class="row"><span>Puppy or kitten visit</span><span>$58</span></div><p>Exam, deworming and the feeding and training talk.</p></div>
+          <div class="item"><div class="row"><span>Same-day sick visit</span><span>$84</span></div><p>Slots kept open each morning for vomiting, limping or itching.</p></div>
+          <div class="item"><div class="row"><span>Senior check</span><span>$96</span></div><p>A longer exam for dogs over 8 and cats over 10.</p></div>
+        </div>
+        <div class="grp g-pink rv">
+          <h3><span class="ab" aria-hidden="true"></span>Vaccines</h3>
+          <div class="item"><div class="row"><span>Rabies</span><span>$28</span></div><p>Required in Vermont for dogs and cats.</p></div>
+          <div class="item"><div class="row"><span>DHPP, dogs</span><span>$34</span></div><p>Distemper, parvovirus, adenovirus and parainfluenza.</p></div>
+          <div class="item"><div class="row"><span>FVRCP, cats</span><span>$32</span></div><p>Feline distemper and two common respiratory viruses.</p></div>
+          <div class="item"><div class="row"><span>Lyme, dogs</span><span>$38</span></div><p>For dogs who walk the woods, fields and tall grass.</p></div>
+          <div class="item"><div class="row"><span>Leptospirosis, dogs</span><span>$30</span></div><p>For swimmers, hikers and puddle drinkers.</p></div>
+          <div class="item"><div class="row"><span>Bordetella, dogs</span><span>$28</span></div><p>Kennel cough. Asked for by boarders and groomers.</p></div>
+          <div class="item"><div class="row"><span>Feline leukemia, cats</span><span>$34</span></div><p>For kittens, and for cats who go outdoors.</p></div>
+        </div>
+      </div>
+      <div>
+        <div class="grp g-acc rv">
+          <h3><span class="ab" aria-hidden="true"></span>Dental</h3>
+          <div class="item"><div class="row"><span>Cleaning under anesthesia</span><span>from $425</span></div><p>Full-mouth X-rays, scaling, polish and pain relief.</p></div>
+          <div class="item"><div class="row"><span>Extractions</span><span>from $45 each</span></div><p>Only after we call you with the X-rays and a price.</p></div>
+        </div>
+        <div class="grp g-mint rv">
+          <h3><span class="ab" aria-hidden="true"></span>Spay and neuter</h3>
+          <div class="item"><div class="row"><span>Cat neuter</span><span>$185</span></div><p>Home the same afternoon.</p></div>
+          <div class="item"><div class="row"><span>Cat spay</span><span>$265</span></div><p>Includes pain relief to take home.</p></div>
+          <div class="item"><div class="row"><span>Dog neuter</span><span>from $290</span></div><p>Priced by weight. Bloodwork and a cone included.</p></div>
+          <div class="item"><div class="row"><span>Dog spay</span><span>from $380</span></div><p>Priced by weight. We call you the next morning.</p></div>
+        </div>
+        <div class="grp g-pink rv">
+          <h3><span class="ab" aria-hidden="true"></span>Tests and extras</h3>
+          <div class="item"><div class="row"><span>Heartworm and tick test</span><span>$48</span></div><p>One yearly blood test for heartworm, Lyme and two more tick diseases.</p></div>
+          <div class="item"><div class="row"><span>Senior bloodwork</span><span>$145</span></div><p>Kidneys, liver, thyroid and blood count, results same day.</p></div>
+          <div class="item"><div class="row"><span>Microchip</span><span>$55</span></div><p>Registered for life before you leave.</p></div>
+          <div class="item"><div class="row"><span>Nail trim</span><span>$18</span></div><p>No appointment needed, weekdays.</p></div>
+          <div class="item"><div class="row"><span>Travel health certificate</span><span>$65</span></div><p>For flights and moving across state lines.</p></div>
+        </div>
+      </div>
+      <p class="note rv">Prices are for a typical visit. Medicines, X-rays and lab work are added only when your pet needs them, and we tell you first.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec vax" id="vaccines">
+  <div class="grid">
+    <div class="intro">
+      <h2 class="rv">Which shots are due?</h2>
+      <p class="rv">Pick your pet and its age. You'll see what a visit usually includes at that stage, what it costs here, and when to come back.</p>
+    </div>
+    <div class="pic arch rv" aria-hidden="true">
+      <img id="pdog" src="assets/golden-puppy.jpg" width="1800" height="1200" alt="" loading="lazy" style="object-position:62% 50%">
+      <img id="pcat" class="off" src="assets/cat-on-snow.jpg" width="1800" height="1200" alt="" loading="lazy" style="object-position:38% 50%">
+    </div>
+    <form class="tool rv" id="tool" onsubmit="return false" aria-label="Vaccine schedule helper">
+      <fieldset><legend>My pet is a</legend>
+        <div class="chips">
+          <label class="big"><input type="radio" name="sp" value="dog" checked><span>Dog</span></label>
+          <label class="big"><input type="radio" name="sp" value="cat"><span>Cat</span></label>
+        </div>
+      </fieldset>
+      <fieldset><legend>Age</legend>
+        <div class="chips">
+          <label><input type="radio" name="age" value="0" checked><span>6–9 weeks</span></label>
+          <label><input type="radio" name="age" value="1"><span>10–13 weeks</span></label>
+          <label><input type="radio" name="age" value="2"><span>14–17 weeks</span></label>
+          <label><input type="radio" name="age" value="3"><span>About 1 year</span></label>
+          <label><input type="radio" name="age" value="4"><span>Adult</span></label>
+          <label><input type="radio" name="age" value="5"><span>Senior</span></label>
+        </div>
+      </fieldset>
+      <fieldset id="life"><legend>Their life</legend>
+        <div class="chips">
+          <label data-for="dog"><input type="checkbox" name="woods" checked><span>Woods or tall grass</span></label>
+          <label data-for="dog"><input type="checkbox" name="water"><span>Swims or hikes</span></label>
+          <label data-for="dog"><input type="checkbox" name="social"><span>Boarding or groomer</span></label>
+          <label data-for="cat" hidden><input type="checkbox" name="out"><span>Goes outdoors</span></label>
+        </div>
+      </fieldset>
+    </form>
+    <div class="result rv" aria-live="polite">
+      <div>
+        <h3 id="rh">At 6–9 weeks</h3>
+        <ul class="due" id="due">
+          <li><span><b>Puppy visit</b><small>Exam, deworming, feeding talk</small></span><span>$58</span></li>
+          <li><span><b>DHPP</b><small>Dose 1 of 3</small></span><span>$34</span></li>
+        </ul>
+      </div>
+      <div class="side">
+        <p class="total">About <b id="tot">$92</b> for this visit</p>
+        <p class="next" id="nx">Next: back at 10–13 weeks for the second DHPP dose.</p>
+        <a class="btn" id="bk" href="#book">Book this visit</a>
+        <p class="fine">A general guide for healthy pets. The vet tailors the plan to your pet at the exam. Tick prevention is year-round in Vermont.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec how" id="visits">
+  <div class="grid">
+    <div class="ph arch rv"><img src="assets/dog-sleeping.jpg" width="1800" height="1350" alt="A brindle dog asleep, curled up on a grey blanket" loading="lazy"></div>
+    <div class="txt">
+      <h2 class="rv">How visits go here</h2>
+      <div class="pts">
+        <div class="rv"><h3><span class="ab" aria-hidden="true"></span>Estimate first</h3><p>A written price before any treatment, every time.</p></div>
+        <div class="rv"><h3><span class="ab" aria-hidden="true"></span>Same-day slots</h3><p>Sick visits are kept open each morning. Call by 10am.</p></div>
+        <div class="rv"><h3><span class="ab" aria-hidden="true"></span>A cat-only room</h3><p>Cats wait away from dogs, carrier up on a shelf.</p></div>
+        <div class="rv"><h3><span class="ab" aria-hidden="true"></span>Low-stress handling</h3><p>Treats, a slow pace, and exams on the floor if that's easier.</p></div>
+        <div class="rv"><h3><span class="ab" aria-hidden="true"></span>X-rays and lab on site</h3><p>Most results while you wait, not days later.</p></div>
+        <div class="rv"><h3><span class="ab" aria-hidden="true"></span>Text reminders</h3><p>Shots, refills and checkups, sent a week ahead.</p></div>
+        <div class="rv"><h3><span class="ab" aria-hidden="true"></span>Pharmacy refills</h3><p>Text a photo of the label; pick up the next day.</p></div>
+        <div class="rv"><h3><span class="ab" aria-hidden="true"></span>Payment plans</h3><p>Split surgery and dental bills over three months.</p></div>
+        <div class="rv"><h3><span class="ab" aria-hidden="true"></span>Gentle goodbyes</h3><p>End-of-life care in a quiet room or at home.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec first" id="new">
+  <div class="grid">
+    <div class="head">
+      <h2 class="rv">Your first visit</h2>
+      <p class="rv">New dogs and cats are always welcome. First visits run 40 minutes, so there's time for every question and nobody gets rushed.</p>
+    </div>
+    <div class="bring rv">
+      <h3>Please bring</h3>
+      <ul>
+        <li><span class="ab" aria-hidden="true"></span>Any records from your last vet, or just their name</li>
+        <li><span class="ab" aria-hidden="true"></span>The medicines and food your pet is on</li>
+        <li><span class="ab" aria-hidden="true"></span>A fresh stool sample, if you can</li>
+        <li><span class="ab" aria-hidden="true"></span>Cats in a carrier, dogs on a leash</li>
+      </ul>
+    </div>
+    <div class="diagwrap" style="grid-column:1/13">
+      <div class="diag" id="diag">
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="ar" viewBox="0 0 12 16"><path d="M0 16V6a6 6 0 0 1 12 0v10z"/></symbol></defs></svg>
+        <div class="h"><svg viewBox="0 0 900 200" role="img" aria-label="A loose scatter of arch shapes is gathered into a tight band, then set out in neat rows"><use href="#ar" width="12" height="16" x="8" y="161" class="p2"/><use href="#ar" width="12" height="16" x="86" y="45" class="p1"/><use href="#ar" width="12" height="16" x="205" y="97" class="p2"/><use href="#ar" width="12" height="16" x="97" y="133" class="p1"/><use href="#ar" width="12" height="16" x="212" y="99" class="p2"/><use href="#ar" width="12" height="16" x="193" y="114" class="p1"/><use href="#ar" width="12" height="16" x="229" y="50" class="p2"/><use href="#ar" width="12" height="16" x="109" y="126" class="p1"/><use href="#ar" width="12" height="16" x="196" y="19" class="p2"/><use href="#ar" width="12" height="16" x="193" y="87" class="p1"/><use href="#ar" width="12" height="16" x="257" y="142" class="p2"/><use href="#ar" width="12" height="16" x="41" y="94" class="p1"/><use href="#ar" width="12" height="16" x="257" y="123" class="p2"/><use href="#ar" width="12" height="16" x="182" y="105" class="p1"/><use href="#ar" width="12" height="16" x="254" y="159" class="p2"/><use href="#ar" width="12" height="16" x="109" y="65" class="p1"/><use href="#ar" width="12" height="16" x="234" y="64" class="p2"/><use href="#ar" width="12" height="16" x="49" y="59" class="p1"/><use href="#ar" width="12" height="16" x="124" y="58" class="p2"/><use href="#ar" width="12" height="16" x="261" y="101" class="p1"/><use href="#ar" width="12" height="16" x="205" y="154" class="p2"/><use href="#ar" width="12" height="16" x="24" y="55" class="p1"/><use href="#ar" width="12" height="16" x="159" y="93" class="p2"/><use href="#ar" width="12" height="16" x="122" y="42" class="p1"/><use href="#ar" width="12" height="16" x="253" y="19" class="p2"/><use href="#ar" width="12" height="16" x="107" y="66" class="p1"/><use href="#ar" width="12" height="16" x="187" y="162" class="p2"/><use href="#ar" width="12" height="16" x="147" y="37" class="p1"/><use href="#ar" width="12" height="16" x="118" y="57" class="p2"/><use href="#ar" width="12" height="16" x="106" y="80" class="p1"/><use href="#ar" width="12" height="16" x="98" y="97" class="p2"/><use href="#ar" width="12" height="16" x="174" y="48" class="p1"/><use href="#ar" width="12" height="16" x="253" y="85" class="p2"/><use href="#ar" width="12" height="16" x="241" y="114" class="p1"/><use href="#ar" width="12" height="16" x="179" y="95" class="p2"/><use href="#ar" width="12" height="16" x="144" y="123" class="p1"/><use href="#ar" width="12" height="16" x="262" y="75" class="p2"/><use href="#ar" width="12" height="16" x="199" y="51" class="p1"/><use href="#ar" width="12" height="16" x="166" y="67" class="p2"/><use href="#ar" width="12" height="16" x="97" y="74" class="p1"/><use href="#ar" width="12" height="16" x="223" y="154" class="p2"/><use href="#ar" width="12" height="16" x="38" y="144" class="p1"/><use href="#ar" width="12" height="16" x="29" y="77" class="p2"/><use href="#ar" width="12" height="16" x="49" y="23" class="p1"/><use href="#ar" width="12" height="16" x="277" y="46" class="p2"/><use href="#ar" width="12" height="16" x="179" y="34" class="p1"/><use href="#ar" width="12" height="16" x="131" y="107" class="p2"/><use href="#ar" width="12" height="16" x="45" y="161" class="p1"/><use href="#ar" width="12" height="16" x="305" y="73" class="p3"/><use href="#ar" width="12" height="16" x="305" y="91" class="p3"/><use href="#ar" width="12" height="16" x="305" y="109" class="p3"/><use href="#ar" width="12" height="16" x="319" y="73" class="p3"/><use href="#ar" width="12" height="16" x="319" y="91" class="p3"/><use href="#ar" width="12" height="16" x="319" y="109" class="p3"/><use href="#ar" width="12" height="16" x="333" y="73" class="p3"/><use href="#ar" width="12" height="16" x="333" y="91" class="p3"/><use href="#ar" width="12" height="16" x="333" y="109" class="p3"/><use href="#ar" width="12" height="16" x="347" y="73" class="p3"/><use href="#ar" width="12" height="16" x="347" y="91" class="p3"/><use href="#ar" width="12" height="16" x="347" y="109" class="p3"/><use href="#ar" width="12" height="16" x="361" y="73" class="p3"/><use href="#ar" width="12" height="16" x="361" y="91" class="p3"/><use href="#ar" width="12" height="16" x="361" y="109" class="p3"/><use href="#ar" width="12" height="16" x="375" y="73" class="p3"/><use href="#ar" width="12" height="16" x="375" y="91" class="p3"/><use href="#ar" width="12" height="16" x="375" y="109" class="p3"/><use href="#ar" width="12" height="16" x="389" y="73" class="p3"/><use href="#ar" width="12" height="16" x="389" y="91" class="p3"/><use href="#ar" width="12" height="16" x="389" y="109" class="p3"/><use href="#ar" width="12" height="16" x="403" y="73" class="p3"/><use href="#ar" width="12" height="16" x="403" y="91" class="p3"/><use href="#ar" width="12" height="16" x="403" y="109" class="p3"/><use href="#ar" width="12" height="16" x="417" y="73" class="p3"/><use href="#ar" width="12" height="16" x="417" y="91" class="p3"/><use href="#ar" width="12" height="16" x="417" y="109" class="p3"/><use href="#ar" width="12" height="16" x="431" y="73" class="p3"/><use href="#ar" width="12" height="16" x="431" y="91" class="p3"/><use href="#ar" width="12" height="16" x="431" y="109" class="p3"/><use href="#ar" width="12" height="16" x="445" y="73" class="p3"/><use href="#ar" width="12" height="16" x="445" y="91" class="p3"/><use href="#ar" width="12" height="16" x="445" y="109" class="p3"/><use href="#ar" width="12" height="16" x="459" y="73" class="p3"/><use href="#ar" width="12" height="16" x="459" y="91" class="p3"/><use href="#ar" width="12" height="16" x="459" y="109" class="p3"/><use href="#ar" width="12" height="16" x="473" y="73" class="p3"/><use href="#ar" width="12" height="16" x="473" y="91" class="p3"/><use href="#ar" width="12" height="16" x="473" y="109" class="p3"/><use href="#ar" width="12" height="16" x="487" y="73" class="p3"/><use href="#ar" width="12" height="16" x="487" y="91" class="p3"/><use href="#ar" width="12" height="16" x="487" y="109" class="p3"/><use href="#ar" width="12" height="16" x="501" y="73" class="p3"/><use href="#ar" width="12" height="16" x="501" y="91" class="p3"/><use href="#ar" width="12" height="16" x="501" y="109" class="p3"/><use href="#ar" width="12" height="16" x="515" y="73" class="p3"/><use href="#ar" width="12" height="16" x="515" y="91" class="p3"/><use href="#ar" width="12" height="16" x="515" y="109" class="p3"/><use href="#ar" width="12" height="16" x="529" y="73" class="p3"/><use href="#ar" width="12" height="16" x="529" y="91" class="p3"/><use href="#ar" width="12" height="16" x="529" y="109" class="p3"/><use href="#ar" width="12" height="16" x="543" y="73" class="p3"/><use href="#ar" width="12" height="16" x="543" y="91" class="p3"/><use href="#ar" width="12" height="16" x="543" y="109" class="p3"/><use href="#ar" width="12" height="16" x="557" y="73" class="p3"/><use href="#ar" width="12" height="16" x="557" y="91" class="p3"/><use href="#ar" width="12" height="16" x="557" y="109" class="p3"/><use href="#ar" width="12" height="16" x="571" y="73" class="p3"/><use href="#ar" width="12" height="16" x="571" y="91" class="p3"/><use href="#ar" width="12" height="16" x="571" y="109" class="p3"/><use href="#ar" width="12" height="16" x="620" y="18" class="ac"/><use href="#ar" width="12" height="16" x="620" y="45" class="ac"/><use href="#ar" width="12" height="16" x="620" y="71" class="ac"/><use href="#ar" width="12" height="16" x="620" y="98" class="ac"/><use href="#ar" width="12" height="16" x="620" y="125" class="ac"/><use href="#ar" width="12" height="16" x="620" y="151" class="ac"/><use href="#ar" width="12" height="16" x="653" y="18" class="ac"/><use href="#ar" width="12" height="16" x="653" y="45" class="ac"/><use href="#ar" width="12" height="16" x="653" y="71" class="ac"/><use href="#ar" width="12" height="16" x="653" y="98" class="ac"/><use href="#ar" width="12" height="16" x="653" y="125" class="ac"/><use href="#ar" width="12" height="16" x="653" y="151" class="ac"/><use href="#ar" width="12" height="16" x="685" y="18" class="ac"/><use href="#ar" width="12" height="16" x="685" y="45" class="ac"/><use href="#ar" width="12" height="16" x="685" y="71" class="ac"/><use href="#ar" width="12" height="16" x="685" y="98" class="ac"/><use href="#ar" width="12" height="16" x="685" y="125" class="ac"/><use href="#ar" width="12" height="16" x="685" y="151" class="ac"/><use href="#ar" width="12" height="16" x="718" y="18" class="ac"/><use href="#ar" width="12" height="16" x="718" y="45" class="ac"/><use href="#ar" width="12" height="16" x="718" y="71" class="ac"/><use href="#ar" width="12" height="16" x="718" y="98" class="ac"/><use href="#ar" width="12" height="16" x="718" y="125" class="ac"/><use href="#ar" width="12" height="16" x="718" y="151" class="ac"/><use href="#ar" width="12" height="16" x="750" y="18" class="ac"/><use href="#ar" width="12" height="16" x="750" y="45" class="ac"/><use href="#ar" width="12" height="16" x="750" y="71" class="ac"/><use href="#ar" width="12" height="16" x="750" y="98" class="ac"/><use href="#ar" width="12" height="16" x="750" y="125" class="ac"/><use href="#ar" width="12" height="16" x="750" y="151" class="ac"/><use href="#ar" width="12" height="16" x="783" y="18" class="ac"/><use href="#ar" width="12" height="16" x="783" y="45" class="ac"/><use href="#ar" width="12" height="16" x="783" y="71" class="ac"/><use href="#ar" width="12" height="16" x="783" y="98" class="ac"/><use href="#ar" width="12" height="16" x="783" y="125" class="ac"/><use href="#ar" width="12" height="16" x="783" y="151" class="ac"/><use href="#ar" width="12" height="16" x="815" y="18" class="ac"/><use href="#ar" width="12" height="16" x="815" y="45" class="ac"/><use href="#ar" width="12" height="16" x="815" y="71" class="ac"/><use href="#ar" width="12" height="16" x="815" y="98" class="ac"/><use href="#ar" width="12" height="16" x="815" y="125" class="ac"/><use href="#ar" width="12" height="16" x="815" y="151" class="ac"/><use href="#ar" width="12" height="16" x="848" y="18" class="ac"/><use href="#ar" width="12" height="16" x="848" y="45" class="ac"/><use href="#ar" width="12" height="16" x="848" y="71" class="ac"/><use href="#ar" width="12" height="16" x="848" y="98" class="ac"/><use href="#ar" width="12" height="16" x="848" y="125" class="ac"/><use href="#ar" width="12" height="16" x="848" y="151" class="ac"/></svg></div>
+        <div class="v"><svg viewBox="0 0 300 400" role="img" aria-label="A loose scatter of arch shapes is gathered into a tight band, then set out in neat rows"><use href="#ar" width="12" height="16" x="245" y="99" class="p2"/><use href="#ar" width="12" height="16" x="250" y="99" class="p1"/><use href="#ar" width="12" height="16" x="83" y="87" class="p2"/><use href="#ar" width="12" height="16" x="76" y="9" class="p1"/><use href="#ar" width="12" height="16" x="10" y="16" class="p2"/><use href="#ar" width="12" height="16" x="71" y="72" class="p1"/><use href="#ar" width="12" height="16" x="139" y="85" class="p2"/><use href="#ar" width="12" height="16" x="73" y="79" class="p1"/><use href="#ar" width="12" height="16" x="72" y="99" class="p2"/><use href="#ar" width="12" height="16" x="246" y="47" class="p1"/><use href="#ar" width="12" height="16" x="139" y="20" class="p2"/><use href="#ar" width="12" height="16" x="251" y="8" class="p1"/><use href="#ar" width="12" height="16" x="253" y="74" class="p2"/><use href="#ar" width="12" height="16" x="248" y="10" class="p1"/><use href="#ar" width="12" height="16" x="266" y="27" class="p2"/><use href="#ar" width="12" height="16" x="189" y="66" class="p1"/><use href="#ar" width="12" height="16" x="69" y="36" class="p2"/><use href="#ar" width="12" height="16" x="159" y="30" class="p1"/><use href="#ar" width="12" height="16" x="213" y="13" class="p2"/><use href="#ar" width="12" height="16" x="199" y="80" class="p1"/><use href="#ar" width="12" height="16" x="19" y="59" class="p2"/><use href="#ar" width="12" height="16" x="253" y="19" class="p1"/><use href="#ar" width="12" height="16" x="192" y="22" class="p2"/><use href="#ar" width="12" height="16" x="20" y="100" class="p1"/><use href="#ar" width="12" height="16" x="237" y="99" class="p2"/><use href="#ar" width="12" height="16" x="262" y="111" class="p1"/><use href="#ar" width="12" height="16" x="121" y="87" class="p2"/><use href="#ar" width="12" height="16" x="202" y="34" class="p1"/><use href="#ar" width="12" height="16" x="115" y="99" class="p2"/><use href="#ar" width="12" height="16" x="117" y="32" class="p1"/><use href="#ar" width="12" height="16" x="158" y="100" class="p2"/><use href="#ar" width="12" height="16" x="174" y="44" class="p1"/><use href="#ar" width="12" height="16" x="98" y="84" class="p2"/><use href="#ar" width="12" height="16" x="122" y="83" class="p1"/><use href="#ar" width="12" height="16" x="92" y="29" class="p2"/><use href="#ar" width="12" height="16" x="272" y="110" class="p1"/><use href="#ar" width="12" height="16" x="240" y="73" class="p2"/><use href="#ar" width="12" height="16" x="63" y="103" class="p1"/><use href="#ar" width="12" height="16" x="46" y="75" class="p2"/><use href="#ar" width="12" height="16" x="157" y="59" class="p1"/><use href="#ar" width="12" height="16" x="260" y="88" class="p2"/><use href="#ar" width="12" height="16" x="59" y="58" class="p1"/><use href="#ar" width="12" height="16" x="54" y="54" class="p2"/><use href="#ar" width="12" height="16" x="148" y="76" class="p1"/><use href="#ar" width="12" height="16" x="144" y="66" class="p2"/><use href="#ar" width="12" height="16" x="106" y="86" class="p1"/><use href="#ar" width="12" height="16" x="17" y="86" class="p2"/><use href="#ar" width="12" height="16" x="153" y="39" class="p1"/><use href="#ar" width="12" height="16" x="129" y="138" class="p3"/><use href="#ar" width="12" height="16" x="143" y="138" class="p3"/><use href="#ar" width="12" height="16" x="157" y="138" class="p3"/><use href="#ar" width="12" height="16" x="129" y="152" class="p3"/><use href="#ar" width="12" height="16" x="143" y="152" class="p3"/><use href="#ar" width="12" height="16" x="157" y="152" class="p3"/><use href="#ar" width="12" height="16" x="129" y="166" class="p3"/><use href="#ar" width="12" height="16" x="143" y="166" class="p3"/><use href="#ar" width="12" height="16" x="157" y="166" class="p3"/><use href="#ar" width="12" height="16" x="129" y="180" class="p3"/><use href="#ar" width="12" height="16" x="143" y="180" class="p3"/><use href="#ar" width="12" height="16" x="157" y="180" class="p3"/><use href="#ar" width="12" height="16" x="129" y="194" class="p3"/><use href="#ar" width="12" height="16" x="143" y="194" class="p3"/><use href="#ar" width="12" height="16" x="157" y="194" class="p3"/><use href="#ar" width="12" height="16" x="129" y="208" class="p3"/><use href="#ar" width="12" height="16" x="143" y="208" class="p3"/><use href="#ar" width="12" height="16" x="157" y="208" class="p3"/><use href="#ar" width="12" height="16" x="129" y="222" class="p3"/><use href="#ar" width="12" height="16" x="143" y="222" class="p3"/><use href="#ar" width="12" height="16" x="157" y="222" class="p3"/><use href="#ar" width="12" height="16" x="129" y="236" class="p3"/><use href="#ar" width="12" height="16" x="143" y="236" class="p3"/><use href="#ar" width="12" height="16" x="157" y="236" class="p3"/><use href="#ar" width="12" height="16" x="24" y="281" class="ac"/><use href="#ar" width="12" height="16" x="24" y="298" class="ac"/><use href="#ar" width="12" height="16" x="24" y="315" class="ac"/><use href="#ar" width="12" height="16" x="24" y="332" class="ac"/><use href="#ar" width="12" height="16" x="24" y="350" class="ac"/><use href="#ar" width="12" height="16" x="24" y="367" class="ac"/><use href="#ar" width="12" height="16" x="56" y="281" class="ac"/><use href="#ar" width="12" height="16" x="56" y="298" class="ac"/><use href="#ar" width="12" height="16" x="56" y="315" class="ac"/><use href="#ar" width="12" height="16" x="56" y="332" class="ac"/><use href="#ar" width="12" height="16" x="56" y="350" class="ac"/><use href="#ar" width="12" height="16" x="56" y="367" class="ac"/><use href="#ar" width="12" height="16" x="87" y="281" class="ac"/><use href="#ar" width="12" height="16" x="87" y="298" class="ac"/><use href="#ar" width="12" height="16" x="87" y="315" class="ac"/><use href="#ar" width="12" height="16" x="87" y="332" class="ac"/><use href="#ar" width="12" height="16" x="87" y="350" class="ac"/><use href="#ar" width="12" height="16" x="87" y="367" class="ac"/><use href="#ar" width="12" height="16" x="119" y="281" class="ac"/><use href="#ar" width="12" height="16" x="119" y="298" class="ac"/><use href="#ar" width="12" height="16" x="119" y="315" class="ac"/><use href="#ar" width="12" height="16" x="119" y="332" class="ac"/><use href="#ar" width="12" height="16" x="119" y="350" class="ac"/><use href="#ar" width="12" height="16" x="119" y="367" class="ac"/><use href="#ar" width="12" height="16" x="150" y="281" class="ac"/><use href="#ar" width="12" height="16" x="150" y="298" class="ac"/><use href="#ar" width="12" height="16" x="150" y="315" class="ac"/><use href="#ar" width="12" height="16" x="150" y="332" class="ac"/><use href="#ar" width="12" height="16" x="150" y="350" class="ac"/><use href="#ar" width="12" height="16" x="150" y="367" class="ac"/><use href="#ar" width="12" height="16" x="182" y="281" class="ac"/><use href="#ar" width="12" height="16" x="182" y="298" class="ac"/><use href="#ar" width="12" height="16" x="182" y="315" class="ac"/><use href="#ar" width="12" height="16" x="182" y="332" class="ac"/><use href="#ar" width="12" height="16" x="182" y="350" class="ac"/><use href="#ar" width="12" height="16" x="182" y="367" class="ac"/><use href="#ar" width="12" height="16" x="213" y="281" class="ac"/><use href="#ar" width="12" height="16" x="213" y="298" class="ac"/><use href="#ar" width="12" height="16" x="213" y="315" class="ac"/><use href="#ar" width="12" height="16" x="213" y="332" class="ac"/><use href="#ar" width="12" height="16" x="213" y="350" class="ac"/><use href="#ar" width="12" height="16" x="213" y="367" class="ac"/><use href="#ar" width="12" height="16" x="245" y="281" class="ac"/><use href="#ar" width="12" height="16" x="245" y="298" class="ac"/><use href="#ar" width="12" height="16" x="245" y="315" class="ac"/><use href="#ar" width="12" height="16" x="245" y="332" class="ac"/><use href="#ar" width="12" height="16" x="245" y="350" class="ac"/><use href="#ar" width="12" height="16" x="245" y="367" class="ac"/></svg></div>
+      </div>
+      <div class="steps">
+        <div class="rv"><h3>Send</h3><p>Book online or by phone. Tell us your old vet and we request the records for you.</p></div>
+        <div class="rv"><h3>Meet</h3><p>A full exam with time to talk about food, behaviour and anything that worries you.</p></div>
+        <div class="rv"><h3>Plan</h3><p>You leave with one written care plan and a reminder for every date in it.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec hours" id="hours">
+  <div class="grid">
+    <div class="l">
+      <h2 class="rv">Hours and directions</h2>
+      <p class="now rv" id="now"><span class="ab" aria-hidden="true"></span><span>Same-day sick visits every weekday morning</span></p>
+      <table class="rv" id="ht">
+        <caption class="vh">Opening hours</caption>
+        <tbody>
+          <tr data-d="1"><th scope="row">Monday</th><td>7:30am – 6pm</td></tr>
+          <tr data-d="2"><th scope="row">Tuesday</th><td>7:30am – 6pm</td></tr>
+          <tr data-d="3"><th scope="row">Wednesday</th><td>7:30am – 7:30pm</td></tr>
+          <tr data-d="4"><th scope="row">Thursday</th><td>7:30am – 6pm</td></tr>
+          <tr data-d="5"><th scope="row">Friday</th><td>7:30am – 6pm</td></tr>
+          <tr data-d="6"><th scope="row">Saturday</th><td>8am – 1pm</td></tr>
+          <tr data-d="0"><th scope="row">Sunday</th><td>Closed</td></tr>
+        </tbody>
+      </table>
+      <p class="after rv">After hours, call <a href="tel:+18025550172">(802) 555-0172</a>. Until 10pm it rings our on-call vet; overnight it tells you the nearest 24-hour emergency hospital.</p>
+      <div class="addr rv">
+        <b>1418 Cedar Hollow Road<br>Middlebury, VT 05753</b>
+        <p>Free parking at the door, a ramp entrance and a fenced grass patch for dogs.</p>
+        <p><a href="tel:+18025550148">(802) 555-0148</a> · <a href="mailto:frontdesk@cedarhollowvet.example">frontdesk@cedarhollowvet.example</a></p>
+      </div>
+    </div>
+    <figure class="r rv" style="margin:0">
+      <div class="ph arch"><img src="assets/halpin-covered-bridge.jpg" width="1800" height="1350" alt="The wooden Halpin Covered Bridge on a gravel road in autumn" loading="lazy"></div>
+      <figcaption class="cap">The Halpin Covered Bridge in Middlebury, in October. Photo by Dougtone, CC BY-SA 2.0.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="sec faq" id="faq">
+  <div class="grid">
+    <div class="hd"><h2 class="rv">Good questions</h2></div>
+    <div class="qs">
+      <details name="faq" class="rv" open><summary>Are you taking new patients?</summary><div class="a"><p>Yes, dogs and cats of every age. Most new clients get a first visit within the week. <a href="#book">Book here</a> or call (802) 555-0148.</p></div></details>
+      <details name="faq" class="rv"><summary>What should I do in an emergency?</summary><div class="a"><p>Call <a href="tel:+18025550172">(802) 555-0172</a> before you drive, so we're ready when you arrive. Bleeding, trouble breathing, a swollen belly, seizures or eating something toxic can't wait.</p></div></details>
+      <details name="faq" class="rv"><summary>Do you see rabbits, birds or reptiles?</summary><div class="a"><p>We treat dogs and cats only. We're happy to point you to an exotics vet nearby.</p></div></details>
+      <details name="faq" class="rv"><summary>How do payment and pet insurance work?</summary><div class="a"><p>You pay at the visit by card, cash or check. We fill in the claim form for any pet insurer, and surgery or dental bills can be split over three months.</p></div></details>
+      <details name="faq" class="rv"><summary>Can I stay with my pet during the exam?</summary><div class="a"><p>Yes, for exams and vaccines. For surgery and dental work we'll text you updates through the day.</p></div></details>
+      <details name="faq" class="rv"><summary>What does a spay or neuter day look like?</summary><div class="a"><p>Drop off between 7:30 and 8:30am with no breakfast. Cats go home the same afternoon; we call you when your pet is awake and again the next morning.</p></div></details>
+      <details name="faq" class="rv"><summary>Do you do house calls?</summary><div class="a"><p>For end-of-life care, yes, within about 20 miles. For everything else the exam room has the tools we need.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec book" id="book">
+  <div class="grid">
+    <div class="coupon rv" style="--cut:250px">
+      <span class="nt t" aria-hidden="true"></span><span class="nt b" aria-hidden="true"></span><span class="perf" aria-hidden="true"></span>
+      <div class="cl">
+        <h2>Book a visit</h2>
+        <p>Send this and the front desk calls you back to set a time, usually within the hour. In a hurry? Call <a href="tel:+18025550148">(802) 555-0148</a>.</p>
+      </div>
+      <form id="bf" action="mailto:frontdesk@cedarhollowvet.example" method="post" enctype="text/plain">
+        <label class="vh" for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" placeholder="Your name" required>
+        <label class="vh" for="f-tel">Phone</label><input id="f-tel" name="phone" type="tel" autocomplete="tel" placeholder="Phone" required>
+        <label class="vh" for="f-pet">Pet's name, species and age</label><input id="f-pet" name="pet" placeholder="Pet's name, species and age">
+        <label class="vh" for="f-why">Reason for the visit</label>
+        <div class="sel"><select id="f-why" name="reason">
+          <option>Wellness exam and vaccines</option><option>Puppy or kitten visit</option><option>Sick or hurt (same day)</option><option>Dental cleaning</option><option>Spay or neuter</option><option>Something else</option>
+        </select></div>
+        <label class="vh" for="f-notes">Notes</label><textarea id="f-notes" name="notes" placeholder="Anything we should know?"></textarea>
+        <button class="send" type="submit">Send booking request</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="blocks" id="blocks" aria-hidden="true"></div>
+  <p class="vh">Cedar Hollow Animal Clinic</p>
+  <div class="fcols">
+    <div class="c"><h3>Care</h3><ul><li><a href="#prices">Prices</a></li><li><a href="#vaccines">Vaccines</a></li><li><a href="#visits">How visits go</a></li></ul></div>
+    <div class="c"><h3>Clinic</h3><ul><li><a href="#new">New clients</a></li><li><a href="#hours">Hours</a></li><li><a href="#faq">Questions</a></li></ul></div>
+    <div class="c"><h3>Call</h3><ul><li><a href="tel:+18025550148">(802) 555-0148</a></li><li><a href="tel:+18025550172">Emergency line</a></li><li><a href="#book">Book a visit</a></li></ul></div>
+    <div class="ct"><p class="big">1418 Cedar Hollow Road, Middlebury, VT 05753</p><p>Mon–Fri 7:30am–6pm, Wed until 7:30pm, Sat 8am–1pm</p></div>
+  </div>
+  <p class="credits">Photographs from Wikimedia Commons, used under their licences; none shows this clinic, its staff or its patients: <a href="https://commons.wikimedia.org/wiki/File:DSC09611a_Search_and_Rescue_Dog,_Austrian_Red_Cross_Perchtoldsdorf,_2024-10.jpg">black Labrador puppy</a> by Aciarium, CC BY 4.0 (cropped); <a href="https://commons.wikimedia.org/wiki/File:Cat_November_2010-1a.jpg">tabby cat</a> by Alvesgaspar, CC BY-SA 3.0; <a href="https://commons.wikimedia.org/wiki/File:Tabby_cat_with_blue_eyes-3336579.jpg">blue-eyed cat</a> by AdinaVoicu, CC0; <a href="https://commons.wikimedia.org/wiki/File:Dog_portrait_Budapest.jpg">spaniel</a> by CONTRERAS Roberto, CC BY 4.0; <a href="https://commons.wikimedia.org/wiki/File:Golden_Retriever_puppy_(3813393).jpg">golden retriever puppy</a> by jaclou-dl, CC0; <a href="https://commons.wikimedia.org/wiki/File:Felis_catus-cat_on_snow.jpg">cat on snow</a> by Von.grzanka, CC BY-SA 3.0; <a href="https://commons.wikimedia.org/wiki/File:Dog_sleeping_curled_up_on_his_blanket_during_the_day_at_his_master%27s_workplace_in_a_shop.jpg">sleeping dog</a> by Pittigrilli, CC BY 4.0; <a href="https://commons.wikimedia.org/wiki/File:Halpin_Covered_Bridge_-_Vermont_-_6433929497.jpg">Halpin Covered Bridge</a> by Dougtone, CC BY-SA 2.0.</p>
+  <div class="last"><p>Cedar Hollow Animal Clinic is a fictional business. Sample site by <a href="https://orbik.ai">Orbik</a>.</p><a class="top" href="#top">Back to top</a></div>
+</footer>
+
+<script>
+(function(){
+  /* arch band in the hero card */
+  var band=document.querySelector('.band');for(var i=0;i<40;i++){var b=document.createElement('i');b.style.transitionDelay=(i*25)+'ms';band.appendChild(b)}
+  /* footer wordmark built from arch blocks */
+  var W='CEDAR HOLLOW',H=[96,74,100,82,66,0,88,100,70,92,78,84],C=['c1','c2','c3','c1','c2','','c3','c1','c2','c3','c1','c2'],bl=document.getElementById('blocks');
+  W.split('').forEach(function(ch,i){var s=document.createElement('span');if(ch===' '){s.className='sp'}else{s.className=C[i];s.textContent=ch;s.style.height=H[i]+'%';s.style.setProperty('--h22','calc(13svh * '+(H[i]/100)+')');s.style.transitionDelay=(i*55)+'ms'}bl.appendChild(s)});
+
+  /* open now, in Vermont time */
+  var hrs={0:null,1:[7.5,18],2:[7.5,18],3:[7.5,19.5],4:[7.5,18],5:[7.5,18],6:[8,13]};
+  var fmt=function(h){var hh=Math.floor(h),m=Math.round((h-hh)*60),ap=hh>=12?'pm':'am';hh=hh%12||12;return hh+(m?':'+String(m).padStart(2,'0'):'')+ap};
+  try{
+    var p=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date());
+    var get=function(t){return (p.find(function(x){return x.type===t})||{}).value};
+    var d=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(get('weekday')),now=(+get('hour')%24)+(+get('minute'))/60,t=hrs[d];
+    var open=t&&now>=t[0]&&now<t[1],msg;
+    if(open)msg='Open now, until '+fmt(t[1]);
+    else{var k=1,nd;while(k<8){nd=(d+k)%7;if(t&&now<t[0]){nd=d;break}if(hrs[nd])break;k++}var nt=hrs[nd];msg='Closed now · opens '+(nd===d?'today':nd===(d+1)%7?'tomorrow':['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][nd])+' at '+fmt(nt[0])}
+    var st=document.getElementById('status');st.lastElementChild.textContent=msg;if(!open)st.classList.add('closed');
+    document.getElementById('now').lastElementChild.textContent=msg;
+    var row=document.querySelector('#ht tr[data-d="'+d+'"]');if(row)row.classList.add('today');
+  }catch(e){}
+
+  /* hero: slow crossfade */
+  var stage=document.getElementById('stage'),imgs=stage.querySelectorAll('img'),cur=0,timer=null;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  stage.classList.add('drift');
+  function step(){imgs[cur].classList.remove('on');cur=(cur+1)%imgs.length;imgs[cur].classList.add('on')}
+  function run(){if(!reduce&&!timer)timer=setInterval(step,6000)}
+  function stop(){clearInterval(timer);timer=null}
+  document.addEventListener('visibilitychange',function(){document.hidden?stop():run()});run();
+
+  /* vaccine helper */
+  var P={pk:58,exam:68,senior:96,rabies:28,dhpp:34,fvrcp:32,lyme:38,lepto:30,bord:28,felv:34,hw:48,blood:145};
+  var AGES=['6–9 weeks','10–13 weeks','14–17 weeks','about 1 year','adult age','senior age'];
+  var f=document.getElementById('tool'),due=document.getElementById('due'),tot=document.getElementById('tot'),nx=document.getElementById('nx'),rh=document.getElementById('rh'),bk=document.getElementById('bk');
+  function plan(sp,a,o){
+    var L=[],n='';var add=function(name,sub,price,maybe){L.push({name:name,sub:sub,price:price,maybe:!!maybe})};
+    if(sp==='dog'){
+      if(a<3)add('Puppy visit','Exam, deworming, feeding talk',P.pk);else if(a<5)add('Wellness exam','Nose-to-tail check and care plan',P.exam);else add('Senior check','A longer exam, twice a year',P.senior);
+      if(a===0){add('DHPP','Dose 1 of 3',P.dhpp);n='Next: back at 10–13 weeks for the second DHPP dose.'}
+      if(a===1){add('DHPP','Dose 2 of 3',P.dhpp);if(o.water)add('Leptospirosis','Dose 1 of 2',P.lepto);if(o.woods)add('Lyme','Dose 1 of 2',P.lyme);if(o.social)add('Bordetella','Kennel cough',P.bord);n='Next: back at 14–17 weeks for the last puppy shots and rabies.'}
+      if(a===2){add('DHPP','Dose 3 of 3',P.dhpp);add('Rabies','First dose, good for 1 year',P.rabies);if(o.water)add('Leptospirosis','Dose 2 of 2',P.lepto);if(o.woods)add('Lyme','Dose 2 of 2',P.lyme);n='Next: the one-year visit. We\'ll talk about spay or neuter timing at this one.'}
+      if(a===3){add('DHPP booster','Then every 3 years',P.dhpp);add('Rabies','Now good for 3 years',P.rabies);add('Heartworm and tick test','Yearly',P.hw)}
+      if(a>=3){if(a>3){add('Heartworm and tick test','Yearly',P.hw);if(a===5)add('Senior bloodwork','Yearly from age 8',P.blood)}
+        if(o.water)add('Leptospirosis','Yearly',P.lepto);if(o.woods)add('Lyme','Yearly',P.lyme);if(o.social)add('Bordetella','Yearly',P.bord);
+        if(a>3){add('DHPP','Every 3 years, if due',P.dhpp,1);add('Rabies','Every 3 years, if due',P.rabies,1)}
+        n=a===5?'Next: a senior check every six months.':'Next: a wellness exam once a year. We text you a week ahead.'}
+    }else{
+      if(a<3)add('Kitten visit','Exam, deworming, feeding talk',P.pk);else if(a<5)add('Wellness exam','Nose-to-tail check and care plan',P.exam);else add('Senior check','A longer exam, twice a year',P.senior);
+      if(a===0){add('FVRCP','Dose 1 of 3',P.fvrcp);add('Feline leukemia','Dose 1 of 2',P.felv);n='Next: back at 10–13 weeks for the second doses.'}
+      if(a===1){add('FVRCP','Dose 2 of 3',P.fvrcp);add('Feline leukemia','Dose 2 of 2',P.felv);n='Next: back at 14–17 weeks for the last kitten shot and rabies.'}
+      if(a===2){add('FVRCP','Dose 3 of 3',P.fvrcp);add('Rabies','First dose',P.rabies);n='Next: the one-year visit. Ask us about spay or neuter now if you haven\'t.'}
+      if(a===3){add('FVRCP booster','Then every 3 years',P.fvrcp);add('Rabies','Booster',P.rabies);if(o.out)add('Feline leukemia','Booster for outdoor cats',P.felv)}
+      if(a>3){if(a===5)add('Senior bloodwork','Yearly from age 10',P.blood);if(o.out)add('Feline leukemia','Yearly for outdoor cats',P.felv);add('FVRCP','Every 3 years, if due',P.fvrcp,1);add('Rabies','When due on your records',P.rabies,1)}
+      if(a>=3)n=a===5?'Next: a senior check every six months.':'Next: a wellness exam once a year. We text you a week ahead.';
+    }
+    return {L:L,n:n};
+  }
+  var lastSp='dog';
+  function upd(){
+    var sp=f.querySelector('[name=sp]:checked').value,a=+f.querySelector('[name=age]:checked').value,o={};
+    f.querySelectorAll('[type=checkbox]').forEach(function(c){o[c.name]=c.checked});
+    f.querySelectorAll('[data-for]').forEach(function(l){l.hidden=l.getAttribute('data-for')!==sp});
+    var r=plan(sp,a,o),sum=0,h='';
+    r.L.forEach(function(x){if(!x.maybe)sum+=x.price;h+='<li'+(x.maybe?' class="maybe"':'')+'><span><b>'+x.name+'</b><small>'+x.sub+'</small></span><span>$'+x.price+'</span></li>'});
+    due.innerHTML=h;tot.textContent='$'+sum;nx.textContent=r.n;rh.textContent=(sp==='dog'?'Dogs':'Cats')+' at '+AGES[a];
+    if(sp!==lastSp){document.getElementById('pdog').classList.toggle('off',sp!=='dog');document.getElementById('pcat').classList.toggle('off',sp!=='cat');lastSp=sp}
+    bk.dataset.note=(sp==='dog'?'Dog':'Cat')+', '+AGES[a]+'. Helper suggested: '+r.L.filter(function(x){return!x.maybe}).map(function(x){return x.name}).join(', ')+' (about $'+sum+').';
+    bk.dataset.reason=a<3?'Puppy or kitten visit':'Wellness exam and vaccines';
+  }
+  f.addEventListener('change',upd);upd();
+  bk.addEventListener('click',function(){document.getElementById('f-notes').value=bk.dataset.note;document.getElementById('f-why').value=bk.dataset.reason;setTimeout(function(){document.getElementById('f-name').focus({preventScroll:true})},500)});
+
+  /* entrances */
+  var els=document.querySelectorAll('.rv,.band,.diag,.blocks');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+  var groups=new Map();
+  els.forEach(function(e){var s=e.closest('section,footer')||document.body;var n=groups.get(s)||0;groups.set(s,n+1);if(e.classList.contains('rv'))e.style.transitionDelay=Math.min(n,6)*75+'ms';io.observe(e)});
+  document.querySelectorAll('.diag use').forEach(function(u,i){u.style.transitionDelay=(i%60)*12+'ms'});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Maple Street Family Dental — sample site by Orbik</title>
+<meta name="description" content="Family dentist on Maple Street in Burlington, Vermont. Checkups, cleanings, kids' dentistry and same-day toothache visits. Prices listed up front.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{
+  --bg:#dedad3;--surface:#d3cec6;--ink:#0a0a0a;--muted:#5c5852;--accent:#256f82;--accent-hover:#1c5a6a;--accent-ink:#fff;
+  --deep:#141312;--deep-ink:#ededeb;--deep-soft:#bdb7ad;
+  --step-small:clamp(.8125rem,.79rem + .1vw,.875rem);
+  --step-body:clamp(1.0625rem,1rem + .25vw,1.1875rem);
+  --step-lead:clamp(1.25rem,1.1rem + .7vw,1.625rem);
+  --step-head:clamp(2rem,1.3rem + 3.2vw,4rem);
+  --step-name:clamp(3.4rem,10.6vw,10.5rem);
+  --m:clamp(16px,1.7vw,24px);
+  --gap:clamp(96px,12vw,180px);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--step-body)/1.55 "Archivo",system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-weight:400;letter-spacing:-.02em;line-height:1;margin:0}
+p,ul,ol,dl,dd{margin:0}
+ul,ol{padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.sample{margin:0;background:var(--ink);color:var(--bg);font-size:var(--step-small);padding:9px var(--m)}
+.sample a{color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;background:var(--accent);color:var(--accent-ink);font:600 var(--step-body)/1 "Archivo",sans-serif;text-decoration:none;border:0;border-radius:0;cursor:pointer;transition:background-color .2s ease,transform .15s var(--ease)}
+.btn:hover{background:var(--accent-hover)}
+.btn:active{transform:scale(.97)}
+.tlink{font-weight:600;text-underline-offset:4px;text-decoration-thickness:2px;transition:color .2s ease}
+.tlink:hover{color:var(--accent)}
+
+/* ---------- hero ---------- */
+.hero{display:grid;grid-template-rows:58fr auto;min-height:calc(100svh - 38px);background:var(--bg)}
+.hero .ph{position:relative;overflow:hidden;min-height:46svh}
+.hero .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 62%}
+.nav{position:absolute;top:var(--m);right:var(--m);display:flex;align-items:center;gap:4px;background:rgba(10,10,10,.62);padding:4px}
+.nav a{color:#fff;text-decoration:none;font-size:var(--step-small);padding:10px 12px;transition:background-color .2s ease}
+.nav a:hover{background:rgba(255,255,255,.16)}
+.nav .call{font-weight:600}
+.menu{display:none}
+.band{padding:24px var(--m) 26px;display:grid;grid-template-columns:auto 1fr;align-items:end;gap:24px clamp(32px,4vw,72px)}
+.band .row{display:grid;gap:24px;justify-items:start;max-width:440px;justify-self:end;padding-bottom:6px}
+.band .lede{max-width:40ch;font-size:var(--step-lead);line-height:1.35}
+.band .acts{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.hero h1{font-size:var(--step-name);letter-spacing:-.05em;line-height:.86;white-space:nowrap}
+.hero h1 span{display:block}
+
+/* ---------- statements ---------- */
+.why{position:relative;height:250vh;margin-top:var(--gap)}
+.why .stage{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--deep)}
+.why .stage>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.why .scrim{position:absolute;left:0;right:0;top:0;height:46%;background:rgba(10,10,10,.68)}
+.why .stack{position:absolute;left:50%;top:clamp(40px,7vh,88px);transform:translateX(-50%);text-align:center;display:grid;gap:8px;width:min(92vw,900px)}
+.why .stack>*{font-size:var(--step-lead);line-height:1.2;color:var(--deep-soft);transition:color .35s ease}
+.why .stack h2{letter-spacing:-.01em}
+.why .stack .on{color:#fff}
+html:not(.js) .why .stack>*{color:#fff}
+.why .thumb{position:absolute;width:clamp(170px,17vw,270px);opacity:0;transform:translateY(24px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.why .thumb.on{opacity:1;transform:none}
+.why .thumb img{width:100%;height:100%;object-fit:cover}
+.why .markers{position:absolute;inset:0;display:grid;grid-template-rows:repeat(6,1fr);pointer-events:none}
+
+/* ---------- prices ---------- */
+.prices{display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px;padding:var(--gap) var(--m) 0}
+.prices .lead{grid-column:1/4}
+.prices h2{font-size:var(--step-head);line-height:1.02}
+.prices .lead p{margin-top:20px;max-width:30ch}
+.prices figure{margin:32px 0 0}
+.prices figure img{width:100%;aspect-ratio:4/5;object-fit:cover}
+figcaption{margin-top:10px;font-size:var(--step-small);color:var(--muted)}
+.menu-list{grid-column:5/13;columns:2;column-gap:64px}
+.grp{break-inside:avoid;padding-top:48px}
+.grp:first-child{padding-top:0}
+.grp h3{font-size:var(--step-lead);font-weight:600;letter-spacing:-.01em;margin-bottom:18px}
+.item{display:flex;justify-content:space-between;gap:16px;align-items:baseline;break-inside:avoid;padding-bottom:22px}
+.item b{font-weight:400}
+.item .pr{font-variant-numeric:tabular-nums;white-space:nowrap}
+.item small{display:block;font-size:var(--step-small);color:var(--muted);max-width:36ch;margin-top:3px;line-height:1.45}
+.menu-note{grid-column:5/13;margin-top:28px;max-width:62ch}
+
+/* ---------- planner ---------- */
+.plan{margin-top:var(--gap);background:var(--surface);padding:clamp(64px,8vw,120px) var(--m);display:grid;grid-template-columns:4fr 7fr;gap:clamp(32px,5vw,80px);align-items:start}
+.plan .intro{position:sticky;top:32px}
+.plan h2{font-size:var(--step-head)}
+.plan .intro p{margin-top:20px;max-width:34ch}
+.plan .intro .alt{margin-top:24px}
+.planner{min-width:0}
+.planner fieldset{border:0;padding:0;margin:0 0 28px;min-width:0}
+.planner legend{font-weight:600;margin-bottom:12px;padding:0}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pills label{position:relative;cursor:pointer}
+.pills input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.pills span{display:inline-flex;align-items:center;min-height:48px;padding:10px 16px;background:var(--bg);line-height:1.2;transition:background-color .15s ease,color .15s ease,transform .15s var(--ease)}
+.pills label:hover span{background:#ebe8e2}
+.pills input:checked+span{background:var(--ink);color:var(--bg)}
+.pills input:focus-visible+span{outline:3px solid var(--accent);outline-offset:2px}
+.pills label:active span{transform:scale(.97)}
+.days span{flex-direction:column;align-items:flex-start;justify-content:center;min-width:84px}
+@media (max-width:760px){.days label{flex:1 1 28%}.days span{width:100%;min-width:0}}
+.days span em{font-style:normal;font-size:var(--step-small)}
+.est{background:var(--ink);color:var(--deep-ink);padding:24px 26px;margin:40px 0 28px;display:grid;grid-template-columns:1fr auto;gap:6px 28px;align-items:center}
+.est .num{grid-row:1/3;grid-column:2;text-align:right}
+.est p{margin:0}
+.est .num{font-size:var(--step-head);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;color:#fff}
+.est .fine{font-size:var(--step-small);color:var(--deep-soft)}
+.slots-empty{color:var(--muted)}
+.go{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px}
+.go .btn{min-width:min(100%,320px)}
+.nojs{display:none}
+html:not(.js) .nojs{display:block}
+html:not(.js) .jsonly{display:none}
+
+/* ---------- new patients list ---------- */
+.np{display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px;padding:var(--gap) var(--m) 0}
+.np .pic{grid-column:1/6;position:sticky;top:12vh;align-self:start;aspect-ratio:4/5;overflow:hidden;background:var(--surface)}
+.np .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s ease}
+.np .pic img.on{opacity:1}
+html:not(.js) .np .pic img:first-child{opacity:1}
+.np .body{grid-column:7/12}
+.np h2{font-size:var(--step-head);margin-bottom:48px}
+.rows li{padding:0}
+.rows button{all:unset;box-sizing:border-box;display:flex;width:100%;min-height:58px;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;color:var(--muted);font-size:var(--step-lead);letter-spacing:-.01em;transition:color .25s ease}
+.rows button span:last-child{font-size:var(--step-small);white-space:nowrap}
+.rows button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.rows li.on button,.rows button:hover{color:var(--ink)}
+.rows .desc{max-width:40ch;padding:2px 0 18px;display:none}
+.rows li.on .desc{display:block}
+html:not(.js) .rows .desc{display:block}
+html:not(.js) .rows button{color:var(--ink)}
+.np .after{margin-top:32px;max-width:44ch}
+
+/* ---------- faq ---------- */
+.faq{overflow:clip;margin-top:var(--gap);background:var(--deep);color:var(--deep-ink);display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px;padding:0 var(--m) 80px}
+.faq .col{grid-column:1/6;padding-top:clamp(72px,8vw,120px)}
+.faq h2{font-size:var(--step-head)}
+.facts{margin-top:28px;display:grid;gap:4px}
+.facts a{color:#fff}
+.qs{margin-top:44px;display:grid;gap:28px}
+.qs summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:var(--step-body);font-weight:600;color:#fff;min-height:44px}
+.qs summary::-webkit-details-marker{display:none}
+.qs summary svg{flex:none;width:16px;height:16px;transition:transform .25s var(--ease)}
+.qs details[open] summary svg{transform:rotate(180deg)}
+.qs summary:hover{color:#d7ecf1}
+.qs details p{margin-top:10px;color:var(--deep-soft);max-width:52ch}
+.faq .end{margin-top:44px;display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center}
+.faq .end .tlink{color:#fff}
+.faq .pics{grid-column:7/13;position:relative;margin-top:-64px;padding-bottom:80px;align-self:start}
+.faq .tall{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:46% 50%}
+.faq .sq{position:absolute;left:-40px;bottom:0;width:36%;aspect-ratio:1;object-fit:cover;object-position:50% 30%}
+.faq .pics figcaption{position:absolute;left:calc(36% - 16px);bottom:-6px;right:0;padding-left:24px;color:var(--deep-soft)}
+
+/* ---------- visit ---------- */
+.visit{position:relative;height:130svh;margin-top:var(--gap);overflow:clip}
+.visit>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 60%}
+.card{position:sticky;top:60px;margin:0 60px 0 auto;width:380px;background:var(--bg);padding:32px 32px 0;z-index:1}
+.card h2{font-size:var(--step-lead);font-weight:400;margin-bottom:16px}
+.card address{font-style:normal}
+.hours{margin:20px 0;display:grid;gap:4px}
+.hours div{display:flex;justify-content:space-between;font-variant-numeric:tabular-nums}
+.card .tel{display:block;font-size:var(--step-lead);text-decoration:none;margin-bottom:24px}
+.card .btn{display:flex;width:calc(100% + 64px);margin:0 -32px;min-height:56px}
+.visit .credit{position:absolute;left:var(--m);bottom:var(--m);background:rgba(10,10,10,.62);color:#fff;font-size:var(--step-small);padding:6px 10px}
+
+/* ---------- getting here ---------- */
+.here{display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,5vw,80px);padding:var(--gap) var(--m) 0;align-items:start}
+.here .map{background:var(--surface)}
+.here .map svg{display:block;width:100%;height:auto}
+.here .map p{padding:0 16px 14px;font-size:var(--step-small);color:var(--ink)}
+.here h2{font-size:var(--step-head)}
+.here dl{margin-top:28px;display:grid;gap:20px}
+.here dt{font-weight:600}
+.here .go{margin-top:32px}
+
+/* ---------- footer ---------- */
+footer{margin-top:var(--gap);background:var(--ink);color:var(--deep-ink);padding:56px var(--m) 28px;overflow:hidden}
+footer .grid{display:grid;grid-template-columns:5fr 7fr;gap:32px 64px;font-size:var(--step-small);color:var(--deep-soft)}
+footer .grid p+p{margin-top:10px}
+footer .credits{max-width:75ch}
+footer a{color:#fff}
+footer .contact{font-size:var(--step-body);color:var(--deep-ink)}
+.wordmark{font-size:var(--step-name);letter-spacing:-.05em;line-height:.86;white-space:nowrap;margin-top:72px;transform-origin:0 100%;color:var(--bg)}
+
+/* ---------- motion ---------- */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+html:not(.js) .rv{opacity:1;transform:none}
+@media (prefers-reduced-motion:no-preference){
+  .hero .ph img{animation:settle 1.8s var(--ease) both}
+  @keyframes settle{from{transform:scale(1.07)}to{transform:scale(1)}}
+  .hero h1 span{animation:rise .9s var(--ease) both}
+  .hero h1 span+span{animation-delay:.08s}
+  .band .row{animation:rise .9s .18s var(--ease) both}
+  @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+  @supports (animation-timeline:view()){
+    .wordmark{animation:grow linear both;animation-timeline:view();animation-range:entry 0% cover 45%}
+    @keyframes grow{from{transform:scale(.94)}to{transform:scale(1)}}
+    .visit>img{animation:drift linear both;animation-timeline:view();animation-range:entry 0% exit 100%}
+    @keyframes drift{from{transform:scale(1.06) translateY(-2%)}to{transform:scale(1.06) translateY(2%)}}
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .why .thumb{transition:none}
+}
+
+/* ---------- tablet ---------- */
+@media (max-width:1100px){
+  .menu-list{grid-column:1/-1;margin-top:48px}
+  .menu-note{grid-column:1/-1}
+  .prices .lead{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:0 32px}
+  .prices .lead figure{grid-row:1/4;grid-column:2;margin:0}
+  .np .pic{grid-column:1/6}.np .body{grid-column:6/13}
+  .plan{grid-template-columns:1fr}.plan .intro{position:static}
+  .faq .col{grid-column:1/7}.faq .pics{grid-column:8/13}
+  .why .thumb{display:none}
+}
+/* ---------- phone ---------- */
+@media (max-width:760px){
+  .nav a:not(.call){display:none}
+  .menu{display:block;position:relative}
+  .menu summary{list-style:none;color:#fff;font-size:var(--step-small);padding:10px 12px;cursor:pointer}
+  .menu summary::-webkit-details-marker{display:none}
+  .menu ul{position:absolute;right:-4px;top:calc(100% + 4px);background:var(--ink);min-width:200px;padding:8px 0;z-index:5}
+  .menu ul a{display:block;color:#fff;padding:12px 18px;font-size:var(--step-body)}
+  .hero{grid-template-rows:auto auto;min-height:0}
+  .hero .ph{height:50svh;min-height:300px}
+  .band{padding:20px var(--m) 16px;gap:28px}
+  .band{grid-template-columns:1fr}
+  .band .row{justify-self:start;gap:18px}
+  .band .lede{font-size:var(--step-body);line-height:1.5}
+  .hero h1{font-size:clamp(2.6rem,12.6vw,6rem)}
+  .why{height:280vh}
+  .why .scrim{top:auto;bottom:0;height:52%}
+  .why .stack{top:auto;bottom:40px;left:var(--m);right:var(--m);transform:none;text-align:left;width:auto;gap:6px}
+  .why .stack>*{font-size:var(--step-body)}
+  .why .thumb{display:block;width:44vw;right:var(--m);left:auto!important;top:var(--m)!important}
+  .prices{display:block}
+  .prices .lead{display:block}
+  .prices .lead figure{width:60%;margin-top:28px}
+  .menu-list{columns:1}
+  .grp{padding-top:40px}
+  .plan{grid-template-columns:minmax(0,1fr)}
+  .plan .intro{position:static}
+  .go .btn{width:100%}
+  .est{grid-template-columns:1fr}.est .num{grid-row:auto;grid-column:auto;text-align:left}
+  .np{display:block}
+  .np .pic{position:sticky;top:0;z-index:2;aspect-ratio:auto;height:38svh;margin:0 calc(var(--m) * -1)}
+  .np h2{margin:32px 0 20px}
+  .rows button{min-height:56px}
+  .faq{display:flex;flex-direction:column-reverse;padding-bottom:64px}
+  .faq .pics{margin:0 calc(var(--m) * -1);padding-bottom:0}
+  .faq .tall{aspect-ratio:4/5}
+  .faq .sq{left:auto;right:var(--m);bottom:-40px;width:38%}
+  .faq .pics figcaption{position:static;padding:12px var(--m) 0;width:58%}
+  .faq .col{padding-top:40px}
+  .faq .end .btn{width:100%}
+  .visit{height:auto;display:flex;flex-direction:column}
+  .visit>img{position:relative;height:70svh}
+  .card{position:relative;top:auto;margin:-80px var(--m) 0;width:auto;padding:28px 24px 0}
+  .card .btn{width:calc(100% + 48px);margin:0 -24px}
+  .visit .credit{position:static;align-self:flex-start;margin:10px var(--m) 0;background:none;color:var(--muted);padding:0}
+  .here{grid-template-columns:1fr}
+  .here .map{order:2;overflow:hidden}
+  .here .map svg{width:150%;margin-left:-38%}
+  footer .grid{grid-template-columns:1fr}
+  .wordmark{font-size:clamp(2.6rem,12.6vw,6rem);white-space:normal}
+}
+</style>
+</head>
+<body>
+<p class="sample">Sample website for a fictional business, designed by Orbik · <a href="https://orbik.ai">orbik.ai</a></p>
+
+<header class="hero">
+  <div class="ph">
+    <img src="assets/autumn-street-corner-in-quebec-city.jpg" width="1800" height="1170" alt="A quiet residential street corner under red and gold maple trees in autumn" fetchpriority="high">
+    <nav class="nav" aria-label="Main">
+      <a href="#prices">Prices</a>
+      <a href="#new-patients">New patients</a>
+      <a href="#visit">Hours</a>
+      <a href="#faq">Questions</a>
+      <a class="call" href="tel:+18025550143">(802) 555-0143</a>
+      <details class="menu"><summary>Menu</summary>
+        <ul>
+          <li><a href="#prices">Prices</a></li>
+          <li><a href="#book">Book a visit</a></li>
+          <li><a href="#new-patients">New patients</a></li>
+          <li><a href="#faq">Questions</a></li>
+          <li><a href="#visit">Hours and directions</a></li>
+        </ul>
+      </details>
+    </nav>
+  </div>
+  <div class="band">
+    <h1><span>Maple Street</span><span>Family Dental</span></h1>
+    <div class="row">
+      <p class="lede">A family dentist on Maple Street in Burlington. Checkups, kids, and same-day toothache visits, with every price listed below.</p>
+      <div class="acts">
+        <a class="tlink" href="tel:+18025550143">Call (802) 555-0143</a>
+        <a class="btn" href="#book">Book a visit</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="why" id="why" aria-labelledby="why-h">
+  <div class="stage">
+    <img src="assets/vermont-2016-foliage-29529310564.jpg" width="1800" height="1200" alt="Vermont hillside in full autumn colour reflected in a still pond" loading="lazy">
+    <div class="scrim"></div>
+    <figure class="thumb" style="left:7%;top:52%;aspect-ratio:4/5" data-i="0"><img src="assets/acer-saccharum-sugar-maple-tree-in-fall.jpg" alt="" loading="lazy" width="1800" height="1350"></figure>
+    <figure class="thumb" style="left:76%;top:58%;aspect-ratio:1" data-i="1"><img src="assets/penny-magazine-1835-137-sugar-maple-tree.jpg" alt="" loading="lazy" width="1268" height="1689"></figure>
+    <figure class="thumb" style="left:9%;top:60%;aspect-ratio:3/2" data-i="2"><img src="assets/church-street-burlington-vermont-67643.jpg" alt="" loading="lazy" width="1800" height="1141"></figure>
+    <figure class="thumb" style="left:74%;top:50%;aspect-ratio:4/5" data-i="3"><img src="assets/autumn-street-corner-in-quebec-city.jpg" alt="" loading="lazy" width="1800" height="1170" style="object-position:30% 50%"></figure>
+    <figure class="thumb" style="left:8%;top:54%;aspect-ratio:1" data-i="4"><img src="assets/lake-champlain-from-burlington-vermont.jpg" alt="" loading="lazy" width="1800" height="1200"></figure>
+    <figure class="thumb" style="left:77%;top:56%;aspect-ratio:3/4" data-i="5"><img src="assets/robert-macaire-dentist-damnit-doctor-you-pulled.jpg" alt="" loading="lazy" width="1800" height="2350"></figure>
+    <div class="stack">
+      <h2 id="why-h" class="on">Built around a family's week</h2>
+      <p>Open from 7:30 every weekday</p>
+      <p>Saturday mornings, 8 to 1</p>
+      <p>Same-day visits for toothaches</p>
+      <p>Kids welcome from the first tooth</p>
+      <p>The price before we start</p>
+    </div>
+  </div>
+  <div class="markers" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<section class="prices" id="prices" aria-labelledby="prices-h">
+  <div class="lead">
+    <h2 id="prices-h" class="rv">Prices, up front</h2>
+    <p class="rv">What a visit costs without insurance. With a PPO plan, most cleanings and checkups cost you nothing.</p>
+    <figure class="rv"><img src="assets/penny-magazine-1835-137-sugar-maple-tree.jpg" width="1268" height="1689" alt="Woodcut of a large sugar maple with people resting under it" loading="lazy"><figcaption>The sugar maple, as the Penny Magazine printed it in 1835.</figcaption></figure>
+  </div>
+  <div class="menu-list">
+    <div class="grp rv">
+      <h3>Checkups and cleaning</h3>
+      <div class="item"><div><b>New patient visit</b><small>Exam, cleaning and full x-rays, about 75 minutes</small></div><span class="pr">$245</span></div>
+      <div class="item"><div><b>Cleaning and checkup</b><small>Every six months, with bitewing x-rays once a year</small></div><span class="pr">$165</span></div>
+      <div class="item"><div><b>Deep cleaning</b><small>For gum disease, per quarter of the mouth</small></div><span class="pr">from $240</span></div>
+      <div class="item"><div><b>Night guard</b><small>Custom fitted, for grinding and clenching</small></div><span class="pr">$395</span></div>
+    </div>
+    <div class="grp rv">
+      <h3>Children</h3>
+      <div class="item"><div><b>First visit, under 3</b><small>A ride in the chair, a look and tips for parents</small></div><span class="pr">Free</span></div>
+      <div class="item"><div><b>Child's checkup and cleaning</b><small>Ages 3 to 13, fluoride included</small></div><span class="pr">$95</span></div>
+      <div class="item"><div><b>Sealants</b><small>Protects back teeth from cavities, per tooth</small></div><span class="pr">$45</span></div>
+    </div>
+    <div class="grp rv">
+      <h3>Fillings and repairs</h3>
+      <div class="item"><div><b>Tooth-coloured filling</b><small>Price depends on size and surfaces</small></div><span class="pr">from $180</span></div>
+      <div class="item"><div><b>Crown</b><small>Porcelain, fitted in two visits</small></div><span class="pr">from $1,150</span></div>
+      <div class="item"><div><b>Root canal</b><small>Front tooth; back teeth from $1,050</small></div><span class="pr">from $850</span></div>
+      <div class="item"><div><b>Extraction</b><small>Simple extraction under local anaesthetic</small></div><span class="pr">from $195</span></div>
+    </div>
+    <div class="grp rv">
+      <h3>Urgent and cosmetic</h3>
+      <div class="item"><div><b>Toothache visit</b><small>Same day, exam and x-ray, treatment quoted first</small></div><span class="pr">$95</span></div>
+      <div class="item"><div><b>Whitening in the chair</b><small>One 90-minute visit</small></div><span class="pr">$450</span></div>
+      <div class="item"><div><b>Take-home whitening</b><small>Custom trays and two weeks of gel</small></div><span class="pr">$295</span></div>
+      <div class="item"><div><b>Clear aligners</b><small>Includes retainers; payment plans available</small></div><span class="pr">from $3,900</span></div>
+    </div>
+  </div>
+  <p class="menu-note rv">No insurance? The Maple Plan is $29 a month for adults and $19 for children: two cleanings, exams and x-rays a year, and 20% off everything else.</p>
+</section>
+
+<section class="plan" id="book" aria-labelledby="book-h">
+  <div class="intro">
+    <h2 id="book-h" class="rv">Plan your visit</h2>
+    <p class="rv">Pick what you need and how you pay to see your likely cost. Then choose a time and send the request. We confirm by phone within one business day.</p>
+    <p class="alt rv">Rather talk to someone? <a class="tlink" href="tel:+18025550143">(802) 555-0143</a></p>
+  </div>
+  <form class="planner rv" id="planner" action="mailto:hello@maplestreetdental.example" method="post" enctype="text/plain">
+    <fieldset>
+      <legend>What do you need?</legend>
+      <div class="pills" id="types">
+        <label><input type="radio" name="visit" value="new" checked><span>New patient visit</span></label>
+        <label><input type="radio" name="visit" value="clean"><span>Cleaning and checkup</span></label>
+        <label><input type="radio" name="visit" value="kid"><span>Child's checkup</span></label>
+        <label><input type="radio" name="visit" value="ache"><span>Toothache</span></label>
+        <label><input type="radio" name="visit" value="fill"><span>A filling</span></label>
+        <label><input type="radio" name="visit" value="white"><span>Whitening</span></label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>How will you pay?</legend>
+      <div class="pills">
+        <label><input type="radio" name="pay" value="ppo" checked><span>PPO insurance</span></label>
+        <label><input type="radio" name="pay" value="cash"><span>No insurance</span></label>
+        <label><input type="radio" name="pay" value="plan"><span>Maple Plan member</span></label>
+      </div>
+    </fieldset>
+    <div class="est" aria-live="polite">
+      <p class="num" id="cost">$0 – $40</p>
+      <p id="costline">Typical cost to you with a PPO plan. The full price is $245.</p>
+      <p class="fine">An estimate, not a quote. We check your benefits before your visit.</p>
+    </div>
+    <fieldset class="jsonly">
+      <legend>Choose a day</legend>
+      <div class="pills days" id="days"></div>
+    </fieldset>
+    <fieldset class="jsonly">
+      <legend>Choose a time</legend>
+      <div class="pills" id="slots"><p class="slots-empty">Pick a day first.</p></div>
+    </fieldset>
+    <p class="nojs">Call <a class="tlink" href="tel:+18025550143">(802) 555-0143</a> to choose a time, or send a request and we will call you back.</p>
+    <div class="go">
+      <a class="btn" id="send" href="mailto:hello@maplestreetdental.example?subject=Visit%20request">Request this visit</a>
+      <a class="tlink" href="tel:+18025550143">Or call (802) 555-0143</a>
+    </div>
+  </form>
+</section>
+
+<section class="np" id="new-patients" aria-labelledby="np-h">
+  <div class="pic" aria-hidden="true">
+    <img class="on" src="assets/church-street-burlington-vermont-67643.jpg" width="1800" height="1141" alt="" loading="lazy" style="object-position:50% 50%">
+    <img src="assets/acer-saccharum-sugar-maple-tree-in-fall.jpg" width="1800" height="1350" alt="" loading="lazy">
+    <img src="assets/lake-champlain-from-burlington-vermont.jpg" width="1800" height="1200" alt="" loading="lazy" style="object-position:30% 50%">
+    <img src="assets/robert-macaire-dentist-damnit-doctor-you-pulled.jpg" width="1800" height="2350" alt="" loading="lazy" style="object-position:50% 40%">
+  </div>
+  <div class="body">
+    <h2 id="np-h" class="rv">New to Maple Street?</h2>
+    <ul class="rows" id="rows">
+      <li class="on" data-img="0"><button type="button" aria-expanded="true" aria-controls="d1"><span>Your first visit</span><span>75 minutes</span></button>
+        <p class="desc" id="d1">A full exam, cleaning and x-rays, then a plain talk about what we found and what, if anything, needs doing. No treatment on the day unless you want it.</p></li>
+      <li data-img="1"><button type="button" aria-expanded="false" aria-controls="d2"><span>What to bring</span><span>3 things</span></button>
+        <p class="desc" id="d2">Your insurance card, a photo ID and a list of any medicines. Fill in the forms online before you come and skip the clipboard.</p></li>
+      <li data-img="2"><button type="button" aria-expanded="false" aria-controls="d3"><span>Insurance we take</span><span>Most PPO plans</span></button>
+        <p class="desc" id="d3">In network with Delta Dental, Cigna, MetLife, Aetna and Guardian. We file the claim for you, and we will tell you what your plan covers before any treatment.</p></li>
+      <li data-img="1"><button type="button" aria-expanded="false" aria-controls="d4"><span>No insurance</span><span>$29 a month</span></button>
+        <p class="desc" id="d4">The Maple Plan covers two cleanings, exams and x-rays a year, plus 20% off fillings, crowns and whitening. Children are $19 a month. Cancel any time.</p></li>
+      <li data-img="2"><button type="button" aria-expanded="false" aria-controls="d5"><span>Children's first visit</span><span>Free under 3</span></button>
+        <p class="desc" id="d5">Bring them by their first birthday or first tooth. They sit on your lap, count teeth with us and go home with a new toothbrush.</p></li>
+      <li data-img="3"><button type="button" aria-expanded="false" aria-controls="d6"><span>Nervous about dentists</span><span>Go at your pace</span></button>
+        <p class="desc" id="d6">Tell us when you book. We explain each step before we do it, stop when you raise a hand, and offer headphones, a weighted blanket or laughing gas.</p></li>
+      <li data-img="0"><button type="button" aria-expanded="false" aria-controls="d7"><span>Paying for bigger work</span><span>0% plans</span></button>
+        <p class="desc" id="d7">For treatment over $500, spread the cost over 6 or 12 months with no interest. You get a written estimate before anything starts.</p></li>
+    </ul>
+    <p class="after rv"><a class="btn" href="#book">Book a new patient visit</a></p>
+  </div>
+</section>
+
+<section class="faq" id="faq" aria-labelledby="faq-h">
+  <div class="col">
+    <h2 id="faq-h" class="rv">Good questions</h2>
+    <div class="facts rv">
+      <p>214 Maple Street, Burlington, Vermont</p>
+      <p>Mon–Thu 7:30–5:30, Fri 7:30–2, Sat 8–1</p>
+      <p>Free parking behind the building</p>
+    </div>
+    <div class="qs">
+      <details class="rv"><summary>Do you take my insurance?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></summary><p>Most likely. We are in network with Delta Dental, Cigna, MetLife, Aetna and Guardian, and we file claims for most other PPO plans as an out-of-network office. Call with your card and we will check in a few minutes.</p></details>
+      <details class="rv"><summary>I have a toothache. Can you see me today?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></summary><p>Usually, yes. We hold same-day slots every weekday and on Saturdays. Call before 11am for the best chance. The visit is $95 and we quote any treatment before we start.</p></details>
+      <details class="rv"><summary>When should my child first see a dentist?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></summary><p>By their first birthday, or when the first tooth comes in. Visits under age 3 are free, and we book brothers and sisters back to back so it is one trip for you.</p></details>
+      <details class="rv"><summary>I'm nervous. How do you handle that?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></summary><p>Slowly. You can come in first just to meet us. We tell you what each step will feel like, agree a stop signal, and offer laughing gas for $65 a visit.</p></details>
+      <details class="rv"><summary>Who will I see?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></summary><p>Dr. Nora Halvorsen or Dr. Sam Okafor for exams and treatment, and one of our three hygienists for cleanings. Most families see the same hygienist every time.</p></details>
+      <details class="rv"><summary>What if I need to cancel?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></summary><p>Call or text a day ahead and there is no charge. We send a reminder text two days before every visit.</p></details>
+    </div>
+    <div class="end rv"><a class="btn" href="#book">Book a visit</a><a class="tlink" href="tel:+18025550143">Ask us: (802) 555-0143</a></div>
+  </div>
+  <figure class="pics">
+    <img class="tall rv" src="assets/acer-saccharum-sugar-maple-tree-in-fall.jpg" width="1800" height="1350" alt="Close view of a sugar maple in full orange autumn leaf" loading="lazy">
+    <img class="sq rv" src="assets/robert-macaire-dentist-damnit-doctor-you-pulled.jpg" width="1800" height="2350" alt="Hand-coloured 1838 lithograph by Daumier of an angry patient confronting a dentist" loading="lazy">
+    <figcaption>A sugar maple in October, and a dentist as Daumier drew one in 1838. Things are gentler now.</figcaption>
+  </figure>
+</section>
+
+<section class="visit" id="visit" aria-labelledby="visit-h">
+  <img src="assets/lake-champlain-from-burlington-vermont.jpg" width="1800" height="1200" alt="Lake Champlain seen from Burlington, with the Adirondack mountains on the far shore" loading="lazy">
+  <div class="card">
+    <h2 id="visit-h">Come see us</h2>
+    <address>214 Maple Street<br>Burlington, VT 05401</address>
+    <div class="hours">
+      <div><span>Mon – Thu</span><span>7:30 am – 5:30 pm</span></div>
+      <div><span>Friday</span><span>7:30 am – 2:00 pm</span></div>
+      <div><span>Saturday</span><span>8:00 am – 1:00 pm</span></div>
+    </div>
+    <a class="tel" href="tel:+18025550143">(802) 555-0143</a>
+    <a class="btn" href="#book">Book a visit</a>
+  </div>
+  <p class="credit">Lake Champlain, a few blocks west of Maple Street.</p>
+</section>
+
+<section class="here" aria-labelledby="here-h">
+  <figure class="map rv" style="margin:0">
+    <svg viewBox="0 0 720 440" role="img" aria-labelledby="map-t">
+      <title id="map-t">Map: Maple Street Family Dental at 214 Maple Street, between South Winooski Avenue and South Union Street, a few blocks east of Lake Champlain</title>
+      <rect x="0" y="0" width="140" height="440" fill="#9fb8bd"/>
+      <text x="70" y="220" font-family="Archivo,sans-serif" font-size="19" fill="#0a0a0a" text-anchor="middle" transform="rotate(-90 70 220)">Lake Champlain</text>
+      <g fill="#ece8e1">
+        <rect x="140" y="88" width="580" height="22"/>
+        <rect x="140" y="218" width="580" height="30"/>
+        <rect x="140" y="350" width="580" height="22"/>
+        <rect x="180" y="0" width="16" height="440"/>
+        <rect x="262" y="0" width="16" height="440"/>
+        <rect x="344" y="0" width="16" height="440"/>
+        <rect x="426" y="0" width="16" height="440"/>
+        <rect x="508" y="0" width="20" height="440"/>
+        <rect x="610" y="0" width="20" height="440"/>
+      </g>
+      <g font-family="Archivo,sans-serif" font-size="19" fill="#0a0a0a" text-anchor="middle">
+        <text x="188" y="428">Battery</text>
+        <text x="270" y="404">Champlain</text>
+        <text x="352" y="428">Pine</text>
+        <text x="434" y="404">St Paul</text>
+        <text x="518" y="428">S Winooski</text>
+        <text x="620" y="404">S Union</text>
+        <text x="675" y="78">Main St</text>
+        <text x="675" y="340">King St</text>
+        <text x="675" y="207" font-weight="600">Maple St</text>
+      </g>
+      <rect x="542" y="176" width="56" height="38" fill="#256f82"/>
+      <text x="570" y="202" font-family="Archivo,sans-serif" font-size="19" font-weight="600" fill="#fff" text-anchor="middle">214</text>
+      <rect x="548" y="252" width="44" height="40" fill="#bdb7ad"/>
+      <text x="570" y="279" font-family="Archivo,sans-serif" font-size="19" fill="#0a0a0a" text-anchor="middle">P</text>
+    </svg>
+    <p>Not to scale. Parking (P) behind the building, off Maple Street. Lake Champlain is five blocks west.</p>
+  </figure>
+  <div>
+    <h2 id="here-h" class="rv">Getting here</h2>
+    <dl>
+      <div class="rv"><dt>By car</dt><dd>Turn onto Maple Street from South Winooski Avenue. Our lot is behind the building, with eight free spaces and two accessible ones by the door.</dd></div>
+      <div class="rv"><dt>On foot or by bus</dt><dd>Ten minutes' walk from Church Street. Buses stop on South Winooski Avenue, half a block away.</dd></div>
+      <div class="rv"><dt>Step-free</dt><dd>Everything is on the ground floor, with a ramp at the front door and a wide restroom.</dd></div>
+      <div class="rv"><dt>Write to us</dt><dd><a class="tlink" href="mailto:hello@maplestreetdental.example">hello@maplestreetdental.example</a></dd></div>
+    </dl>
+    <div class="go rv"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Maple+Street+Burlington+VT" rel="noopener">Open in Maps</a><a class="tlink" href="tel:+18025550143">(802) 555-0143</a></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="grid">
+    <div>
+      <p class="contact">214 Maple Street, Burlington, VT 05401 · <a href="tel:+18025550143">(802) 555-0143</a></p>
+      <p>Maple Street Family Dental is a fictional practice. Names, prices and details on this page are samples. Designed by <a href="https://orbik.ai">Orbik</a>.</p>
+    </div>
+    <p class="credits">Pictures show Burlington, Vermont and the maples around it, not the practice. <a href="https://commons.wikimedia.org/wiki/File:Autumn_street_corner_in_Quebec_City.jpg">“Autumn street corner in Quebec City”</a> by Wilfredor, <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a>; <a href="https://commons.wikimedia.org/wiki/File:Vermont_2016_Foliage_(29529310564).jpg">“Vermont 2016 Foliage”</a> by Richard Ricciardi, <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>; <a href="https://commons.wikimedia.org/w/index.php?curid=154433259">“Acer saccharum (sugar maple tree in fall colors)”</a> by James St. John, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>; <a href="https://commons.wikimedia.org/wiki/File:Penny_Magazine_1835_137_Sugar-Maple_Tree.jpg">“Penny Magazine 1835, Sugar-Maple Tree”</a>, public domain; <a href="https://commons.wikimedia.org/wiki/File:Church_Street,_Burlington,_Vermont_(67643).jpg">“Church Street, Burlington, Vermont”</a>, Tichnor Quality Views postcard, public domain; <a href="https://www.artic.edu/artworks/51070">“Robert Macaire, dentist”</a> by Honoré Daumier, 1838/39, Art Institute of Chicago, <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>; <a href="https://commons.wikimedia.org/wiki/File:Lake_Champlain_from_Burlington,_Vermont.jpg">“Lake Champlain from Burlington, Vermont”</a> by Farragutful, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>. All via Wikimedia Commons unless noted.</p>
+  </div>
+  <p class="wordmark" aria-hidden="true">Maple Street</p>
+</footer>
+
+<script>
+(function(){
+  /* ---------- planner ---------- */
+  var COST={
+    new:{name:'New patient visit',cash:245,ppo:[0,40],plan:[0,0]},
+    clean:{name:'Cleaning and checkup',cash:165,ppo:[0,0],plan:[0,0]},
+    kid:{name:"Child's checkup",cash:95,ppo:[0,0],plan:[0,0]},
+    ache:{name:'Toothache visit',cash:95,ppo:[0,25],plan:[0,0]},
+    fill:{name:'Filling',cash:180,ppo:[36,90],plan:[144,144],from:true},
+    white:{name:'Whitening in the chair',cash:450,ppo:[450,450],plan:[360,360]}
+  };
+  var f=document.getElementById('planner'),cost=document.getElementById('cost'),line=document.getElementById('costline'),
+      daysEl=document.getElementById('days'),slotsEl=document.getElementById('slots'),send=document.getElementById('send');
+  var money=function(n){return '$'+n.toLocaleString('en-US')};
+  var range=function(r){return r[0]===r[1]?money(r[0]):money(r[0])+' – '+money(r[1])};
+  var DN=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],MN=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function times(d){
+    var day=d.getDay(),start=day===6?8:7.5,end=day===6?12.5:(day===5?13.5:17);var out=[];
+    for(var t=start;t<=end;t+=0.5){out.push(t)}
+    var seed=d.getDate()*7+d.getMonth()*13;
+    return out.filter(function(t,i){return ((i*5+seed)%7)<3});
+  }
+  function fmtT(t){var h=Math.floor(t),m=t%1?'30':'00',ap=h>=12?'pm':'am';return ((h+11)%12+1)+':'+m+' '+ap}
+  var days=[],d=new Date();d.setHours(0,0,0,0);
+  while(days.length<6){d=new Date(d.getTime()+864e5);if(d.getDay()!==0)days.push(new Date(d))}
+  days.forEach(function(x,i){
+    var l=document.createElement('label');
+    l.innerHTML='<input type="radio" name="day" value="'+i+'"><span>'+DN[x.getDay()]+'<em>'+MN[x.getMonth()]+' '+x.getDate()+'</em></span>';
+    daysEl.appendChild(l);
+  });
+  function val(n){var e=f.querySelector('[name='+n+']:checked');return e?e.value:null}
+  function renderSlots(){
+    var di=val('day');if(di===null)return;
+    var ts=times(days[+di]);slotsEl.innerHTML='';
+    ts.forEach(function(t){var l=document.createElement('label');l.innerHTML='<input type="radio" name="time" value="'+fmtT(t)+'"><span>'+fmtT(t)+'</span>';slotsEl.appendChild(l)});
+  }
+  function upd(e){
+    if(e&&e.target&&e.target.name==='day')renderSlots();
+    var v=COST[val('visit')],p=val('pay');
+    var pre=v.from?'from ':'';
+    if(p==='cash'){cost.textContent=pre+money(v.cash);line.textContent='The full price, paid on the day. Ask about 0% payment plans for bigger work.'}
+    else if(p==='plan'){cost.textContent=v.plan[1]===0?'$0':pre+range(v.plan);line.textContent=v.plan[1]===0?'Included in the Maple Plan ($29 a month, $19 for children).':'Maple Plan price, 20% off the full price of '+money(v.cash)+'.'}
+    else{cost.textContent=v.ppo[1]===0?'$0':range(v.ppo);line.textContent=(val('visit')==='white'?'Insurance rarely covers whitening, so this is the full price.':'Typical cost to you with a PPO plan. The full price is '+pre+money(v.cash)+'.')}
+    var di=val('day'),t=val('time'),when='';
+    if(di!==null){var x=days[+di];when=DN[x.getDay()]+' '+MN[x.getMonth()]+' '+x.getDate()+(t?' at '+t:'')}
+    send.textContent=t&&di!==null?'Request '+when:'Request this visit';
+    var subj='Visit request: '+v.name+(when?', '+when:'');
+    var body='Hello,\n\nI would like to book: '+v.name+'\nPreferred time: '+(when||'any time that suits')+'\nPaying with: '+({ppo:'PPO insurance',cash:'no insurance',plan:'Maple Plan'})[p]+'\n\nMy name:\nMy phone:\n';
+    send.href='mailto:hello@maplestreetdental.example?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+  }
+  var first=daysEl.querySelector('input');if(first){first.checked=true;renderSlots()}
+  f.addEventListener('change',upd);upd();
+
+  /* ---------- statements stepping ---------- */
+  var stack=document.querySelectorAll('.why .stack>*'),thumbs=document.querySelectorAll('.why .thumb'),marks=document.querySelectorAll('.why .markers i');
+  function step(i){stack.forEach(function(s,k){s.classList.toggle('on',k===i)});thumbs.forEach(function(t,k){t.classList.toggle('on',k===i)})}
+  /* ---------- new patients rows ---------- */
+  var rows=document.querySelectorAll('#rows li'),pics=document.querySelectorAll('.np .pic img');
+  function activate(li){
+    rows.forEach(function(r){var on=r===li;r.classList.toggle('on',on);r.querySelector('button').setAttribute('aria-expanded',on)});
+    pics.forEach(function(p,k){p.classList.toggle('on',k===+li.dataset.img)});
+  }
+  rows.forEach(function(li){
+    var b=li.querySelector('button');
+    b.addEventListener('click',function(){activate(li)});
+    b.addEventListener('focus',function(){activate(li)});
+    if(window.matchMedia('(hover:hover)').matches)b.addEventListener('mouseenter',function(){activate(li)});
+  });
+
+  if(!('IntersectionObserver' in window)){document.querySelectorAll('.rv').forEach(function(e){e.classList.add('in')});step(0);return}
+  var mo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)step([].indexOf.call(marks,e.target))})},{rootMargin:'-50% 0px -50% 0px'});
+  marks.forEach(function(m){mo.observe(m)});
+  /* reveal */
+  var els=document.querySelectorAll('.rv');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+  var last=null,n=0;
+  els.forEach(function(e){var p=e.closest('section,footer');n=(p===last)?n+1:0;last=p;e.style.transitionDelay=Math.min(n,5)*75+'ms';io.observe(e)});
+  window.addEventListener('load',function(){setTimeout(function(){els.forEach(function(e){var r=e.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)e.classList.add('in')})},2500)});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Ledger &amp; Pine Tax and Accounting — sample site by Orbik</title>
+<meta name="description" content="Tax returns, bookkeeping, payroll and tax planning for households and small businesses, from a small office on Pine Street in Portland, Maine.">
+<meta name="theme-color" content="#e4e1d6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600;7..72,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#e4e2d9;--surface:#d6d4c8;--ink:#11241a;--muted:#3f4f45;
+  --pine:#1b4734;--pine-deep:#0f2a1e;--pine-ink:#eef1ec;
+  --mustard:#dcae3c;--slate:#4a6f84;--band:#d2dccb;--band-2:#e9ebe0;
+  --accent:#1b4734;--accent-ink:#ffffff;
+  --axis:36%;--m:clamp(20px,2.4vw,40px);
+  --small:.9375rem;
+  --body:clamp(1.0625rem,1rem + .15vw,1.1875rem);
+  --lead:clamp(1.375rem,1.2rem + .5vw,1.625rem);
+  --head:clamp(2.25rem,1.5rem + 2.6vw,3.75rem);
+  --display:clamp(3.5rem,1rem + 8.6vw,9.25rem);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--body)/1.6 "Literata",Georgia,serif;font-optical-sizing:auto;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:1px}
+h1,h2,h3{font-weight:600;letter-spacing:-.02em;line-height:1.05;margin:0}
+p,ul,ol,dl,dd{margin:0;padding:0}
+:focus-visible{outline:3px solid var(--mustard);outline-offset:3px}
+::selection{background:var(--mustard);color:var(--ink)}
+.sample{background:var(--ink);color:var(--pine-ink);font-size:var(--small);padding:9px var(--m);margin:0}
+.sample a{color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 28px;background:var(--accent);color:var(--accent-ink);font:600 var(--body)/1.1 "Literata",Georgia,serif;text-decoration:none;border:0;border-radius:0;cursor:pointer;transition:background-color .2s ease,transform .15s var(--ease)}
+.btn:hover{background:var(--pine-deep)}
+.btn:active{transform:scale(.97)}
+.btn.light{background:var(--pine-ink);color:var(--ink)}
+.btn.light:hover{background:#fff}
+.btn.quiet{background:var(--surface);color:var(--ink)}
+.btn.quiet:hover{background:#c9c5b5}
+.skip{position:absolute;left:-9999px}.skip:focus{left:var(--m);top:8px;z-index:10;background:#fff;padding:8px 12px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:var(--axis) 1fr;min-height:calc(100svh - 40px)}
+.hero .talk{padding:28px var(--m) 40px;display:grid;grid-template-rows:auto 1fr auto;gap:24px}
+.mark{font-weight:700;font-size:var(--lead);letter-spacing:-.02em;text-decoration:none;line-height:1}
+.hero .say{align-self:center;display:grid;gap:28px;justify-items:start}
+.hero .say p{font-size:var(--lead);line-height:1.35;max-width:24ch}
+.hero .addr{font-size:var(--small);color:var(--muted);line-height:1.5}
+.hero .addr a{color:var(--ink);font-weight:600}
+.hero .wide{display:flex;flex-direction:column;min-width:0}
+.nav{display:flex;flex-wrap:wrap;gap:6px 30px;padding:28px var(--m) 0 0;font-size:var(--small)}
+.nav a{text-decoration:none;font-weight:500}
+.nav a:hover{text-decoration:underline}
+.hero h1{font-size:var(--display);font-weight:700;line-height:.9;letter-spacing:-.04em;margin:clamp(28px,5vh,64px) var(--m) 0 0}
+.lines .line{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
+.lines [data-line]{display:block}
+.hero .ph{position:relative;flex:1;min-height:300px;margin-top:clamp(40px,7vh,84px)}
+.hero .ph .crop{position:absolute;inset:0;overflow:hidden}
+.hero .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 38%}
+.due{position:absolute;z-index:2;left:0;top:-64px;width:300px;background:var(--mustard);color:var(--ink);padding:18px 22px 20px}
+.due b{display:block;font-size:var(--head);line-height:1;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.due span{display:block;margin-top:8px;font-size:var(--small);line-height:1.4}
+
+/* section frame */
+.sec{padding:clamp(96px,12vw,180px) var(--m)}
+.axis{display:grid;grid-template-columns:var(--axis) 1fr}
+.axis>.side{padding-right:clamp(20px,3vw,56px)}
+.sec h2{font-size:var(--head)}
+
+/* prices */
+.prices h2{max-width:9ch}
+.prices .note{margin-top:18px;max-width:30ch;font-size:var(--small);font-weight:400;letter-spacing:0;line-height:1.5;color:var(--ink)}
+table.plans{width:100%;border-collapse:collapse;font-size:var(--body);table-layout:fixed}
+.plans col.c0{width:28%}
+.plans th,.plans td{text-align:left;vertical-align:top;padding:20px 16px;font-weight:400}
+.plans thead th{padding-top:0;padding-bottom:26px}
+.plans thead .name{display:block;font-size:var(--lead);font-weight:700;letter-spacing:-.02em;line-height:1.05}
+.plans thead .price{display:block;margin-top:8px;font-size:var(--lead);letter-spacing:-.02em;line-height:1}
+.plans thead .per{font-size:var(--small);letter-spacing:0;color:var(--muted)}
+.plans tbody th{font-weight:600}
+.plans thead .first{padding-left:0;padding-right:clamp(20px,3vw,56px)}
+.plans tbody tr:nth-child(odd){background:var(--surface)}
+.plans .first{padding-left:0}
+.plans tbody tr:nth-child(odd) .first{padding-left:16px}
+.plans tfoot td{padding-top:28px}
+.plans tfoot .btn{width:100%;padding:0 8px;white-space:nowrap}
+.planlist{display:none}
+
+/* mosaic */
+.mosaic{background:var(--pine);color:var(--pine-ink);display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,minmax(300px,27vw))}
+.mosaic figure{margin:0;position:relative;overflow:hidden}
+.mosaic img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.mosaic figure:hover img{transform:scale(1.03)}
+.mosaic .t1{grid-column:1;grid-row:1/3}
+.mosaic .t2{grid-column:2/4;grid-row:1;padding:clamp(28px,3.4vw,56px);display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.mosaic .t2 p{font-size:var(--lead);line-height:1.3;letter-spacing:-.01em;max-width:30ch}
+.mosaic .t2 small{font-size:var(--small);opacity:.85}
+.mosaic .t3{grid-column:4;grid-row:1/3}
+.mosaic .t4{grid-column:2;grid-row:2}
+.mosaic .t5{grid-column:3;grid-row:2;background:var(--mustard);color:var(--ink);padding:clamp(24px,2.6vw,40px);display:flex;flex-direction:column;justify-content:flex-end;gap:10px}
+.mosaic .t5 b{font-size:var(--head);line-height:1;letter-spacing:-.03em;font-weight:700}
+.mosaic .t5 span{font-size:var(--small);line-height:1.45;max-width:24ch}
+.mosaic .t1 img{object-position:50% 30%}
+.mosaic .t3 img{object-position:50% 20%}
+
+/* checklist */
+.check .top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.check h2{font-size:var(--head);max-width:16ch}
+.check .intro{margin-top:18px;max-width:52ch}
+.check .board{display:grid;grid-template-columns:220px 1fr;gap:40px;margin-top:56px;align-items:start}
+.tabs{display:flex;flex-direction:column;gap:6px;position:sticky;top:16px}
+.tabs p{font-size:var(--small);color:var(--muted);margin-bottom:6px}
+.tab{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:56px;padding:10px 16px;background:var(--surface);color:var(--ink);border:0;border-radius:0;font:500 var(--body)/1.25 "Literata",Georgia,serif;text-align:left;cursor:pointer;transition:background-color .15s ease,color .15s ease,transform .15s var(--ease)}
+.tab:hover{background:#cbc7b8}
+.tab:active{transform:scale(.98)}
+.tab[aria-pressed=true]{background:var(--pine);color:var(--pine-ink)}
+.tab .tick{flex:none;width:20px;height:20px;background:var(--bg);display:grid;place-items:center}
+.tab[aria-pressed=true] .tick{background:var(--mustard)}
+.tab .tick svg{width:12px;height:12px;opacity:0}
+.tab[aria-pressed=true] .tick svg{opacity:1}
+.no-js .tabs{display:none}
+.no-js .check .board{grid-template-columns:1fr}
+.docs{list-style:none;display:grid;gap:0}
+.docs li{display:grid;grid-template-columns:120px 1fr minmax(120px,190px);align-items:center;gap:20px;min-height:76px;padding:14px 20px;background:var(--band)}
+.docs li:nth-child(even of :not([hidden])){background:var(--band-2)}
+.docs li[hidden]{display:none}
+.docs .code{font-size:var(--body);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.docs .what b{display:block;font-weight:500;font-size:var(--body);line-height:1.35}
+.docs .what small{display:block;font-size:var(--small);color:var(--muted);line-height:1.45;margin-top:2px}
+.docs .src{font-size:var(--small);text-align:right;color:var(--ink);line-height:1.4}
+.docs li.in{animation:band-in .45s var(--ease) both}
+@keyframes band-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.listfoot{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin-top:22px}
+.listfoot .count{font-weight:600;margin-right:auto}
+.secure{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;margin-top:40px;padding:26px 28px;background:var(--pine);color:var(--pine-ink);max-width:760px}
+.secure svg{width:30px;height:34px;margin-top:4px}
+.secure b{display:block;font-size:var(--body);font-weight:600;line-height:1.25;margin-bottom:6px}
+
+/* steps bar */
+.steps{background:var(--pine-deep);color:var(--pine-ink)}
+.steps h2{font-size:var(--head);max-width:20ch;margin-bottom:64px}
+.bar{display:flex;gap:6px;height:24vh;min-height:190px}
+.bar .seg{min-width:12%;padding:20px;display:flex;flex-direction:column}
+.bar .seg b{font-size:var(--lead);font-weight:600;line-height:1.1;letter-spacing:-.01em}
+.bar .s1{flex-grow:1;background:var(--mustard);color:var(--ink)}
+.bar .s2{flex-grow:5;background:var(--band);color:var(--ink)}
+.bar .s3{flex-grow:9;background:var(--slate);color:#fff}
+.bar .s4{flex-grow:1;background:var(--pine-ink);color:var(--ink)}
+.clauses{display:flex;gap:6px;margin-top:18px}
+.clauses p{min-width:12%;font-size:var(--body);line-height:1.5;padding-right:16px}
+.clauses p:nth-child(1){flex-grow:1}.clauses p:nth-child(2){flex-grow:5}.clauses p:nth-child(3){flex-grow:9}.clauses p:nth-child(4){flex-grow:1}
+.clauses p span{display:block;max-width:24ch}
+.bar .seg p{display:none}
+
+/* faq */
+.faq .text{columns:2;column-gap:56px}
+.faq .text p{break-inside:avoid;margin:0 0 22px;font-size:var(--body);line-height:1.6}
+.faq .text b{font-weight:600}
+.faq h2{font-size:var(--head)}
+.faq .side p{margin-top:16px;font-size:var(--small);max-width:28ch}
+
+/* visit */
+.visit{background:var(--surface)}
+.visit .side figure{margin:0}
+.visit .side img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:40% 45%}
+.visit figcaption{margin-top:10px;font-size:var(--small);color:var(--muted)}
+.visit h2{font-size:var(--head);margin-bottom:36px}
+.visit .cols{display:grid;grid-template-columns:1fr 1fr;gap:40px 56px}
+.visit h3{font-size:var(--lead);font-weight:600;margin-bottom:12px}
+.hours{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.hours th,.hours td{padding:9px 0;text-align:left;font-weight:400;vertical-align:top}
+.hours th{padding-right:16px}
+.hours tr+tr th,.hours tr+tr td{border-top:1px solid #bfbbab}
+.visit address{font-style:normal}
+.visit .cols p+p{margin-top:12px}
+
+/* contact */
+.contact{background:var(--pine);color:var(--pine-ink);padding:clamp(110px,11vw,160px) var(--m) 120px;display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:start}
+.contact .say{grid-column:1/6;font-size:var(--lead);line-height:1.3;letter-spacing:-.01em;max-width:28ch}
+.contact .portrait{grid-column:7/9;margin:0}
+.contact .portrait img{width:100%;max-width:170px;aspect-ratio:1;object-fit:cover}
+.contact .links{grid-column:9/13}
+.contact .links .q{font-size:var(--body);font-weight:600}
+.contact .links ul{list-style:none;margin-top:18px;display:grid;gap:10px}
+.contact .links li a{font-size:var(--lead)}
+.contact .links .meta{margin-top:18px;font-size:var(--small);opacity:.9}
+.contact .links .btn{margin-top:26px}
+
+/* footer */
+main{position:relative;z-index:1;background:var(--bg)}
+footer{position:sticky;bottom:0;z-index:0;min-height:100svh;background:var(--pine-deep);color:var(--pine-ink);display:grid;grid-template-rows:auto 1fr auto;padding:40px var(--m) 22px}
+footer .fcols{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;font-size:var(--small);line-height:1.55}
+footer .fcols ul{list-style:none}
+footer .fcols li:first-child{font-weight:600}
+footer .fcols li+li{opacity:.82}
+footer .fcols a{text-decoration:none}
+footer .fcols a:hover{text-decoration:underline}
+footer .word{display:block;width:100%;height:auto;margin-top:40px}
+footer .word text{fill:var(--pine-ink)}
+footer .legal{margin-top:20px;font-size:var(--small);line-height:1.55;display:grid;gap:8px;max-width:72ch}
+footer .legal a{color:#fff}
+
+/* motion */
+@media (prefers-reduced-motion:no-preference){
+  .js .lines [data-line]{transform:translateY(105%);animation:line-up .9s var(--ease) forwards;animation-delay:calc(var(--i)*110ms + 150ms)}
+  .js .hero .after{opacity:0;transform:translateY(14px);animation:fade-up .8s var(--ease) .55s forwards}
+  .js [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .9s var(--ease)}
+  .js [data-reveal].is-in{opacity:1;transform:none}
+  .hero .ph img{animation:drift 26s ease-in-out infinite alternate}
+}
+@keyframes line-up{to{transform:none}}
+@keyframes fade-up{to{opacity:1;transform:none}}
+@keyframes drift{from{transform:scale(1.08) translateY(-1.5%)}to{transform:scale(1) translateY(0)}}
+
+/* tablet and phone */
+@media (max-width:1000px){
+  .faq .text{columns:1}
+  .visit .cols{grid-template-columns:1fr}
+  .mosaic{grid-template-columns:repeat(2,1fr);grid-template-rows:none;grid-auto-rows:minmax(240px,52vw)}
+  .mosaic .t2{grid-column:1/3;grid-row:1}.mosaic .t1{grid-column:1;grid-row:2}.mosaic .t3{grid-column:2;grid-row:2}
+  .mosaic .t4{grid-column:1;grid-row:3}.mosaic .t5{grid-column:2;grid-row:3}
+  footer .fcols{grid-template-columns:1fr 1fr}
+}
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero .talk{display:contents}
+  .hero .wide{display:contents}
+  .hero .topline{order:0}
+  .topline{display:flex;justify-content:space-between;align-items:center;padding:20px var(--m) 0}
+  .nav{display:none}
+  .hero h1{order:1;font-size:14.4vw;margin:36px var(--m) 0;line-height:.88}
+  .hero .say{order:2;padding:24px var(--m) 0;justify-items:stretch}
+  .hero .say p{font-size:var(--body);max-width:none}
+  .hero .ph{order:4;margin-top:72px;flex:none;aspect-ratio:4/3;min-height:0}
+  .due{width:64%;left:var(--m);top:-48px;padding:14px 18px 16px}
+  .due b{font-size:var(--lead)}
+  .hero .addr{order:3;padding:18px var(--m) 0}
+  .axis{grid-template-columns:1fr}
+  .axis>.side{padding-right:0;margin-bottom:36px}
+  table.plans{display:none}
+  .planlist{display:grid;gap:6px;margin-top:40px}
+  .planlist{gap:80px}
+  .plan h3{font-size:var(--head)}
+  .plan .price{font-size:var(--lead);line-height:1.1;margin-top:6px}
+  .plan .price span{font-size:var(--small)}
+  .plan dl{margin-top:16px;display:grid;gap:0;font-size:var(--body)}
+  .plan dl div{padding:12px 14px}
+  .plan dl div:nth-child(odd){background:var(--surface)}
+  .plan dt{font-weight:600}
+  .plan .btn{width:100%;margin-top:20px}
+  .check .board{grid-template-columns:1fr;gap:20px;margin-top:32px}
+  .tabs{flex-direction:row;flex-wrap:wrap;position:static}
+  .tabs p{width:100%;margin:0}
+  .tab{flex:none;min-height:46px;padding:8px 12px 8px 0;background:transparent;flex-direction:row-reverse;gap:10px}
+  .tab:hover{background:transparent}
+  .tab .tick{background:var(--surface)}
+  .tab[aria-pressed=true]{background:transparent;color:var(--ink)}
+  .docs li{grid-template-columns:1fr;gap:4px;padding:16px}
+  .docs .src{text-align:left}
+  .check .top .btn{width:100%}
+  .bar{flex-direction:column;height:auto;min-height:0}
+  .bar .seg{min-height:96px}
+  .bar .seg b{font-size:var(--body);font-weight:600}
+  .bar .s1{flex:none;min-height:110px}.bar .s2{flex:none;min-height:160px}.bar .s3{flex:none;min-height:240px}.bar .s4{flex:none;min-height:110px}
+  .bar .seg p{display:block;margin-top:8px;font-size:var(--body);line-height:1.45;max-width:30ch}
+  .clauses{display:none}
+  .steps h2{margin-bottom:40px}
+  .contact{grid-template-columns:96px 1fr;gap:20px}
+  .contact .say{grid-column:1/-1;margin-bottom:12px}
+  .contact .portrait{grid-column:1}
+  .contact .portrait img{width:96px}
+  .contact .links{grid-column:2}
+  .contact .links .btn{width:100%}
+  footer .fcols{gap:32px 20px}
+  footer{grid-template-rows:auto 1fr auto}
+}
+@media (min-width:861px){.topline{display:contents}.topline .call{display:none}}
+@media (max-width:480px){:root{--m:16px}}
+@media print{.sample,.hero,.prices,.mosaic,.steps,.faq,.visit,.contact,footer,.tabs,.listfoot,.secure,.check .top .btn{display:none!important}.docs li{break-inside:avoid}}
+</style>
+</head>
+<body class="no-js">
+<script>document.body.classList.remove('no-js');document.documentElement.classList.add('js')</script>
+<a class="skip" href="#main">Skip to content</a>
+<header><p class="sample">Sample website for a fictional business, designed by Orbik · <a href="https://orbik.ai">orbik.ai</a></p></header>
+<main id="main">
+<section class="hero" aria-label="Ledger &amp; Pine Tax and Accounting">
+  <div class="talk">
+    <div class="topline"><a class="mark" href="#">Ledger &amp; Pine</a></div>
+    <div class="say after">
+      <p>Tax returns, bookkeeping and payroll for households and small businesses in Portland, Maine.</p>
+      <a class="btn" href="#contact">Book a consultation</a>
+    </div>
+    <p class="addr after">48 Pine Street, West End · <a href="tel:+12075550148">(207) 555-0148</a><br>Open all year, Saturdays in tax season</p>
+  </div>
+  <div class="wide">
+    <nav class="nav" aria-label="Sections"><a href="#prices">Prices</a><a href="#checklist">What to bring</a><a href="#how">How it works</a><a href="#faq">Questions</a><a href="#visit">Hours and directions</a></nav>
+    <h1 class="lines"><span class="line"><span data-line style="--i:0">Tax season,</span></span><span class="line"><span data-line style="--i:1">settled.</span></span></h1>
+    <div class="ph"><div class="crop"><img src="assets/millinery-book-ledger.jpg" width="1169" height="1800" alt="A handwritten 1899 shop ledger page with columns of figures in ink" fetchpriority="high"></div>
+    <p class="due after" aria-live="polite"><b id="dueDays">86 days</b><span id="dueText">until January 15, 2027, when fourth-quarter estimated tax payments are due.</span></p></div>
+  </div>
+</section>
+
+<section class="sec prices" id="prices">
+  <div>
+    <table class="plans" data-reveal>
+      <caption class="skip">Services and starting prices</caption>
+      <colgroup><col class="c0"><col><col><col><col></colgroup>
+      <thead><tr>
+        <td class="first"><h2>What it costs</h2><p class="note">Starting prices. After the first call you get a fixed quote in writing, and nothing is billed until you agree to it.</p></td>
+        <th scope="col"><span class="name">Individual returns</span><span class="price">$225 <span class="per">per return</span></span></th>
+        <th scope="col"><span class="name">Bookkeeping</span><span class="price">$350 <span class="per">a month</span></span></th>
+        <th scope="col"><span class="name">Payroll</span><span class="price">$95 <span class="per">a month</span></span></th>
+        <th scope="col"><span class="name">Tax planning</span><span class="price">$400 <span class="per">a session</span></span></th>
+      </tr></thead>
+      <tbody>
+        <tr><th scope="row" class="first">Who it suits</th><td>Employees, families, retirees, side incomes</td><td>Sole owners, LLCs and S corporations</td><td>Teams of one to twenty-five</td><td>Anyone facing a change: a sale, a new business, retirement</td></tr>
+        <tr><th scope="row" class="first">What you get</th><td>Federal and Maine returns, e-filed, with a review meeting</td><td>Monthly reconciliation and reports by the 15th</td><td>Every pay run, direct deposit, W-2s at year end</td><td>A written plan with options and payment dates</td></tr>
+        <tr><th scope="row" class="first">Filings handled</th><td>Form 1040 and Maine 1040ME</td><td>Year-end package for your return</td><td>Quarterly federal and Maine payroll reports</td><td>Estimated payment schedule</td></tr>
+        <tr><th scope="row" class="first">Usual timing</th><td>About two weeks once documents are in</td><td>Every month, all year</td><td>Every pay period</td><td>Within ten business days</td></tr>
+      </tbody>
+      <tfoot><tr><td class="first"></td>
+        <td><a class="btn" href="mailto:hello@ledgerandpine.example?subject=Consultation%3A%20individual%20return">Ask about returns</a></td>
+        <td><a class="btn" href="mailto:hello@ledgerandpine.example?subject=Consultation%3A%20bookkeeping">Ask about books</a></td>
+        <td><a class="btn" href="mailto:hello@ledgerandpine.example?subject=Consultation%3A%20payroll">Ask about payroll</a></td>
+        <td><a class="btn" href="mailto:hello@ledgerandpine.example?subject=Consultation%3A%20tax%20planning">Ask about planning</a></td>
+      </tr></tfoot>
+    </table>
+    <div class="planlist">
+      <div><h2>What it costs</h2><p class="note">Starting prices. After the first call you get a fixed quote in writing, and nothing is billed until you agree to it.</p></div>
+      <article class="plan"><h3>Individual returns</h3><p class="price">$225 <span>per return</span></p><dl><div><dt>Who it suits</dt><dd>Employees, families, retirees, side incomes</dd></div><div><dt>What you get</dt><dd>Federal and Maine returns, e-filed, with a review meeting</dd></div><div><dt>Usual timing</dt><dd>About two weeks once documents are in</dd></div></dl><a class="btn" href="mailto:hello@ledgerandpine.example?subject=Consultation%3A%20individual%20return">Ask about returns</a></article>
+      <article class="plan"><h3>Bookkeeping</h3><p class="price">$350 <span>a month</span></p><dl><div><dt>Who it suits</dt><dd>Sole owners, LLCs and S corporations</dd></div><div><dt>What you get</dt><dd>Monthly reconciliation and reports by the 15th, plus a year-end package</dd></div><div><dt>Usual timing</dt><dd>Every month, all year</dd></div></dl><a class="btn" href="mailto:hello@ledgerandpine.example?subject=Consultation%3A%20bookkeeping">Ask about books</a></article>
+      <article class="plan"><h3>Payroll</h3><p class="price">$95 <span>a month</span></p><dl><div><dt>Who it suits</dt><dd>Teams of one to twenty-five</dd></div><div><dt>What you get</dt><dd>Every pay run, direct deposit, quarterly reports and W-2s</dd></div><div><dt>Usual timing</dt><dd>Every pay period</dd></div></dl><a class="btn" href="mailto:hello@ledgerandpine.example?subject=Consultation%3A%20payroll">Ask about payroll</a></article>
+      <article class="plan"><h3>Tax planning</h3><p class="price">$400 <span>a session</span></p><dl><div><dt>Who it suits</dt><dd>Anyone facing a change: a sale, a new business, retirement</dd></div><div><dt>What you get</dt><dd>A written plan with options and payment dates</dd></div><div><dt>Usual timing</dt><dd>Within ten business days</dd></div></dl><a class="btn" href="mailto:hello@ledgerandpine.example?subject=Consultation%3A%20tax%20planning">Ask about planning</a></article>
+    </div>
+  </div>
+</section>
+
+<section class="mosaic" aria-label="About the office">
+  <figure class="t1"><img src="assets/nas-145-pinus-strobus.jpg" width="1162" height="1800" alt="Hand-coloured 1819 botanical plate of an eastern white pine branch and cone" loading="lazy"></figure>
+  <div class="t2">
+    <p data-reveal>A ledger for the numbers, a pine for Maine: one small office on Pine Street, open all year.</p>
+    <small>White pine plate from The North American Sylva, 1819. Ledger page, 1830s. Carroll Street in the West End.</small>
+  </div>
+  <figure class="t3"><img src="assets/pittsboro-merchant-business-ledger.jpg" width="1199" height="1800" alt="A merchant's ledger page from the 1830s with handwritten accounts" loading="lazy"></figure>
+  <figure class="t4"><img src="assets/carroll-street-portland-maine.jpg" width="1800" height="1350" alt="A quiet West End street in Portland, Maine, with brick houses and winter snow" loading="lazy"></figure>
+  <div class="t5"><b>Saturdays</b><span>The office opens 10 to 2 on Saturdays from February to April 15.</span></div>
+</section>
+
+<section class="sec check" id="checklist">
+  <div class="top">
+    <div>
+      <h2 data-reveal>Your list of what to bring</h2>
+      <p class="intro" data-reveal>Tap what applies to you this year. The list builds itself, and you can email it to yourself or print it before your appointment.</p>
+    </div>
+    <a class="btn" href="#contact" data-reveal>Book a consultation</a>
+  </div>
+  <div class="board">
+    <div class="tabs" role="group" aria-label="What applies to you">
+      <p>This year I had…</p>
+      <button class="tab" type="button" data-g="job" aria-pressed="true">A job<span class="tick" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M1.5 6.5 4.5 9.5 10.5 2.5" fill="none" stroke="#11241a" stroke-width="2"/></svg></span></button>
+      <button class="tab" type="button" data-g="self" aria-pressed="false">Freelance work<span class="tick" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M1.5 6.5 4.5 9.5 10.5 2.5" fill="none" stroke="#11241a" stroke-width="2"/></svg></span></button>
+      <button class="tab" type="button" data-g="home" aria-pressed="false">A home<span class="tick" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M1.5 6.5 4.5 9.5 10.5 2.5" fill="none" stroke="#11241a" stroke-width="2"/></svg></span></button>
+      <button class="tab" type="button" data-g="kids" aria-pressed="false">Children<span class="tick" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M1.5 6.5 4.5 9.5 10.5 2.5" fill="none" stroke="#11241a" stroke-width="2"/></svg></span></button>
+      <button class="tab" type="button" data-g="inv" aria-pressed="false">Investments<span class="tick" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M1.5 6.5 4.5 9.5 10.5 2.5" fill="none" stroke="#11241a" stroke-width="2"/></svg></span></button>
+      <button class="tab" type="button" data-g="ret" aria-pressed="false">Retirement income<span class="tick" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M1.5 6.5 4.5 9.5 10.5 2.5" fill="none" stroke="#11241a" stroke-width="2"/></svg></span></button>
+      <button class="tab" type="button" data-g="rent" aria-pressed="false">A rental<span class="tick" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M1.5 6.5 4.5 9.5 10.5 2.5" fill="none" stroke="#11241a" stroke-width="2"/></svg></span></button>
+      <button class="tab" type="button" data-g="biz" aria-pressed="false">A business<span class="tick" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M1.5 6.5 4.5 9.5 10.5 2.5" fill="none" stroke="#11241a" stroke-width="2"/></svg></span></button>
+      <button class="tab" type="button" data-g="health" aria-pressed="false">Marketplace insurance<span class="tick" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M1.5 6.5 4.5 9.5 10.5 2.5" fill="none" stroke="#11241a" stroke-width="2"/></svg></span></button>
+    </div>
+    <div>
+      <ul class="docs" id="docs" aria-live="polite">
+        <li data-g="base"><span class="code">ID</span><span class="what"><b>Photo ID for you and your spouse</b><small>Driver's license or passport</small></span><span class="src">Everyone</span></li>
+        <li data-g="base"><span class="code">SSN</span><span class="what"><b>Social Security numbers and birth dates</b><small>For everyone on the return</small></span><span class="src">Everyone</span></li>
+        <li data-g="base"><span class="code">2025</span><span class="what"><b>Last year's tax return</b><small>Federal and state, if you are new to us</small></span><span class="src">Your files</span></li>
+        <li data-g="base"><span class="code">Bank</span><span class="what"><b>Routing and account number</b><small>For a direct-deposit refund or payment</small></span><span class="src">Your bank</span></li>
+        <li data-g="job"><span class="code">W-2</span><span class="what"><b>Wage statement from each employer</b><small>Usually arrives by early February</small></span><span class="src">Employer</span></li>
+        <li data-g="self"><span class="code">1099-NEC</span><span class="what"><b>Forms from clients who paid you</b><small>Plus any 1099-K from payment apps</small></span><span class="src">Clients, apps</span></li>
+        <li data-g="self biz"><span class="code">P&amp;L</span><span class="what"><b>Income and expense records</b><small>A spreadsheet, app export or bank statements</small></span><span class="src">Your records</span></li>
+        <li data-g="self"><span class="code">Miles</span><span class="what"><b>Mileage log and home office size</b><small>If you drive or work from home for the business</small></span><span class="src">Your records</span></li>
+        <li data-g="home rent"><span class="code">1098</span><span class="what"><b>Mortgage interest statement</b><small>One for each loan</small></span><span class="src">Lender</span></li>
+        <li data-g="home"><span class="code">Tax bill</span><span class="what"><b>Property tax bills you paid</b><small>From your town or city</small></span><span class="src">Municipality</span></li>
+        <li data-g="home"><span class="code">Closing</span><span class="what"><b>Closing statement</b><small>Only if you bought or sold a home this year</small></span><span class="src">Title company</span></li>
+        <li data-g="kids"><span class="code">Care</span><span class="what"><b>Childcare costs and provider details</b><small>Name, address, tax ID and amount paid</small></span><span class="src">Provider</span></li>
+        <li data-g="kids"><span class="code">1098-T</span><span class="what"><b>Tuition statement</b><small>For college or trade school</small></span><span class="src">School</span></li>
+        <li data-g="inv"><span class="code">1099-B</span><span class="what"><b>Consolidated brokerage statement</b><small>Includes 1099-DIV and 1099-INT; often arrives mid-February</small></span><span class="src">Brokerage</span></li>
+        <li data-g="inv"><span class="code">Crypto</span><span class="what"><b>Transaction report from each exchange</b><small>A full-year export with cost basis</small></span><span class="src">Exchange</span></li>
+        <li data-g="ret"><span class="code">1099-R</span><span class="what"><b>Pension, IRA or 401(k) payouts</b><small>One for each account you took money from</small></span><span class="src">Plan provider</span></li>
+        <li data-g="ret"><span class="code">SSA-1099</span><span class="what"><b>Social Security benefit statement</b><small>Mailed in January</small></span><span class="src">Social Security</span></li>
+        <li data-g="rent"><span class="code">Rents</span><span class="what"><b>Rent received and expenses by property</b><small>Repairs, insurance, utilities, management fees</small></span><span class="src">Your records</span></li>
+        <li data-g="biz"><span class="code">941</span><span class="what"><b>Payroll reports and W-3</b><small>If you had employees</small></span><span class="src">Payroll provider</span></li>
+        <li data-g="biz"><span class="code">K-1</span><span class="what"><b>Schedule K-1 from partnerships or S corporations</b><small>Sometimes arrives in March</small></span><span class="src">The entity</span></li>
+        <li data-g="biz rent"><span class="code">Assets</span><span class="what"><b>Receipts for equipment, vehicles or improvements</b><small>Anything bought for the business or rental</small></span><span class="src">Your records</span></li>
+        <li data-g="health"><span class="code">1095-A</span><span class="what"><b>Marketplace health insurance statement</b><small>From CoverME.gov or HealthCare.gov</small></span><span class="src">Marketplace</span></li>
+      </ul>
+      <div class="listfoot">
+        <p class="count" id="count">22 items</p>
+        <a class="btn" id="mailList" href="mailto:?subject=My%20documents%20for%20Ledger%20%26%20Pine">Email me this list</a>
+        <button class="btn quiet" type="button" id="printList">Print it</button>
+      </div>
+      <div class="secure" data-reveal>
+        <svg viewBox="0 0 30 34" aria-hidden="true"><rect x="2" y="14" width="26" height="18" fill="#dcae3c"/><path d="M8 14V9a7 7 0 0 1 14 0v5" fill="none" stroke="#dcae3c" stroke-width="3"/></svg>
+        <p><b>No need to carry a folder in.</b>Every client gets a private, encrypted upload portal. Photograph a form with your phone and send it there, rather than by email. Paper copies are welcome at the office too.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec steps" id="how">
+  <h2 data-reveal>From first call to filed</h2>
+  <div class="bar" data-ui role="list" data-reveal>
+    <div class="seg s1" role="listitem"><b>Twenty minutes</b><p>First, a free call about what you need and what it will cost.</p></div>
+    <div class="seg s2" role="listitem"><b>A week or so</b><p>Then you upload documents through the secure portal, at your own pace.</p></div>
+    <div class="seg s3" role="listitem"><b>About two weeks</b><p>Next, we prepare the return and send you any questions in one batch.</p></div>
+    <div class="seg s4" role="listitem"><b>Half an hour</b><p>Last, we walk you through it and e-file once you sign.</p></div>
+  </div>
+  <div class="clauses" aria-hidden="true">
+    <p><span>First, a free call about what you need.</span></p>
+    <p><span>Then you upload documents through the secure portal, at your own pace.</span></p>
+    <p><span>Next, we prepare the return and send any questions in one batch.</span></p>
+    <p><span>Last, we review it together and e-file once you sign.</span></p>
+  </div>
+</section>
+
+<section class="sec faq axis" id="faq">
+  <div class="side">
+    <h2 data-reveal>Fair questions</h2>
+    <p data-reveal>General information about how the office works, not tax advice for your situation.</p>
+  </div>
+  <div class="text" data-reveal>
+    <p><b>Is the first consultation free?</b> Yes. The first call or visit takes about twenty minutes. We look at what you need, then send a written quote.</p>
+    <p><b>Do you prepare Maine returns as well as federal?</b> Yes. Every individual return includes both. Returns for other states are quoted separately.</p>
+    <p><b>How do I send my documents?</b> Through your private client portal. Uploads are encrypted, and you can photograph paper forms with your phone. You can also drop copies at the office.</p>
+    <p><b>Can you help if I have not filed for a few years?</b> Yes. We request the missing records, then work through the years one at a time. Come in sooner rather than later.</p>
+    <p><b>I got a letter from the IRS or Maine Revenue Services. What now?</b> Upload or bring it in. We read it with you, explain what it is asking for and what the options are.</p>
+    <p><b>Do you only work with people in Portland?</b> No. Many clients meet by video and use the portal from elsewhere in Maine.</p>
+    <p><b>When should I book for the spring?</b> As soon as your forms arrive. Appointments fill from February; booking by mid-March leaves time to finish by the April deadline.</p>
+    <p><b>What does monthly bookkeeping include?</b> Categorising transactions, reconciling bank and card accounts, and a profit and loss report each month, ready for tax time.</p>
+    <p><b>Will the price change once you start?</b> Not without asking you. If we find something the quote did not cover, we tell you before doing the extra work.</p>
+    <p><b>Do you have evening appointments?</b> Yes, on Tuesdays and Thursdays until 7 from February to April 15, and by request the rest of the year.</p>
+  </div>
+</section>
+
+<section class="sec visit axis" id="visit">
+  <div class="side">
+    <figure data-reveal><img src="assets/sanborn-fire-insurance-map-from-portland-cumberland.jpg" width="1534" height="1800" alt="An 1896 insurance map of downtown Portland showing Exchange, Market and Fore Streets" loading="lazy"><figcaption>Downtown Portland on an 1896 insurance map. The office is a short walk west, on Pine Street.</figcaption></figure>
+  </div>
+  <div>
+    <h2 data-reveal>Hours and directions</h2>
+    <div class="cols">
+      <div data-reveal>
+        <h3>Office hours</h3>
+        <table class="hours">
+          <tr><th scope="row">Monday to Friday</th><td>9 to 5</td></tr>
+          <tr><th scope="row">Tuesday and Thursday</th><td>Until 7, Feb to Apr 15</td></tr>
+          <tr><th scope="row">Saturday</th><td>10 to 2, Feb to Apr 15</td></tr>
+          <tr><th scope="row">Sunday</th><td>Closed</td></tr>
+        </table>
+      </div>
+      <div data-reveal>
+        <h3>Finding us</h3>
+        <address><p>48 Pine Street, Suite 2<br>Portland, ME 04102</p></address>
+        <p>In the West End, between State Street and Brackett Street. Two-hour street parking on Pine Street; the No. 1 bus stops on Congress Street, a few minutes' walk away.</p>
+        <p>The office is up one flight of stairs. If stairs are hard, tell us and we will meet you on the ground floor or by video.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <p class="say" data-reveal>Call, write or stop by 48 Pine Street. New clients are welcome in any month.</p>
+  <figure class="portrait" data-reveal><img src="assets/houses-in-the-west-end-of-portland.jpg" width="1800" height="1350" alt="A stone house among bare trees in Portland's West End after snowfall" loading="lazy"></figure>
+  <div class="links" data-reveal>
+    <p class="q">Ready to book a consultation?</p>
+    <ul>
+      <li><a href="tel:+12075550148">(207) 555-0148</a></li>
+      <li><a href="mailto:hello@ledgerandpine.example?subject=Consultation%20request&amp;body=Hello%2C%20I%27d%20like%20to%20book%20a%20consultation.%0A%0AName%3A%0APhone%3A%0AWhat%20I%20need%20help%20with%3A%0ABest%20times%3A">hello@ledgerandpine.example</a></li>
+    </ul>
+    <p class="meta">Portland, Maine. We reply within one business day.</p>
+    <a class="btn light" href="mailto:hello@ledgerandpine.example?subject=Consultation%20request&amp;body=Hello%2C%20I%27d%20like%20to%20book%20a%20consultation.%0A%0AName%3A%0APhone%3A%0AWhat%20I%20need%20help%20with%3A%0ABest%20times%3A">Book a consultation</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="fcols">
+    <ul><li>Ledger &amp; Pine</li><li>48 Pine Street, Suite 2</li><li>Portland, ME 04102</li></ul>
+    <ul><li>On this page</li><li><a href="#prices">Prices</a></li><li><a href="#checklist">What to bring</a></li><li><a href="#how">How it works</a></li><li><a href="#faq">Questions</a></li></ul>
+    <ul><li>Get in touch</li><li><a href="tel:+12075550148">(207) 555-0148</a></li><li><a href="mailto:hello@ledgerandpine.example">hello@ledgerandpine.example</a></li></ul>
+    <ul><li>Hours</li><li>Weekdays 9 to 5</li><li>Saturdays 10 to 2, Feb to Apr 15</li></ul>
+  </div>
+  <div></div>
+  <div>
+    <svg class="word" viewBox="0 0 1000 172" role="img" aria-label="Ledger &amp; Pine"><text x="-4" y="126" font-family="Literata, Georgia, serif" font-weight="700" font-size="166" letter-spacing="-6" textLength="1004" lengthAdjust="spacingAndGlyphs">Ledger &amp; Pine</text></svg>
+    <div class="legal">
+      <p>Ledger &amp; Pine Tax and Accounting is a fictional business; its address, phone number and prices are samples. Sample website designed by <a href="https://orbik.ai">Orbik</a>. Deadline dates are general federal dates; confirm yours with a professional or at IRS.gov.</p>
+      <p>Pictures via Wikimedia Commons: <a href="https://commons.wikimedia.org/wiki/File:Millinery_Book_Ledger_-_DPLA_-_4e890e62dfe17d454d20da31c89554c8_(page_105).jpg">“Millinery Book Ledger”</a>, W. S. Clark, public domain; <a href="https://commons.wikimedia.org/wiki/File:NAS-145_Pinus_strobus.png">“NAS-145 Pinus strobus”</a>, The North American Sylva, 1819, public domain; <a href="https://commons.wikimedia.org/wiki/File:Pittsboro_Merchant_Business_Ledger_-_DPLA_-_4cbfce8f8f08c14f851ab74af046c082_(page_258).jpg">“Pittsboro Merchant Business Ledger”</a>, public domain; <a href="https://commons.wikimedia.org/wiki/File:Carroll_Street,_Portland,_Maine.jpg">“Carroll Street, Portland, Maine”</a> and <a href="https://commons.wikimedia.org/wiki/File:Houses_in_the_west_end_of_Portland,_Maine1.jpg">“Houses in the west end of Portland, Maine”</a> by Dudesleeper, <a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>; <a href="https://commons.wikimedia.org/wiki/File:Sanborn_Fire_Insurance_Map_from_Portland,_Cumberland_County,_Maine,_1896,_Plate_0019s.jpg">Sanborn fire insurance map of Portland, 1896, plate 19</a>, public domain.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* next deadline */
+  var dl=[
+    ['2027-01-15','when fourth-quarter estimated tax payments are due'],
+    ['2027-02-01','when employers send W-2 and 1099-NEC forms'],
+    ['2027-03-15','when partnership and S corporation returns are due'],
+    ['2027-04-15','when individual returns and extensions are due'],
+    ['2027-06-15','when second-quarter estimated payments are due'],
+    ['2027-09-15','when third-quarter estimated payments are due'],
+    ['2027-10-15','when extended individual returns are due']
+  ];
+  var now=new Date();var today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  for(var i=0;i<dl.length;i++){var p=dl[i][0].split('-');var d=new Date(+p[0],+p[1]-1,+p[2]);var n=Math.round((d-today)/864e5);
+    if(n>=0){document.getElementById('dueDays').textContent=n===0?'Today':(n===1?'1 day':n+' days');
+      document.getElementById('dueText').textContent=(n===0?'':'until ')+d.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})+', '+dl[i][1]+'.';break}}
+
+  /* checklist */
+  var tabs=[].slice.call(document.querySelectorAll('.tab')),items=[].slice.call(document.querySelectorAll('#docs li')),count=document.getElementById('count'),mail=document.getElementById('mailList');
+  function update(animate){
+    var on=tabs.filter(function(t){return t.getAttribute('aria-pressed')==='true'}).map(function(t){return t.dataset.g});
+    var lines=[];
+    items.forEach(function(li){var gs=li.dataset.g.split(' ');var show=gs.indexOf('base')>-1||gs.some(function(g){return on.indexOf(g)>-1});
+      var was=!li.hidden;li.hidden=!show;
+      if(show){lines.push('- '+li.querySelector('.code').textContent+': '+li.querySelector('.what b').textContent+' ('+li.querySelector('.what small').textContent+')');
+        if(animate&&!was){li.classList.remove('in');void li.offsetWidth;li.classList.add('in')}}});
+    count.textContent=lines.length+' items on your list';
+    mail.href='mailto:?subject='+encodeURIComponent('My documents for Ledger & Pine')+'&body='+encodeURIComponent('To bring or upload for my appointment:\n\n'+lines.join('\n')+'\n\nLedger & Pine Tax and Accounting, 48 Pine Street, Portland. (207) 555-0148');
+  }
+  tabs.forEach(function(t){t.addEventListener('click',function(){t.setAttribute('aria-pressed',t.getAttribute('aria-pressed')==='true'?'false':'true');update(true)})});
+  document.getElementById('printList').addEventListener('click',function(){window.print()});
+  update(false);
+
+  /* reveal */
+  var els=document.querySelectorAll('[data-reveal]');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('is-in')});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+  var groups=new Map();
+  els.forEach(function(e){var s=e.closest('section');var k=groups.get(s)||0;e.style.transitionDelay=(k*80)+'ms';groups.set(s,k+1);io.observe(e)});
+})();
+</script>
+</body>
+</html>

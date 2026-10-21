@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Northline Chiropractic — sample site by Orbik</title>
+<meta name="description" content="Northline Chiropractic is a small chiropractic clinic on Central Ave NE in Minneapolis. First visit: 60 minutes, $95.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#eff2ef;--surface:#e5e8e0;--ink:#102720;--muted:#46564f;
+  --accent:#2346c8;--accent-hover:#1a37a3;--accent-ink:#ffffff;
+  --spruce:#102720;--spruce-ink:#eff2ef;--spruce-soft:#bfd0c8;
+  --ice:#cfe0d8;--ice-ink:#102720;
+  --step-small:15px;
+  --step-body:clamp(17px,1rem + .25vw,20px);
+  --step-lead:clamp(20px,1.1rem + .6vw,26px);
+  --step-head:clamp(32px,1.4rem + 1.6vw,46px);
+  --step-display:clamp(44px,1.6rem + 3.4vw,78px);
+  --m:clamp(16px,3.4vw,56px);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 var(--step-body)/1.55 "Source Serif 4",Georgia,serif;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+img,video{display:block;max-width:100%;height:auto}
+a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:.07em}
+h1,h2,h3{font-family:"Young Serif",Georgia,serif;font-weight:400;letter-spacing:-.02em;line-height:.98;margin:0;text-wrap:balance}
+p,ul,ol,dl,dd{margin:0;padding:0}
+ul,ol{list-style:none}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+::selection{background:var(--ice)}
+.sample{background:var(--ink);color:var(--spruce-ink);font-size:var(--step-small);padding:9px var(--m);margin:0}
+.sample a{color:#fff}
+.skip{position:absolute;left:-9999px}.skip:focus{left:var(--m);top:8px;background:var(--paper);padding:8px 12px;z-index:9}
+
+/* buttons: square, one fill */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;background:var(--accent);color:var(--accent-ink);font:600 var(--step-body)/1.1 "Source Serif 4",serif;text-decoration:none;border:0;cursor:pointer;transition:background-color .2s ease,transform .15s var(--ease)}
+.btn:hover{background:var(--accent-hover)}
+.btn:active{transform:scale(.97)}
+.link{font-weight:600;text-decoration:underline;transition:color .2s ease}
+.link:hover{color:var(--accent)}
+
+/* bar */
+.bar{display:flex;align-items:center;gap:clamp(14px,2vw,30px);padding:14px var(--m);background:var(--paper)}
+.mark{font-family:"Young Serif",serif;font-size:var(--step-lead);letter-spacing:-.02em;text-decoration:none;margin-right:auto;line-height:1}
+.mark span{color:var(--muted)}
+.bar nav{display:flex;gap:clamp(14px,1.8vw,28px)}
+.bar nav a{text-decoration:none;font-size:var(--step-body);transition:color .2s ease}
+.bar nav a:hover{color:var(--accent)}
+.bar .tel{font-weight:600;text-decoration:none;white-space:nowrap}
+.bar .btn{min-height:44px;padding:0 18px;font-size:var(--step-body)}
+
+/* the split */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
+.read{grid-column:1;padding:0 clamp(24px,4.4vw,72px)}
+.read>*{max-width:62ch}
+.stage{grid-column:2;grid-row:1 / span 12;position:sticky;top:0;height:100svh;overflow:hidden;background:var(--surface)}
+.scene{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity 1.2s ease,visibility 0s linear 1.2s}
+.scene.on{opacity:1;visibility:visible;transition:opacity 1.2s ease,visibility 0s}
+.scene>img.ph{width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 9s linear}
+.scene.on>img.ph{transform:scale(1)}
+.cap{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:16px;padding:16px 24px;background:var(--paper);font-size:var(--step-small);line-height:1.35;color:var(--ink)}
+.cap b{font-weight:600}
+.cap .src{color:var(--muted)}
+
+/* hero */
+.hero{padding-top:clamp(56px,11vh,120px);padding-bottom:56px}
+.hero h1{font-size:var(--step-display);max-width:9.5em}
+.hero .lede{font-size:var(--step-lead);line-height:1.4;margin-top:28px;max-width:26em}
+.hero .acts{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-top:30px}
+.hero .meta{margin-top:26px;font-size:var(--step-small);color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 22px}
+.hero .meta b{color:var(--ink);font-weight:600}
+
+/* spine picker (lives in the stage) */
+.plate{position:absolute;inset:0 0 60px 0;display:grid;grid-template-columns:auto auto;justify-content:center;align-items:center;gap:clamp(12px,2vw,32px);padding:28px}
+.fig{position:relative;height:min(calc(100svh - 150px),900px);aspect-ratio:1023/1962}
+.fig img{width:100%;height:100%;mix-blend-mode:multiply}
+.band{position:absolute;left:-6%;right:-6%;background:var(--accent);opacity:0;mix-blend-mode:multiply;transition:opacity .4s ease,top .5s var(--ease),height .5s var(--ease)}
+.band.on{opacity:.22}
+.spots{position:relative;height:min(calc(100svh - 150px),900px);width:210px}
+.spot{position:absolute;right:0;transform:translateY(-50%);display:flex;align-items:center;gap:10px;min-height:44px;padding:0 16px;background:var(--paper);border:0;cursor:pointer;font-size:var(--step-body);font-weight:600;white-space:nowrap;transition:background-color .2s ease,color .2s ease,transform .15s var(--ease)}
+.spot:hover{background:#fff}
+.spot:active{transform:translateY(-50%) scale(.96)}
+.spot[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.spot i{display:block;width:10px;height:10px;border-radius:50%;background:var(--accent);flex:none}
+.spot[aria-pressed="true"] i{background:#fff}
+.picker-h{display:none}
+
+/* picker result in the reading column */
+.result{background:var(--spruce);color:var(--spruce-ink);padding:clamp(24px,3vw,40px);margin-bottom:clamp(96px,14vh,160px)}
+.result h2{font-size:var(--step-head);margin-bottom:14px}
+.result p{max-width:62ch}
+.result .hint{color:var(--spruce-soft)}
+.result .visit{margin-top:22px;font-size:var(--step-lead);font-family:"Young Serif",serif;line-height:1.2}
+.result .care{margin-top:14px;color:var(--spruce-soft);font-size:var(--step-body)}
+.result .acts{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;margin-top:24px}
+.result .link{color:#fff}
+.result .link:hover{color:var(--ice)}
+.fade-swap{animation:swap .5s var(--ease)}
+@keyframes swap{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* conditions list */
+.conds{padding-bottom:clamp(110px,16vh,180px)}
+.conds h2,.fv h2,.where h2,.faq h2{font-size:var(--step-head);margin-bottom:22px}
+.conds .intro{margin-bottom:40px;max-width:62ch}
+.row{display:block}
+.row>button{display:flex;width:100%;align-items:baseline;justify-content:space-between;gap:16px;min-height:60px;padding:14px 0;background:none;border:0;text-align:left;cursor:pointer;color:var(--muted);transition:color .25s ease,padding-left .3s var(--ease)}
+.row>button .n{font-family:"Young Serif",serif;font-size:var(--step-lead);line-height:1.15;letter-spacing:-.01em}
+.row>button .r{font-size:var(--step-small);white-space:nowrap}
+.row.on>button{color:var(--ink);padding-left:14px}
+.row.on>button .r{color:var(--accent);font-weight:600}
+.row .d{max-width:62ch;font-size:var(--step-body);padding:0 0 18px 14px;display:grid;grid-template-rows:1fr;transition:grid-template-rows .35s var(--ease)}
+.row .d>div{overflow:hidden}
+.js .row:not(.on) .d{grid-template-rows:0fr;padding-bottom:0}
+.conds .note{margin-top:36px;font-size:var(--step-body);max-width:62ch}
+
+/* first visit slip */
+.fv{background:var(--ice);padding-top:clamp(72px,10vh,120px);padding-bottom:clamp(90px,12vh,140px)}
+.fv>*{max-width:62ch}
+.fv .intro{margin-bottom:40px}
+.slip{background:var(--paper);padding:30px 30px 46px;max-width:62ch;clip-path:polygon(0 0,100% 0,100.000% calc(100% - 12px),95.833% 100%,91.667% calc(100% - 12px),87.500% 100%,83.333% calc(100% - 12px),79.167% 100%,75.000% calc(100% - 12px),70.833% 100%,66.667% calc(100% - 12px),62.500% 100%,58.333% calc(100% - 12px),54.167% 100%,50.000% calc(100% - 12px),45.833% 100%,41.667% calc(100% - 12px),37.500% 100%,33.333% calc(100% - 12px),29.167% 100%,25.000% calc(100% - 12px),20.833% 100%,16.667% calc(100% - 12px),12.500% 100%,8.333% calc(100% - 12px),4.167% 100%,0.000% calc(100% - 12px))}
+.slip h3{font-family:"Source Serif 4",serif;font-weight:600;font-size:var(--step-body);letter-spacing:0;line-height:1.3;margin:26px 0 6px}
+.slip h3:first-child{margin-top:0}
+.slip li{display:flex;align-items:baseline;gap:8px;font-size:var(--step-body);padding:4px 0}
+.slip li .t{flex:0 1 auto;min-width:0}
+.slip li .dots{flex:1 1 20px;overflow:hidden;white-space:nowrap;color:var(--muted);min-width:20px}
+.slip li .dots::before{content:"· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·"}
+.slip li .v{flex:none;white-space:nowrap}
+.slip .total span:last-child{white-space:nowrap}
+.slip .total{display:flex;justify-content:space-between;gap:12px;align-items:center;min-height:48px;margin:28px -30px 0;padding:10px 30px;background:var(--ink);color:var(--paper);font-weight:600}
+
+/* prices: two fields */
+.prices{display:grid;grid-template-columns:5fr 7fr}
+.plan{min-height:min(72svh,700px);padding:clamp(28px,3.4vw,56px);display:flex;flex-direction:column}
+.plan.f{background:var(--spruce);color:var(--spruce-ink)}
+.plan.n{background:var(--ice);color:var(--ice-ink)}
+.plan h2{font-size:var(--step-head)}
+.plan .who{font-size:var(--step-lead);line-height:1.35;margin-top:20px;max-width:18em}
+.plan .inc{margin-top:22px;max-width:28em}
+.plan.f .inc{color:var(--spruce-ink)}
+.plan .foot{margin-top:auto;padding-top:48px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
+.plan .price{font-family:"Young Serif",serif;font-size:calc(var(--step-display) * 1.6);line-height:.85;letter-spacing:-.03em}
+.plan .pr{display:flex;align-items:baseline;gap:12px}
+.plan.f .btn{background:var(--paper);color:var(--ink)}
+.plan.f .btn:hover{background:#fff}
+.prices-note p{max-width:62ch}
+.prices-note{grid-column:1/-1;background:var(--surface);padding:22px var(--m);font-size:var(--step-body)}
+
+/* hours & where */
+.where{padding-top:clamp(100px,14vh,160px);padding-bottom:clamp(90px,12vh,140px)}
+.hours{width:100%;max-width:26em;border-collapse:collapse;margin:8px 0 34px;font-size:var(--step-body)}
+.hours th,.hours td{text-align:left;padding:9px 0;border-bottom:1px solid #cfd4cb;font-weight:400}
+.hours td{text-align:right}
+.hours tr.today th,.hours tr.today td{font-weight:600;color:var(--accent)}
+.addr{font-size:var(--step-lead);line-height:1.35;font-family:"Young Serif",serif}
+.where .facts{margin-top:22px;display:grid;gap:10px;max-width:62ch}
+.where .acts{display:flex;flex-wrap:wrap;gap:12px 26px;align-items:center;margin-top:30px}
+
+/* faq */
+.faq{padding-bottom:clamp(110px,15vh,170px)}
+.faq p{margin-bottom:20px;max-width:62ch}
+.faq p b{font-weight:600}
+
+/* contact band */
+.contact{background:var(--spruce);color:var(--spruce-ink);padding:clamp(100px,14vh,160px) var(--m) clamp(80px,11vh,120px)}
+.contact .top{display:grid;grid-template-columns:5fr 1fr 2fr 4fr;gap:clamp(20px,3vw,48px);align-items:start}
+.contact .say{font-family:"Young Serif",serif;font-size:clamp(24px,1rem + 1.5vw,36px);line-height:1.12;letter-spacing:-.015em;max-width:15em}
+.contact video,.contact .poster{width:100%;aspect-ratio:1;object-fit:cover;grid-column:3}
+.contact .ways{grid-column:4}
+.contact .ways p:first-child{font-weight:600}
+.contact .ways a{overflow-wrap:anywhere;display:block;margin-top:10px;font-size:var(--step-lead);font-family:"Young Serif",serif;color:#fff;text-decoration:none}
+.contact .ways a:hover{color:var(--ice)}
+.contact .ways .small{margin-top:14px;color:var(--spruce-soft);font-size:var(--step-small)}
+.book{margin-top:clamp(70px,10vh,110px);background:var(--paper);color:var(--ink);padding:clamp(24px,3.4vw,52px);display:grid;grid-template-columns:4fr 7fr;gap:clamp(24px,4vw,64px)}
+.book h2{font-size:var(--step-head)}
+.book .side p{margin-top:16px;max-width:22em}
+form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+form label,form fieldset{display:grid;gap:6px;font-size:var(--step-small);font-weight:600}
+form fieldset{border:0;padding:0;margin:0}
+form legend{padding:0;margin-bottom:6px}
+form .full{grid-column:1/-1}
+form input[type=text],form input[type=tel],form input[type=email],form select,form textarea{font:400 var(--step-body) "Source Serif 4",serif;padding:13px 12px;border:1px solid #9fa9a2;background:#fff;color:var(--ink);border-radius:0;width:100%}
+form textarea{min-height:96px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative;cursor:pointer;font-weight:400;font-size:var(--step-small)}
+.chips input{position:absolute;opacity:0;inset:0}
+.chips span{display:inline-block;padding:10px 14px;background:var(--surface);transition:background-color .15s ease,color .15s ease}
+.chips input:checked+span{background:var(--ink);color:var(--paper)}
+.chips input:focus-visible+span{outline:3px solid var(--accent);outline-offset:2px}
+form .btn{justify-self:start}
+form .fine{max-width:62ch;grid-column:1/-1;font-size:var(--step-small);color:var(--muted);font-weight:400}
+
+/* footer */
+footer{display:grid;grid-template-columns:1fr 1fr;background:var(--spruce);color:var(--spruce-ink)}
+footer .ph{background:var(--surface);overflow:hidden;min-height:100svh;position:relative}
+footer .ph img{position:absolute;width:150%;max-width:none;left:-8%;top:-62%;mix-blend-mode:multiply}
+footer .menu{padding:clamp(40px,6vw,88px) var(--m) 32px;display:flex;flex-direction:column}
+footer .wm{font-family:"Young Serif",serif;font-size:var(--step-lead)}
+footer ul{margin-top:40px;display:grid;gap:14px}
+footer ul a{font-family:"Young Serif",serif;font-size:clamp(30px,2.6vw,44px);line-height:1.05;text-decoration:none;display:inline-block;transition:transform .3s var(--ease),color .2s ease}
+footer ul:hover a{color:var(--spruce-soft)}
+footer ul a:hover,footer ul a:focus-visible{transform:translateX(12px);color:#fff}
+footer .cols{margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:24px;font-size:var(--step-small)}
+footer .cols a{color:#fff}
+footer .credits{max-width:70ch;margin-top:36px;font-size:var(--step-small);line-height:1.5}
+footer .credits a{color:#fff}
+footer .legal{max-width:70ch;margin-top:auto;padding-top:36px;font-size:var(--step-small);color:var(--spruce-soft)}
+footer .legal a{color:#fff}
+
+/* motion */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.no-js .rv{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  .scene,.scene.on,.scene>img.ph{transition:none;transform:none}
+  .fade-swap{animation:none}
+}
+
+/* phone & tablet: its own composition */
+@media (max-width:960px){
+  .bar nav{display:none}
+  .split{grid-template-columns:minmax(0,1fr)}
+  .read{padding:0 var(--m)}
+  .stage{grid-column:1;grid-row:auto;position:relative;height:auto;background:var(--surface)}
+  .stage .scene:not(.keep){display:none}
+  .scene.keep{position:relative;opacity:1;visibility:visible}
+  .scene.keep>img.ph{height:56svh;transform:none}
+  .cap{position:relative;padding:12px var(--m);font-size:var(--step-small);flex-direction:column;gap:2px}
+  .plate{position:relative;inset:auto;padding:28px var(--m) 20px;grid-template-columns:1fr auto;justify-content:stretch;gap:12px}
+  .picker-h{display:block;grid-column:1/-1;font-size:var(--step-head);margin-bottom:6px}
+  .fig,.spots{height:min(62svh,480px)}
+  .fig{aspect-ratio:640/1962;overflow:hidden}
+  .fig img{width:160%;max-width:none}
+  .band{left:0;right:0}
+  .spots{width:auto}
+  .spot{font-size:var(--step-small);padding:0 12px}
+  .hero{padding-top:44px;padding-bottom:40px}
+  .result{margin:0 calc(-1 * var(--m)) 96px;padding:28px var(--m) 36px}
+  .split.b .stage{order:0}
+  .fv{padding-top:72px;padding-bottom:88px}
+  .slip{padding:24px 18px 42px}
+  .slip .total span:last-child{white-space:nowrap}
+.slip .total{margin:24px -18px 0;padding:10px 18px}
+  .prices{grid-template-columns:minmax(0,1fr)}
+  .plan.n{order:-1}
+  .plan{min-height:0}
+  .plan .foot{flex-direction:column;align-items:stretch}
+  .plan .btn{width:100%}
+  .where{padding-top:80px;padding-bottom:70px}
+  .faq{padding-top:96px}
+  .stage .scene[data-name="spine"] .cap{display:none}
+  .result.init h2{display:none}
+  .contact .top{grid-template-columns:96px 1fr;gap:20px}
+  .contact .say{grid-column:1/-1;font-size:24px}
+  .contact video,.contact .poster{grid-column:1}
+  .contact .ways{grid-column:2}
+  .book{grid-template-columns:1fr;margin-left:calc(-1 * var(--m));margin-right:calc(-1 * var(--m))}
+  form{grid-template-columns:1fr}
+  form .btn{width:100%}
+  footer{grid-template-columns:1fr}
+  footer .ph{min-height:50svh}
+  footer .ph img{width:120%;left:-4%;top:-48%}
+  footer ul a{font-size:8vw}
+  footer .cols{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .bar .tel{display:none}
+  .mark{font-size:var(--step-lead)}
+  .mark span{display:none}
+  .hero .acts .btn{width:100%}
+}
+</style>
+</head>
+<body class="no-js">
+<script>document.body.classList.remove('no-js');document.body.classList.add('js')</script>
+<a class="skip" href="#main">Skip to content</a>
+<p class="sample">Sample website for a fictional business, designed by Orbik · <a href="https://orbik.ai">orbik.ai</a></p>
+<header class="bar">
+  <a class="mark" href="#top">Northline <span>Chiropractic</span></a>
+  <nav aria-label="Sections"><a href="#conditions">What we see</a><a href="#first-visit">First visit</a><a href="#prices">Prices</a><a href="#hours">Hours</a><a href="#faq">Questions</a></nav>
+  <a class="tel" href="tel:+16125550182">(612) 555-0182</a>
+  <a class="btn" href="#book">Book</a>
+</header>
+
+<main id="main">
+<div class="split a" id="top">
+  <section class="read hero" data-scene="spine" aria-labelledby="h1">
+    <h1 id="h1" class="rv">Chiropractic on Central Ave</h1>
+    <p class="lede rv">A small clinic in Northeast Minneapolis for back, neck and headache trouble. Your first visit is one unhurried hour, costs $95, and you leave with a written plan.</p>
+    <p class="meta rv"><span><b id="open-now">Open Monday to Saturday</b></span><span>2418 Central Ave NE</span><span>Free parking behind the building</span></p>
+    <div class="acts rv"><a class="btn" href="#book">Book an appointment</a><a class="link" href="tel:+16125550182">or call (612) 555-0182</a></div>
+  </section>
+
+  <aside class="stage" aria-label="Where does it hurt? Pick a spot on the spine">
+    <div class="scene keep on" data-name="spine">
+      <div class="plate">
+        <h2 class="picker-h">Where does it hurt?</h2>
+        <div class="spots" id="spots">
+          <button class="spot" type="button" data-area="head" style="top:4%" aria-pressed="false" aria-controls="result"><i></i>Headaches</button>
+          <button class="spot" type="button" data-area="neck" style="top:14%" aria-pressed="false" aria-controls="result"><i></i>Neck</button>
+          <button class="spot" type="button" data-area="upper" style="top:37%" aria-pressed="false" aria-controls="result"><i></i>Upper back</button>
+          <button class="spot" type="button" data-area="low" style="top:64%" aria-pressed="false" aria-controls="result"><i></i>Low back</button>
+          <button class="spot" type="button" data-area="hip" style="top:86%" aria-pressed="false" aria-controls="result"><i></i>Hip and leg</button>
+        </div>
+        <div class="fig">
+          <img src="assets/gerrish-s-text-book-of-anatomy-1902.jpg" width="1023" height="1962" alt="Engraving of the human spine from the side and from behind, labelled cervical, thoracic and lumbar vertebrae, sacrum and coccyx">
+          <div class="band" id="band" aria-hidden="true"></div>
+        </div>
+      </div>
+      <p class="cap"><span><b>Tap where it hurts</b> to see which visit fits.</span><span class="src">Engraving: Gerrish’s Text-book of Anatomy, 1902</span></p>
+    </div>
+    <div class="scene" data-name="desk">
+      <img class="ph" src="assets/a-woman-sits-at-a-desk-with.jpg" width="1280" height="1917" alt="A woman leaning towards her laptop at a desk in a dark room" loading="lazy" style="object-position:50% 35%">
+      <p class="cap"><span><b>Hours at a screen</b> pull the head forward.</span><span class="src">Photo: Shixart1985, CC BY 2.0</span></p>
+    </div>
+    <div class="scene" data-name="snow">
+      <img class="ph" src="assets/maintenance-man-shoveling-snow-in-tuntorp.jpg" width="1280" height="1707" alt="A man in work clothes shoveling snow beside a row of mailboxes" loading="lazy" style="object-position:40% 40%">
+      <p class="cap"><span><b>Every Minnesota winter</b> starts with a shovel.</span><span class="src">Photo: W.carter, CC BY-SA 4.0</span></p>
+    </div>
+    <div class="scene" data-name="pelvis">
+      <img class="ph" src="assets/base-of-the-spine-and-hip-bones.jpg" width="1280" height="1414" alt="Old engraving of the base of the spine joining the hip bones" loading="lazy" style="object-position:60% 50%">
+      <p class="cap"><span><b>The low back and pelvis</b> work as one.</span><span class="src">Engraving: “Base of the spine and hip bones”, public domain</span></p>
+    </div>
+  </aside>
+
+  <div class="read" aria-live="polite">
+    <div class="result init" id="result">
+      <h2 class="rv">Where does it hurt?</h2>
+      <p class="hint rv">Pick a spot on the spine and we’ll tell you which visit to book, what we’ll check and how long it takes. Not sure? Book a new patient visit; it covers everything.</p>
+      <div class="acts rv"><a class="btn" href="#book" id="result-book">Book a new patient visit</a></div>
+    </div>
+  </div>
+
+  <section class="read conds" id="conditions" data-scene="spine" aria-labelledby="h-conds">
+    <h2 id="h-conds" class="rv">What we see most</h2>
+    <p class="intro rv">These are the everyday problems people bring to us. Each one starts with the same first visit, and if what we find needs a medical doctor, physical therapist or imaging instead, we say so and refer you.</p>
+    <ul id="rows">
+      <li class="row on" data-scene="snow" data-area="low"><button type="button" aria-expanded="true"><span class="n">Low back pain</span><span class="r">Lumbar</span></button><div class="d"><div>From lifting, shoveling, long drives or no clear reason. We check how your back and hips move, then use gentle adjustments, soft-tissue work and two or three exercises you can do at home.</div></div></li>
+      <li class="row" data-scene="desk" data-area="neck"><button type="button" aria-expanded="false"><span class="n">Neck pain and stiffness</span><span class="r">Cervical</span></button><div class="d"><div>Often the desk, the phone or the pillow. We look at how far you can turn and tilt, check the nerves into your arms, and set up your workstation with you.</div></div></li>
+      <li class="row" data-scene="spine" data-area="head"><button type="button" aria-expanded="false"><span class="n">Headaches that start in the neck</span><span class="r">Upper cervical</span></button><div class="d"><div>Tension-type headaches that build from the base of the skull. A sudden, severe or unusual headache is for your doctor or the ER first, not for us.</div></div></li>
+      <li class="row" data-scene="pelvis" data-area="hip"><button type="button" aria-expanded="false"><span class="n">Pain that runs down the leg</span><span class="r">Lumbar and pelvis</span></button><div class="d"><div>Buttock and leg pain from the low back or pelvis. We test strength, reflexes and sensation first; anything that needs a scan or a specialist gets referred.</div></div></li>
+      <li class="row" data-scene="spine" data-area="upper"><button type="button" aria-expanded="false"><span class="n">Between the shoulder blades</span><span class="r">Thoracic</span></button><div class="d"><div>The tight, burning spot that comes with long days, carrying kids or new training. Mobility work, adjustments and a short daily routine.</div></div></li>
+      <li class="row" data-scene="desk" data-area="neck"><button type="button" aria-expanded="false"><span class="n">Desk and posture strain</span><span class="r">Whole spine</span></button><div class="d"><div>Bring a photo of where you work. We will change one or two things at your desk before we change anything else.</div></div></li>
+      <li class="row" data-scene="snow" data-area="low"><button type="button" aria-expanded="false"><span class="n">Running and weekend sports strains</span><span class="r">Back, hips</span></button><div class="d"><div>For runners, hockey parents and Sunday league players. We look at how you move under load and keep you training where it is safe to.</div></div></li>
+      <li class="row" data-scene="pelvis" data-area="hip"><button type="button" aria-expanded="false"><span class="n">Back care during pregnancy</span><span class="r">Pelvis</span></button><div class="d"><div>Gentle, side-lying techniques with a pregnancy pillow. Tell us your due date and your midwife or OB’s name when you book.</div></div></li>
+    </ul>
+    <p class="note rv">We don’t treat infections, fractures, cancer or anything chiropractic is not for, and we never promise a number of visits before we have examined you.</p>
+  </section>
+
+  <section class="read fv" id="first-visit" data-scene="pelvis" aria-labelledby="h-fv">
+    <h2 id="h-fv" class="rv">Your first visit</h2>
+    <p class="intro rv">One hour, mostly talking and testing. You’ll know what we found and what it will cost before any treatment starts, and you can stop there if you like.</p>
+    <div class="slip rv" role="group" aria-label="First visit itinerary">
+      <h3>Before you come</h3>
+      <ul>
+        <li><span class="t">Intake form, online or at the desk</span><span class="dots" aria-hidden="true"></span><span class="v">10 min</span></li>
+        <li><span class="t">Wear clothes you can bend in</span><span class="dots" aria-hidden="true"></span><span class="v">no gown</span></li>
+      </ul>
+      <h3>First, we talk</h3>
+      <ul>
+        <li><span class="t">Where it hurts, since when, what helps</span><span class="dots" aria-hidden="true"></span><span class="v">15 min</span></li>
+        <li><span class="t">Past injuries, medicines, scans</span><span class="dots" aria-hidden="true"></span><span class="v">5 min</span></li>
+      </ul>
+      <h3>Then, the exam</h3>
+      <ul>
+        <li><span class="t">Posture and how you move</span><span class="dots" aria-hidden="true"></span><span class="v">10 min</span></li>
+        <li><span class="t">Joint, muscle and nerve tests</span><span class="dots" aria-hidden="true"></span><span class="v">10 min</span></li>
+      </ul>
+      <h3>Last, the plan</h3>
+      <ul>
+        <li><span class="t">What we found, in plain words</span><span class="dots" aria-hidden="true"></span><span class="v">10 min</span></li>
+        <li><span class="t">First treatment, if it fits and you agree</span><span class="dots" aria-hidden="true"></span><span class="v">10 min</span></li>
+      </ul>
+      <p class="total"><span>You leave with a written plan</span><span>60 min · $95</span></p>
+    </div>
+  </section>
+</div>
+
+<section class="prices" id="prices" aria-label="Prices">
+  <div class="plan f">
+    <h2 class="rv">Follow-up visit</h2>
+    <p class="who rv">For patients we have seen in the last twelve months.</p>
+    <p class="inc rv">A quick re-check, adjustment and soft-tissue work, and an update to your home exercises. About 20 minutes.</p>
+    <div class="foot"><div class="pr rv"><p class="price">$55</p><p class="per">per visit, about 20 min</p></div><a class="btn" href="#book" data-visit="Follow-up visit">Book a follow-up</a></div>
+  </div>
+  <div class="plan n">
+    <h2 class="rv">New patient visit</h2>
+    <p class="who rv">For your first time here, or if it has been more than a year.</p>
+    <p class="inc rv">History, full exam, a written plan and a first treatment when it is appropriate. X-rays only if they are truly needed; we refer you to an imaging center and they bill you directly. About 60 minutes.</p>
+    <div class="foot"><div class="pr rv"><p class="price">$95</p><p class="per">one visit, about 60 min</p></div><a class="btn" href="#book" data-visit="New patient visit">Book a first visit</a></div>
+  </div>
+  <div class="prices-note"><p>These are the prices you pay without insurance. HSA and FSA cards are welcome, and we check your insurance benefits before your first visit so there are no surprises.</p></div>
+</section>
+
+<div class="split b">
+  <section class="read where" id="hours" data-scene="park" aria-labelledby="h-hours">
+    <h2 id="h-hours" class="rv">Hours and directions</h2>
+    <table class="hours rv" id="hours-table">
+      <caption class="skip">Opening hours</caption>
+      <tr data-d="1"><th scope="row">Monday</th><td>7am – 6pm</td></tr>
+      <tr data-d="2"><th scope="row">Tuesday</th><td>10am – 7pm</td></tr>
+      <tr data-d="3"><th scope="row">Wednesday</th><td>7am – 6pm</td></tr>
+      <tr data-d="4"><th scope="row">Thursday</th><td>10am – 7pm</td></tr>
+      <tr data-d="5"><th scope="row">Friday</th><td>7am – 1pm</td></tr>
+      <tr data-d="6"><th scope="row">Saturday</th><td>8am – noon</td></tr>
+      <tr data-d="0"><th scope="row">Sunday</th><td>Closed</td></tr>
+    </table>
+    <p class="addr rv">2418 Central Ave NE<br>Minneapolis, MN 55418</p>
+    <div class="facts rv">
+      <p>Free parking in the lot behind the building; enter from 24th Ave NE.</p>
+      <p>The 10 bus stops at Central and 24th, half a block away.</p>
+      <p>Step-free entrance, ground-floor rooms and an adjustable table that lowers to wheelchair height.</p>
+    </div>
+    <div class="acts rv"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Central+Ave+NE+and+24th+Ave+NE+Minneapolis" rel="noopener">Get directions</a><a class="link" href="tel:+16125550182">(612) 555-0182</a></div>
+  </section>
+
+  <aside class="stage" aria-label="Pictures of the neighbourhood">
+    <div class="scene keep on" data-name="park">
+      <img class="ph" src="assets/gluek-park-in-winter-northeast-minneapolis-minnesota.jpg" width="1800" height="1193" alt="Snowy path under bare trees in Gluek Park beside the Mississippi River, Northeast Minneapolis" loading="lazy" style="object-position:30% 50%">
+      <p class="cap"><span><b>Gluek Park, down the road</b> in Northeast.</span><span class="src">Photo: Tony Webster, CC BY-SA 2.0</span></p>
+    </div>
+    <div class="scene" data-name="bridge">
+      <img class="ph" src="assets/stone-arch-bridge-as-viewed-from-downriver.jpg" width="1800" height="900" alt="The Stone Arch Bridge over the Mississippi River in Minneapolis on a clear day" loading="lazy" style="object-position:62% 50%">
+      <p class="cap"><span><b>The Stone Arch Bridge,</b> ten minutes south.</span><span class="src">Photo: August Schwerdfeger, CC BY 4.0</span></p>
+    </div>
+  </aside>
+
+  <section class="read faq" id="faq" data-scene="bridge" aria-labelledby="h-faq">
+    <h2 id="h-faq" class="rv">Questions people ask</h2>
+    <p class="rv"><b>Do I need a referral?</b> No. Minnesota lets you see a chiropractor directly. If your insurance plan asks for one, we’ll tell you when we check your benefits.</p>
+    <p class="rv"><b>Does an adjustment hurt?</b> Most people feel pressure and sometimes hear a pop, which is gas in the joint, not bones moving. If you would rather avoid that, we use slower, quieter techniques instead.</p>
+    <p class="rv"><b>How many visits will I need?</b> We can’t know before the exam. After it, we tell you what we expect, write it down, and re-check at every visit whether it is working. If it isn’t, we change course or refer you.</p>
+    <p class="rv"><b>Do you take insurance?</b> We file claims for most major plans and check your benefits before your first visit. Without insurance you pay the prices on this page.</p>
+    <p class="rv"><b>Will you take X-rays?</b> Only when the exam says they are needed, for example after a fall or with certain warning signs. We refer you to an imaging center nearby.</p>
+    <p class="rv"><b>What should I wear?</b> Something you can bend and stretch in. There is no gown and you keep your clothes on.</p>
+    <p class="rv"><b>Can I bring my teenager?</b> Yes. Patients under 18 come with a parent or guardian, who stays in the room.</p>
+    <p class="rv"><b>When should I see a doctor instead?</b> After a hard fall or accident, with fever, unexplained weight loss, new numbness in the groin, or trouble controlling your bladder or bowels. Go to urgent care or call 911 first.</p>
+    <p class="rv"><b>What if I need to cancel?</b> Call or email at least 24 hours ahead and there is no charge. We keep a short waitlist, so someone else gets your time.</p>
+  </section>
+</div>
+
+<section class="contact" id="contact" aria-labelledby="h-book">
+  <div class="top">
+    <p class="say rv">Call, write or send the form below. We reply the same working day.</p>
+    <video class="rv" autoplay muted loop playsinline preload="metadata" poster="assets/snow-falling-in-charlton-ma-2025-12-poster.jpg" width="640" height="360" aria-hidden="true"><source src="assets/snow-falling-in-charlton-ma-2025-12.webm" type="video/webm"></video>
+    <div class="ways rv">
+      <p>Rather talk to a person?</p>
+      <a href="tel:+16125550182">(612) 555-0182</a>
+      <a href="mailto:hello@northlinechiro.example">hello@northlinechiro.example</a>
+      <p class="small">Snow day? We call you by 6:30am if we have to close.</p>
+    </div>
+  </div>
+  <div class="book" id="book">
+    <div class="side">
+      <h2 id="h-book" class="rv">Book an appointment</h2>
+      <p class="rv">Tell us what hurts and when you can come. We confirm a time by phone or email; nothing is booked until we do.</p>
+      <p class="rv">New patient visit, 60 min, $95.<br>Follow-up visit, 20 min, $55.</p>
+    </div>
+    <form id="form" action="mailto:hello@northlinechiro.example" method="post" enctype="text/plain">
+      <label>Your name<input type="text" name="name" autocomplete="name" required></label>
+      <label>Phone<input type="tel" name="phone" autocomplete="tel" required></label>
+      <label class="full">Email<input type="email" name="email" autocomplete="email"></label>
+      <label>Visit<select name="visit" id="f-visit"><option>New patient visit</option><option>Follow-up visit</option></select></label>
+      <label>Where it hurts<select name="area" id="f-area"><option value="">Not sure</option><option value="head">Headaches</option><option value="neck">Neck</option><option value="upper">Between the shoulders</option><option value="low">Low back</option><option value="hip">Hip and down the leg</option></select></label>
+      <fieldset class="full"><legend>Best times for you</legend>
+        <div class="chips"><label><input type="checkbox" name="when" value="Weekday mornings"><span>Weekday mornings</span></label><label><input type="checkbox" name="when" value="Lunchtime"><span>Lunchtime</span></label><label><input type="checkbox" name="when" value="Tue/Thu evenings"><span>Tue or Thu evening</span></label><label><input type="checkbox" name="when" value="Saturday"><span>Saturday morning</span></label></div>
+      </fieldset>
+      <label class="full">Anything we should know?<textarea name="notes"></textarea></label>
+      <button class="btn" type="submit">Send booking request</button>
+      <p class="fine">This opens your email app with your answers filled in. Please don’t include detailed medical history; we’ll ask in person.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="ph" aria-hidden="true"><img src="assets/gerrish-s-text-book-of-anatomy-1902.jpg" width="1023" height="1962" alt="" loading="lazy"></div>
+  <div class="menu">
+    <p class="wm">Northline Chiropractic</p>
+    <ul>
+      <li><a href="#conditions">What we see</a></li>
+      <li><a href="#first-visit">Your first visit</a></li>
+      <li><a href="#prices">Prices</a></li>
+      <li><a href="#hours">Hours and directions</a></li>
+      <li><a href="#faq">Questions</a></li>
+      <li><a href="#book">Book an appointment</a></li>
+    </ul>
+    <div class="cols">
+      <p>2418 Central Ave NE<br>Minneapolis, MN 55418<br><a href="tel:+16125550182">(612) 555-0182</a></p>
+      <p>Mon, Wed 7am – 6pm<br>Tue, Thu 10am – 7pm<br>Fri 7am – 1pm · Sat 8am – noon</p>
+    </div>
+    <p class="credits">Pictures show the neighbourhood and the subject, not this clinic, its staff or its patients: <a href="https://commons.wikimedia.org/wiki/File:Gerrish%27s_Text-book_of_Anatomy_(1902)_-_Fig._145.png">“Gerrish’s Text-book of Anatomy (1902), Fig. 145”</a> by Frederick Henry Gerrish, <a href="https://creativecommons.org/publicdomain/mark/1.0/">public domain</a>; <a href="https://commons.wikimedia.org/wiki/File:Base_of_the_spine_and_hip_bones.jpg">“Base of the spine and hip bones”</a>, <a href="https://creativecommons.org/publicdomain/mark/1.0/">public domain</a>; <a href="https://commons.wikimedia.org/wiki/File:Maintenance_man_shoveling_snow_in_Tuntorp.jpg">“Maintenance man shoveling snow in Tuntorp”</a> by W.carter, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>; <a href="https://commons.wikimedia.org/wiki/File:A_woman_sits_at_a_desk_with_her_laptop,_deeply_focused_on_her_work_in_a_low-light_environment.jpg">“A woman sits at a desk with her laptop…”</a> by Shixart1985, <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>; <a href="https://commons.wikimedia.org/w/index.php?curid=65957443">“Gluek Park in Winter, Northeast Minneapolis”</a> by Tony Webster, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>; <a href="https://commons.wikimedia.org/wiki/File:Stone_Arch_Bridge_as_viewed_from_downriver_2019-08-08.jpg">“Stone Arch Bridge as viewed from downriver”</a> by August Schwerdfeger, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>; <a href="https://commons.wikimedia.org/wiki/File:Snow_falling_in_Charlton_MA_2025-12-14.webm">“Snow falling in Charlton MA”</a> by Peter Cooper Jr., <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>. All via Wikimedia Commons.</p>
+    <p class="legal">Northline Chiropractic is a fictional business; names, address, prices and phone numbers are samples. Site designed by <a href="https://orbik.ai">Orbik</a>.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var EMAIL='hello@northlinechiro.example';
+
+  /* open now */
+  var H={0:null,1:[7,18],2:[10,19],3:[7,18],4:[10,19],5:[7,13],6:[8,12]};
+  var fmt=function(h){return h===12?'noon':(h>12?(h-12)+'pm':h+'am')};
+  try{
+    var now=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Chicago'}));
+    var d=now.getDay(),h=now.getHours()+now.getMinutes()/60,t=H[d],el=document.getElementById('open-now');
+    var row=document.querySelector('#hours-table tr[data-d="'+d+'"]');if(row)row.classList.add('today');
+    if(t&&h>=t[0]&&h<t[1])el.textContent='Open now until '+fmt(t[1]);
+    else if(t&&h<t[0])el.textContent='Opens today at '+fmt(t[0]);
+    else{for(var i=1;i<8;i++){var nd=(d+i)%7;if(H[nd]){el.textContent='Opens '+(i===1?'tomorrow':['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][nd])+' at '+fmt(H[nd][0]);break}}}
+  }catch(e){}
+
+  /* spine picker */
+  var AREAS={
+    head:{t:'Headaches that start in the neck',band:[0,12],
+      p:'We check how the top of your neck and your jaw move, and ask about screens, sleep and stress. A sudden, severe or “worst ever” headache is for urgent care or 911, not for us.',
+      care:'Usually: gentle neck work, soft-tissue release and a two-minute daily stretch.'},
+    neck:{t:'Neck pain and stiffness',band:[3,23],
+      p:'We measure how far you can turn and tilt, check the nerves into your arms and shoulders, and ask you to show us how you sit at work.',
+      care:'Usually: adjustments or slower mobilisation, plus one change to your desk or pillow.'},
+    upper:{t:'Between the shoulder blades',band:[22,55],
+      p:'We look at how your upper back and ribs move when you breathe and reach, and how your shoulders sit at rest.',
+      care:'Usually: thoracic mobility work, adjustments and a short routine for long days.'},
+    low:{t:'Low back pain',band:[54,77],
+      p:'We check how your back and hips bend and twist, test strength and reflexes in your legs, and rule out anything that needs a doctor first.',
+      care:'Usually: gentle adjustments, soft-tissue work and two or three exercises for home.'},
+    hip:{t:'Hip, pelvis and pain down the leg',band:[74,98],
+      p:'We test the joints where your spine meets the pelvis, and check strength, sensation and reflexes down the leg before deciding anything.',
+      care:'Usually: pelvic and low-back work with nerve-gliding exercises. New numbness in the groin or bladder trouble: go to the ER now.'}
+  };
+  var spots=[].slice.call(document.querySelectorAll('.spot')),band=document.getElementById('band'),res=document.getElementById('result');
+  var fArea=document.getElementById('f-area'),fVisit=document.getElementById('f-visit');
+  function pick(a,fromRow){
+    var x=AREAS[a];if(!x)return;
+    spots.forEach(function(s){s.setAttribute('aria-pressed',s.dataset.area===a?'true':'false')});
+    band.style.top=x.band[0]+'%';band.style.height=(x.band[1]-x.band[0])+'%';band.classList.add('on');
+    if(fromRow)return;
+    res.classList.remove('init');res.innerHTML='<h2>'+x.t+'</h2><p>'+x.p+'</p><p class="visit">Book a new patient visit · 60 min · $95</p><p class="care">'+x.care+' Seen here in the last year? A follow-up is 20 min, $55.</p><div class="acts"><a class="btn" href="#book" data-visit="New patient visit" data-area="'+a+'">Book this visit</a><a class="link" href="tel:+16125550182">Call (612) 555-0182</a></div>';
+    if(!reduce){res.classList.remove('fade-swap');void res.offsetWidth;res.classList.add('fade-swap')}
+    if(fArea)fArea.value=a;
+  }
+  spots.forEach(function(s){s.addEventListener('click',function(){pick(s.dataset.area);
+    if(window.innerWidth<=960){res.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})}
+  })});
+
+  /* book buttons carry the visit type */
+  document.addEventListener('click',function(e){var b=e.target.closest('[data-visit]');if(!b)return;
+    if(fVisit)fVisit.value=b.dataset.visit;if(b.dataset.area&&fArea)fArea.value=b.dataset.area});
+
+  /* stage scenes */
+  function scene(stage,name){
+    if(!stage)return;[].forEach.call(stage.querySelectorAll('.scene'),function(s){s.classList.toggle('on',s.dataset.name===name)})}
+  var wide=window.matchMedia('(min-width: 961px)');
+  var stA=document.querySelector('.split.a .stage'),stB=document.querySelector('.split.b .stage');
+
+  /* conditions rows */
+  var rows=[].slice.call(document.querySelectorAll('.row'));
+  function activate(r){rows.forEach(function(x){var on=x===r;x.classList.toggle('on',on);x.querySelector('button').setAttribute('aria-expanded',on?'true':'false')});
+    if(wide.matches){scene(stA,r.dataset.scene);if(r.dataset.scene==='spine')pick(r.dataset.area,true)}}
+  rows.forEach(function(r){var b=r.querySelector('button');
+    b.addEventListener('click',function(){activate(r)});
+    b.addEventListener('focus',function(){activate(r)});
+    r.addEventListener('mouseenter',function(){if(wide.matches)activate(r)});
+  });
+
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting||!wide.matches)return;
+      var t=e.target,st=t.closest('.split');
+      if(t.classList.contains('row')){activate(t);return}
+      scene(st.querySelector('.stage'),t.dataset.scene);
+    })},{rootMargin:'-45% 0px -45% 0px'});
+    document.querySelectorAll('.split [data-scene]').forEach(function(s){if(!s.classList.contains('conds'))io.observe(s)});
+    rows.forEach(function(r){io.observe(r)});
+  }
+
+  /* form to email */
+  var form=document.getElementById('form');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();if(!form.reportValidity())return;
+    var f=new FormData(form),when=f.getAll('when').join(', ')||'Any time';
+    var area=fArea.options[fArea.selectedIndex].text;
+    var body='Name: '+f.get('name')+'\nPhone: '+f.get('phone')+'\nEmail: '+(f.get('email')||'')+'\nVisit: '+f.get('visit')+'\nWhere it hurts: '+area+'\nBest times: '+when+'\n\n'+(f.get('notes')||'');
+    location.href='mailto:'+EMAIL+'?subject='+encodeURIComponent(f.get('visit')+' request: '+f.get('name'))+'&body='+encodeURIComponent(body);
+  });
+
+  /* video: pause when hidden or reduced motion */
+  var v=document.querySelector('.contact video');
+  if(v){if(reduce){v.removeAttribute('autoplay');v.pause()}
+    document.addEventListener('visibilitychange',function(){if(document.hidden)v.pause();else if(!reduce)v.play().catch(function(){})})}
+
+  /* entrances */
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)||reduce){els.forEach(function(e){e.classList.add('in')});return}
+  var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}})},{rootMargin:'0px 0px -6% 0px'});
+  els.forEach(function(e){var sib=[].indexOf.call(e.parentNode.children,e);e.style.transitionDelay=Math.min(sib,4)*75+'ms';ro.observe(e)});
+})();
+</script>
+</body>
+</html>
